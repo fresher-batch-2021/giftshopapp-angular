@@ -1,0 +1,111 @@
+*{
+    margin: 0%;
+    padding: 0%; 
+}
+a{
+    text-decoration: none;
+    color: #D00000;
+    font-size: 20px;
+   
+}
+button{
+    margin: 0px auto;
+    background: none;
+    color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+/* to remove button slider in number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*------------- Register, login page and orderPage-----------  */
+
+/* common codes */
+
+.regLogo img{
+   
+    height: 45px;
+    width: 45px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.regLogo p{
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+.field input:valid + label::before,.field input:focus +label::before{
+    line-height: 20px;
+    font-size: 12px;
+    top: -10px; 
+    background-color: #fff;
+    padding: 0 6px;
+    left: 9px;
+    
+}
+/* for invalid input */
+.field .email input:not(:placeholder-shown):invalid +label::before{
+    line-height: 20px;
+    font-size: 12px;
+    top: -10px;
+    background: #fff;
+    padding: 0 6px;
+    left: 9px;
+    color: red;
+}
+.field{
+    position: relative;
+    
+    margin: 15px 20px 10px 20px ;
+}
+.field label::before{
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 15px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #777;
+    transition: 300ms all;
+}
+.field input{
+    width: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.field input::placeholder{
+    color: white;
+}
+.field input:focus{
+    outline: 0;
+    border-color: blue;
+}
+.field input:focus + label::before{
+    color: blue;
+}
+
+.RegisterContainer button,.loginContainer button,.orderPageContainer button{
+    display: block;
+    position: absolute;
+    background-color: red;
+    color: white;
+    margin-left: 20px;
+    width: 90%;
+    height: 30px;
+    border-radius: 12px;
+    padding-right: 2px;
+}

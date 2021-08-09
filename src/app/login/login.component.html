@@ -1,0 +1,28 @@
+
+    <section class="loginContainer">
+
+        <div class="regLogo">
+            <img src="assets/Images/gift.png" alt="none">
+            <p>Gift Corner</p><br>
+        </div>
+        <form (ngSubmit)="login()">
+            <div class="field">
+                
+                    <input type="email" required autocomplete="off" name="loginEmail" id="loginEmail" [(ngModel)]="loginEmail" placeholder="E-mail">
+                    <label for="loginEmail" title="E-mail"></label>
+            </div>
+            <div class="field">
+                <input type="password" required autocomplete="off" name="loginPassword" id="loginPassword" [(ngModel)]="loginPassword" >
+                <label for="loginPassword" title="password"></label>
+            </div>
+            <button type="submit">login</button>
+        </form>
+
+
+    </section>
+    <!-- java script -->
+    <script src="Assets/js/jquery.min.js"></script>
+    <script src="Assets/js/index.js"></script>
+    <script src="Assets/js/login.js"></script>
+
+    

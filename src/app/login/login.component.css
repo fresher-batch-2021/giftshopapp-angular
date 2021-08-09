@@ -1,0 +1,8 @@
+/* login page */
+.loginContainer{
+    border: 2px solid red;
+    border-radius: 12px;
+    margin: 12% 35% 0% 35%;
+    padding-bottom: 40px;
+    position: relative;
+}

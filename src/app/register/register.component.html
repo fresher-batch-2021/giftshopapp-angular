@@ -1,0 +1,40 @@
+    <!-- <header id="header"></header> -->
+
+
+    <section class="RegisterContainer">
+
+        <div class="regLogo">
+            <img src="assets/Images/gift.png" alt="">
+            <p>Gift corner</p><br>
+        </div>
+
+        <form onsubmit="register()">
+            <div class="field">
+                <input type="text" required autocomplete="off" id="registerName">
+                <label for="registerName" title="Name"></label>
+            </div>
+            <div class="field">
+                <div class="email">
+                    <input type="email" required autocomplete="off" id="registerEmail" placeholder="email">
+                    <label for="registerEmail" title="email"></label>
+                </div>
+            </div>
+            <div class="field">
+                <input type="password" required autocomplete="off" id="registerPassword">
+                <label for="registerPassword" title="password"></label>
+            </div>
+            <div class="field">
+                <input type="password" required autocomplete="off" id="registerConfirm">
+                <label for="registerConfirm" title="confirm"></label>
+            </div>
+            <button type="submit">Register</button>
+
+        </form>
+
+    </section>
+
+    <!-- java script -->
+
+    <script src="Assets/js/jquery.min.js"></script>
+    <script src="Assets/js/index.js"></script>
+    <script src="Assets/js/register.js"></script>
