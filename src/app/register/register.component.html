@@ -8,23 +8,23 @@
             <p>Gift corner</p><br>
         </div>
 
-        <form onsubmit="register()">
+        <form (ngSubmit)="register()">
             <div class="field">
-                <input type="text" required autocomplete="off" id="registerName">
-                <label for="registerName" title="Name"></label>
+                <input type="text" [(ngModel)]="registerName" required autocomplete="off" name="registerName" id="registerName">
+                <label for="registerName" title="Name" ></label>
             </div>
             <div class="field">
                 <div class="email">
-                    <input type="email" required autocomplete="off" id="registerEmail" placeholder="email">
+                    <input type="email" [(ngModel)]="registerEmail" required autocomplete="off" id="registerEmail" name="registerEmail" placeholder="email">
                     <label for="registerEmail" title="email"></label>
                 </div>
             </div>
             <div class="field">
-                <input type="password" required autocomplete="off" id="registerPassword">
+                <input type="password" [(ngModel)]="registerPassword" required autocomplete="off" id="registerPassword" name="registerPassword">
                 <label for="registerPassword" title="password"></label>
             </div>
             <div class="field">
-                <input type="password" required autocomplete="off" id="registerConfirm">
+                <input type="password" required [(ngModel)]="registerConfirm" autocomplete="off" id="registerConfirm" name="registerPassword">
                 <label for="registerConfirm" title="confirm"></label>
             </div>
             <button type="submit">Register</button>
