@@ -14,6 +14,12 @@ import { AboutUsComponent } from './about-us/about-us.component';
 
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
+import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { UsersComponent } from './users/users.component';
+import { ProductcrudComponent } from './productcrud/productcrud.component';
+import { DatasComponent } from './datas/datas.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,13 @@ import { FormsModule } from '@angular/forms';
     ProductSpecComponent,
     CartComponent,
     AboutUsComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    AdminHeaderComponent,
+    UsersComponent,
+    ProductcrudComponent,
+    DatasComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

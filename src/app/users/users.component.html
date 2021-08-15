@@ -1,0 +1,27 @@
+<section>
+
+    <h1>user detatis</h1>
+
+    <table>
+        <Caption>user credentials</Caption>
+        <thead>
+            <tr>
+                <td>s.no</td>
+                <td>userName</td>
+                <td>email</td>
+                <td>user id</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody *ngFor='let user of users; let i=index'>
+            <tr>
+                <td>{{i+1}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.id}}</td>
+                <td><button (click)="delete(user.id)">delete user</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>

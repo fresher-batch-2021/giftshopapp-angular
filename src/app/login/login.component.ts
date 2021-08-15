@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import axios from 'axios'
 @Component({
   selector: 'app-login',
@@ -6,24 +7,32 @@ import axios from 'axios'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  router: any;
   
 
-  constructor() { }
-
+  constructor(private route:Router) {
+   }
+   goTOAdmin(){
+     this.route.navigate(['/admin']);
+  }
+  goToHome(){
+    this.route.navigate(['/home']);
+  }
+//for navigation
   ngOnInit(): void {
   }
   loginEmail:string="";
   loginPassword:string="";
   
+  
   login(){
+    
     let email=this.loginEmail;
     let password=this.loginPassword;
-    // alert(this.loginEmails);
-    // alert(this.loginPassword);
-    // ==========================
+   
         
 switch(true){
-  case (email ==""||email==null||email.trim()==""):{alert("invalid username"); break;}
+  case (email ==""||email==null||email.trim()==""):{alert("invalid username");break;}
   case (password.trim() == ""):{alert("password is invalid"); break;}
 
   default :{const loginobj = {
@@ -38,13 +47,19 @@ switch(true){
 
       axios.post(url,loginobj).then(res=>{
           console.log(res);
+          let data=res.data;
 
-          //to stay loged in
-          // let user = res.data;
-          // localStorage.setItem("LOGGED_IN_USER", JSON.stringify(user));
-
+          localStorage.setItem("LOGGED_IN_USER",data);  
+          localStorage.setItem("IsLoggedIn",JSON.stringify(true));
+          
           alert("login succesful");
-          window.location.href="index.html";
+        
+          if(data.role=="admin"){
+          this.goTOAdmin();
+        }
+        else{
+          this.goToHome();
+        }
       }).catch(err=>{
               console.log(err.response.data);
               if (err.response.data.errorMessage){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { ProductSpecComponent } from '../product-spec/product-spec.component';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -29,14 +30,14 @@ product() {
       for (let img of images) { 
           
           content = content + `<div class="product" id="${img.id}">
-          <form action="cart.html">
-          <a href="ProductSpec.html?id=${img.id}">
+          <form >
+          <a href="/productSpec?id=${img.id}">
           <img class="productImg" src="assets/Images/${img.image_url}"  id="productImg" alt="">    
           </a>
           <p class="productName" id="productName">${img.name}</p>
           <p class="productPrice" id="productPrice" >${img.price}</p>
           <p>${img.id}</p>
-          <button type="submit" onClick="toCart(${img.id},'${img.name}','${img.image_url}','${img.price}','${img.description}')">add to cart</button>
+          <button type="submit" (ngSubmit)="toCart(${img.id},'${img.name}','${img.image_url}','${img.price}','${img.description}')">add to cart</button>
           </form>
           </div>`;
           //for printing only 4 elements in a row
@@ -46,7 +47,9 @@ product() {
           count = 0;
           }
       }
-      let container=(document.querySelector("#productContainer")as HTMLElement).innerHTML=content;
+      console.log(content);
+      // alert("stop");
+      (document.querySelector("#productContainer")as HTMLElement).innerHTML=content;
       
   })
 }
@@ -54,6 +57,7 @@ product() {
 
 
 //----------------------------------------for storing data in local machine-------------------------------
+
 
 
 }

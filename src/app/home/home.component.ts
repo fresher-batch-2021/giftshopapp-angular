@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.showSlides();
   }
 
   slideData = ["assets/Images/bc1.jpg", "assets/Images/bc2.jpg", "assets/Images/bc3.jpg"];

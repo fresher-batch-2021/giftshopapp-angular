@@ -20,10 +20,14 @@ export class RegisterComponent implements OnInit {
   register() {
     // event.preventDefault();
     alert("hello");
-    const name =document.getElementById("#registerName");
-    const email = document.getElementById("#registerEmail");
-    const password = document.getElementById("#registerPassword");
-    const confirm = document.getElementById("#registerConfirm");
+    // const name =document.getElementById("#registerName");
+    const name=this.registerName;
+    // const email = document.getElementById("#registerEmail");
+    const email=this.registerEmail;
+    // const password = document.getElementById("#registerPassword");
+    const password =this.registerPassword;
+    // const confirm = document.getElementById("#registerConfirm");
+    const confirm=this.registerConfirm;
     //if name is valid or not
     if (this.registerName.trim() == ""||this.registerName==null) {
         alert("name can't be empty");
