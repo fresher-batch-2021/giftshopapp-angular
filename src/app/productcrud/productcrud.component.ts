@@ -31,18 +31,20 @@ export class ProductcrudComponent implements OnInit {
     });
   }
   delete(id:number){
-    const url="https://product-mock-api.herokuapp.com/giftshopapp/api/v1/products/";
+    const url="https://product-mock-api.herokuapp.com/giftshopapp/api/v1/products/"+id;
+    
 
-    axios.get(url).then(res =>{
-      let data=res.data;
-      console.log(data);
-       this.products=res.data;
+    axios.delete(url).then(res =>{
       
+      alert("deleted successfully");
+      window.location.href='/productcrud';
 
     }).catch(err=>{
       console.log("Error"+err.data);
     });
   }
+
+
   
 
 }

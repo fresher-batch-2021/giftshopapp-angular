@@ -3,9 +3,9 @@
     <thead>
         <tr>
             <td>s.no</td>
+            <td>image_url</td>
             <td>product name</td>
             <td>price</td>
-            <td>image_url</td>
             <td>description</td>
             <td>product id</td>
             <td>Delete</td>
@@ -14,12 +14,21 @@
     <tbody *ngFor='let product of products; let i=index'>
         <tr>
             <td>{{i+1}}</td>
+            
+            <td>
+            <figure>
+            <img src='{{"assets/Images/"+product.image_url}}' alt="">
+            </figure>
+            <figcaption>hello</figcaption>
+            </td>
+            
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>
-            <td>{{product.image_url}}</td>
             <td>{{product.description}}</td>
             <td>{{product.id}}</td>
             <td><button (click)="delete(product.id)">delete product</button></td>
         </tr>
     </tbody>
+    <button routerLink='../add-product'>add product</button>
+
 </table>

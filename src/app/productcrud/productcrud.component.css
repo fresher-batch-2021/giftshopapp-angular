@@ -2,4 +2,9 @@ table,tr,td{
     border: 2px solid brown;
     padding: 2px;
     color: black;
+    
+}
+img{
+    height: 80px;
+    width: 80px;
 }

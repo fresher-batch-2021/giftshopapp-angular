@@ -20,6 +20,7 @@ import { UsersComponent } from './users/users.component';
 import { ProductcrudComponent } from './productcrud/productcrud.component';
 import { DatasComponent } from './datas/datas.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UsersComponent,
     ProductcrudComponent,
     DatasComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

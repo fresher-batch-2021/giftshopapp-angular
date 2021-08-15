@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AddProductComponent } from './add-product/add-product.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminComponent } from './admin/admin.component';
 import { CartComponent } from './cart/cart.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:'datas',component:DatasComponent},
   {path:'users',component:UsersComponent},
   {path:'productcrud',component:ProductcrudComponent},
+  {path:'add-product',component:AddProductComponent},
   {path:'', component:DashboardComponent}
 ];
 
