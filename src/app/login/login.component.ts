@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import axios from 'axios'
@@ -13,10 +14,17 @@ export class LoginComponent implements OnInit {
   constructor(private route:Router) {
    }
    goTOAdmin(){
-     this.route.navigate(['/admin']);
+     this.route.navigate(['/dashboard']);
   }
   goToHome(){
-    this.route.navigate(['/home']);
+    this.route.navigate(['/dashboard']);
+  }
+  setData(key:string,value:any){
+    localStorage.setItem(key,value);
+  }
+  getData(key:string){
+    let x=localStorage.getItem(key);
+    return x;
   }
 //for navigation
   ngOnInit(): void {
@@ -47,14 +55,17 @@ switch(true){
 
       axios.post(url,loginobj).then(res=>{
           console.log(res);
-          let data=res.data;
 
-          localStorage.setItem("LOGGED_IN_USER",data);  
-          localStorage.setItem("IsLoggedIn",JSON.stringify(true));
           
+          
+            
+          
+          let data=res.data;
+          this.setData("LOGGED_IN_USER",res.data);
+          this.setData("IsLoggedIn",JSON.stringify(true));
+
           alert("login succesful");
-        
-          if(data.role=="admin"){
+        if(data.role=="admin"){
           this.goTOAdmin();
         }
         else{
