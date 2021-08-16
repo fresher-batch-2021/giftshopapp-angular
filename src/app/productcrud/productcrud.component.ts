@@ -47,11 +47,14 @@ axios.get(url,{headers:{'Authorization':basicAuth}}).then(res => {
 
 
 
-  delete(id:number){
-    const url="https://product-mock-api.herokuapp.com/giftshopapp/api/v1/products/"+id;
+  delete(id:string,rev:string){
+    const dbUserName='apikey-v2-2djdlrrbf736ap4aa6rlre2x1j1wf65v1ti1e8x2bihn';
+    const dbPassword='3bc2893c0a2a1ec42d9b17840b18447b';
+    const basicAuth='Basic '+ btoa(dbUserName+':'+dbPassword);// one space after Basic
+    const url="https://75b0afe3-3fa7-477b-8352-bdcfcd522a16-bluemix.cloudantnosqldb.appdomain.cloud/giftshop_products/"+id +"?rev="+ rev;
     
 
-    axios.delete(url).then(res =>{
+    axios.delete(url,{headers:{Authorization:basicAuth}}).then(res =>{
       
       alert("deleted successfully");
       window.location.href='/productcrud';
