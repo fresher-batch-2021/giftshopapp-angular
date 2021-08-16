@@ -18,8 +18,8 @@
                 <td>{{i+1}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.id}}</td>
-                <td><button (click)="delete(user.id)">delete user</button></td>
+                <td>{{user._id}}</td>
+                <td><button (click)="delete(user._id,user._rev)">delete user</button></td>
             </tr>
         </tbody>
     </table>
