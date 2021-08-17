@@ -1,5 +1,6 @@
  import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
+
+import { crud } from '../crud';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -15,6 +16,9 @@ productImage:any;
 productQuantity:number=0;
 productDescription:string="";
 file:any;
+
+ crud=new crud();//interface to use add delete 
+
   ngOnInit(): void {
   }
   // used to upload a file
@@ -22,16 +26,13 @@ file:any;
     this.productImage = event.target.files[0].name;
     // console.log(file.name);
     }
-
+ 
     addProduct(){
       let name=this.productName;
       let price=this.productPrice;
       let img=this.productImage;
       let qty=this.productQuantity;
       let description=this.productDescription;
-
-      
-
 
       let productObj={
         name:name,
@@ -40,21 +41,8 @@ file:any;
         quantity:qty,
         description:description
       };
+     crud.addData(productObj,"giftshop_products");//adding data
 
-      const dbUserName='apikey-v2-2djdlrrbf736ap4aa6rlre2x1j1wf65v1ti1e8x2bihn';
-      const dbPassword='3bc2893c0a2a1ec42d9b17840b18447b';
-      const basicAuth='Basic '+ btoa(dbUserName+':'+dbPassword);// one space after Basic
-      const url = "https://75b0afe3-3fa7-477b-8352-bdcfcd522a16-bluemix.cloudantnosqldb.appdomain.cloud/giftshop_products";//registration url
-      // console.log(productObj);
-     
-      axios.post(url,productObj,{headers:{Authorization:basicAuth}}).then(res=>{
-
-
-        alert("product added succesfully");
-
-      }).catch(err=>{
-        alert("error");
-      });
-
+      
     }
 }

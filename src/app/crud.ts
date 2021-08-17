@@ -40,6 +40,12 @@ export class crud{
     }
 
     // getData
+    static getData(database:string):any{
+        const endUrl="/_all_docs?include_docs=true"; 
+        const url=endpoint+database+endUrl;
+       return axios.get(url,{headers:{Authorization:basicAuth}});
+       
+    }
     
     
 }
