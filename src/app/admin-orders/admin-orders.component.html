@@ -1,34 +1,32 @@
-<!-- <table>
+<table>
     <Caption>user credentials</Caption>
     <thead>
         <tr>
             <td>s.no</td>
-            <td>image_url</td>
-            <td>product name</td>
-            <td>price</td>
-            <td>description</td>
-            <td>product id</td>
-            <td>Delete</td>
+            <td>customer name</td>
+            <td>phone number</td>
+            <td>address</td>
+            <td>total amount</td>
+            <td>payment</td>
+            <td>ordered date</td>
+            <td>delivery date</td>
+            <td>status</td>
+            
         </tr>
     </thead>
-    <tbody *ngFor='let product of products; let i=index'>
+    <tbody *ngFor='let order of orders; let i=index'>
         <tr>
             <td>{{i+1}}</td>
-            
-            <td>
-            <figure>
-            <img src='{{"assets/Images/"+product.image_url}}' alt="">
-            </figure>
-            <figcaption>hello</figcaption>
-            </td>
-            
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.id}}</td>
-            <td><button (click)="delete(product.id)">delete product</button></td>
+            <td>{{order.name}}</td>
+            <td>{{order.phonenumber}}</td>
+            <td>{{order.address}}</td>
+            <td>{{order.totalAmount}}</td>
+            <td>{{order.payment}}</td>
+            <td>{{order.orderedDate}}</td>
+            <td>{{order.deliveredDate}}</td>
+            <td>{{order.status}}</td>
         </tr>
     </tbody>
-    <button routerLink='../add-product'>add product</button>
 
-</table> -->
+
+</table>

@@ -12,6 +12,7 @@ export class ProductcrudComponent implements OnInit {
   constructor() { }
 
   products:any;
+  searchBox:string="";
   
   ngOnInit(): void {
     this.productList();
@@ -22,13 +23,15 @@ productList(){
 
 let data=crud.getData("giftshop_products");
   data.then((res:any)=>{
-  alert("data got sucessfully");
+  // alert("data got sucessfully");
   let data =res.data.rows;
+  console.log(data)
   let values=data.map((obj:any)=>obj.doc);
   this.products=values;
   console.log(values); 
   
   }).catch((err:any)=>{
+    console.log(err.response.data);
   alert("eror in getting data");
     });
  
@@ -38,6 +41,26 @@ let data=crud.getData("giftshop_products");
   delete(id:string,rev:string){
     // file is crud.ts in app
     crud.deleteData("giftshop_products",id,rev,'/productcrud');
+  }
+
+  productSearch(){
+    let searchData=this.searchBox;
+    alert(searchData);
+
+    
+
+   let productData=crud.getData("giftshop_products");
+   productData.then((res:any)=>{
+     let data=res.data;
+    //  data.map((obj:any)=>obj.doc);
+
+     
+     alert("hello");
+    //  let value=data.map()
+     let values=data.filter((obj:any)=>obj.name==searchData);
+     console.log(values);
+   });
+
   }
 
 }
