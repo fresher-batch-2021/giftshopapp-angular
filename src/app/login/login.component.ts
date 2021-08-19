@@ -2,6 +2,7 @@ import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import axios from 'axios'
+import { crud } from '../crud';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
      this.route.navigate(['/dashboard']);
   }
   goToHome(){
-    this.route.navigate(['/dashboard']);
+    this.route.navigate(['/home']);
   }
   setData(key:string,value:any){
     localStorage.setItem(key,value);
@@ -49,27 +50,22 @@ switch(true){
      };
 
       //sending data to server
-      const url = "https://product-mock-api.herokuapp.com/giftshopapp/api/v1/auth/login";
-
-      console.log(loginobj);//for our verification
-
-      axios.post(url,loginobj).then(res=>{
-          console.log(res);
-
+     crud.Login(loginobj).then(res=>{
           
+          let data=res.data.docs[0];
+          console.log(data);
           
-            
-          
-          let data=res.data;
-          this.setData("LOGGED_IN_USER",res.data);
           this.setData("IsLoggedIn",JSON.stringify(true));
-
+        
           alert("login succesful");
-        if(data.role=="admin"){
+        if(data.role=="ADMIN"){
           this.goTOAdmin();
         }
-        else{
+        else if(data.role=="USER"){
           this.goToHome();
+        }
+        else{
+          alert("invalid credentials")
         }
       }).catch(err=>{
               console.log(err.response.data);

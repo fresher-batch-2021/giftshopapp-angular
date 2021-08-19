@@ -12,4 +12,9 @@ export class AdminHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    alert("logout")
+    window.location.href="../login";
+  }
+
 }

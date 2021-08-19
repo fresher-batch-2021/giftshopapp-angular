@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:'productcrud',component:ProductcrudComponent},
   {path:'add-product',component:AddProductComponent},
   {path:'admin-orders',component:AdminOrdersComponent},
-  {path:'', component:DashboardComponent}
+  {path:'', component:LoginComponent}
 ];
 
 @NgModule({ 

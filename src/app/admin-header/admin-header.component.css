@@ -27,7 +27,10 @@
 .navlinks{
     position: absolute;
     right: 10px;
-    top: 2px;
+    top: 20px;
+}
+.navlinks a{
+    cursor: pointer;
 }
 .navlink {
     display: inline-block;

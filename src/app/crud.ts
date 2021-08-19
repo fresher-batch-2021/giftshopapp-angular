@@ -47,6 +47,20 @@ export class crud{
        
     }
 
+        // login
+        static Login(loginObj:any){
+            const url=endpoint+"giftshop_user/_find";
+            // ===
+            let requestData =
+            {
+                selector: {
+                    email: loginObj.email,
+                    password: loginObj.passwords
+                },
+                fields: ["id", "name", "email","role"]
+            };
+         return   axios.post(url, requestData, { headers: { Authorization: basicAuth } });
+                        }
     
     
     
