@@ -7,7 +7,6 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminComponent } from './admin/admin.component';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DatasComponent } from './datas/datas.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -32,7 +31,6 @@ const routes: Routes = [
   {path:'admin',component:AdminComponent},
   {path:'admin-header',component:AdminHeaderComponent},
   {path:'dashboard',component:DashboardComponent},
-  {path:'datas',component:DatasComponent},
   {path:'users',component:UsersComponent},
   {path:'productcrud',component:ProductcrudComponent},
   {path:'add-product',component:AddProductComponent},

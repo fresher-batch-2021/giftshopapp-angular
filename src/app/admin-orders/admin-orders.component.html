@@ -26,6 +26,8 @@
             <td>{{order.orderedDate}}</td>
             <td>{{order.deliveredDate}}</td>
             <td>{{order.status}}</td>
+            
+            <td><button type="button" (click)="update(order._id)">status to deleivered</button></td>
         </tr>
     </tbody>
 

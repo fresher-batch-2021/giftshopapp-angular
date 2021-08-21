@@ -1,43 +1,40 @@
+<app-admin-header></app-admin-header>
+
 <main>
     <section class="searchBar">
         <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" placeholder="search">
         <button type="button" (click)="productSearch()">search</button>
     </section>
-    <app-admin-header></app-admin-header>
-    <table>
-    <Caption>user credentials</Caption>
-    <thead>
-        <tr>
-            <td>s.no</td>
-            <td>image_url</td>
-            <td>product name</td>
-            <td>price</td>
-            <td>description</td>
-            <td>product id</td>
-            <td>Delete</td>
-        </tr>
-    </thead>
-    <tbody *ngFor='let product of products; let i=index'>
-        <tr>
-            <td>{{i+1}}</td>
-            
-            <td>
-            <figure>
-            <img src='{{"assets/Images/"+product.imageUrl}}' alt="">
-            
-            </figure>
-            <figcaption>hello</figcaption>
-            </td>
-            
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product._id}}</td>
-            <td><button (click)="delete(product._id,product._rev)">delete product</button></td>
-            
-        </tr>
-    </tbody>
-    <button routerLink='../add-product'>add product</button>
 
-</table>
+    <table>
+        <Caption>user credentials</Caption>
+        <thead>
+            <tr>
+                <td>s.no</td>
+                <td>image_url</td>
+                <td>product name</td>
+                <td>price</td>
+                <td>description</td>
+                <td>product id</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody *ngFor='let product of products; let i=index'>
+            <tr>
+                <td>{{i+1}}</td>
+                <td>
+                    <figure>
+                        <img src='{{"assets/Images/"+product.imageUrl}}' alt="">
+                    </figure>
+                    <figcaption>hello</figcaption>
+                </td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product._id}}</td>
+                <td><button (click)="delete(product._id,product._rev)">delete product</button></td>
+            </tr>
+        </tbody>
+        <button routerLink='../add-product'>add product</button>
+    </table>
 </main>

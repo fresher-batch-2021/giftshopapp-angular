@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { crud } from '../crud';
+import { products } from '../productService';
 
 @Component({
   selector: 'app-productcrud',
@@ -10,57 +11,49 @@ import { crud } from '../crud';
 export class ProductcrudComponent implements OnInit {
 
   constructor() { }
+  products: any;
+  searchBox: string = "";
 
-  products:any;
-  searchBox:string="";
-  
+  // listItems:string[]=[];
+
   ngOnInit(): void {
     this.productList();
+
+
   }
+  productList() {
+    products.getAllData().then(res => {
 
-  
-productList(){
-
-let data=crud.getData("giftshop_products");
-  data.then((res:any)=>{
-  // alert("data got sucessfully");
-  let data =res.data.rows;
-  console.log(data)
-  let values=data.map((obj:any)=>obj.doc);
-  this.products=values;
-  console.log(values); 
-  
-  }).catch((err:any)=>{
-    console.log(err.response.data);
-  alert("eror in getting data");
+      // console.log(res.data);
+      let datas = res.data.rows;
+      let productData = datas.map((obj: any) => obj.doc);
+      this.products = productData;
     });
- 
   }
 
-// deleting data
-  delete(id:string,rev:string){
-    // file is crud.ts in app
-    crud.deleteData("giftshop_products",id,rev,'/productcrud');
+
+  productSearch() {
+
+    let search = this.searchBox;
+    products.getAllData().then(res => {
+      let datas = res.data.rows;
+      let productData = datas.map((obj: any) => obj.doc);
+
+      if (search != null && search != "") {
+        let value = productData.filter((ob: any) => ob.name == search)
+        this.products = value;
+      }
+      else {
+        this.productList();
+      }
+    });
   }
 
-  productSearch(){
-    let searchData=this.searchBox;
-    alert(searchData);
-
-    
-
-   let productData=crud.getData("giftshop_products");
-   productData.then((res:any)=>{
-     let data=res.data;
-    //  data.map((obj:any)=>obj.doc);
-
-     
-     alert("hello");
-    //  let value=data.map()
-     let values=data.filter((obj:any)=>obj.name==searchData);
-     console.log(values);
-   });
-
+  // deleting data
+  delete(id: string, rev: string) {
+    crud.deleteData("giftshop_products", id, rev);
   }
+
 
 }
+

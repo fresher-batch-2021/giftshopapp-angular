@@ -8,7 +8,7 @@ a{
     font-size: 20px;
    
 }
-button{
+/* button{
     margin: 0px auto;
     background: none;
     color: inherit;
@@ -17,7 +17,7 @@ button{
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-}
+} */
 /* to remove button slider in number input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

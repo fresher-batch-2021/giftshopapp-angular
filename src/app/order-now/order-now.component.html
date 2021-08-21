@@ -1,5 +1,3 @@
-<header id="header"></header>
-
 <section class="orderPageContainer">
 
     <div class="regLogo">
@@ -8,32 +6,31 @@
     </div>
 
     <form onsubmit="ordernow()">
+
         <div class="field">
             <div class="name">
                 <input type="name" required autocomplete="off" id="OrderPageName">
                 <label for="OrderPageName" title="Name"></label>
             </div>
         </div>
+
         <div class="field">
             <input type="text" required autocomplete="off" id="OrderPageAddress">
             <label for="OrderPageAddress" title="address"></label>
         </div>
+
         <div class="field">
-            <input type="number" required  id="OrderPagePhoneNumber">
+            <input type="number" required id="OrderPagePhoneNumber">
             <label for="OrderPagePhoneNumber" title="phonenumber"></label>
         </div>
+
         <div class="field">
-            <select  id="orderPagePayment">
+            <select id="orderPagePayment">
                 <option value="cod">Cash On Delivery</option>
             </select>
         </div>
-        
+
         <button type="submit">Order Now</button>
     </form>
-
 </section>
 
-<!-- java script -->
-<script src="Assets/js/jquery.min.js"></script>
-<script src="Assets/js/index.js"></script>
-<script src="Assets/js/ordernow.js"></script>

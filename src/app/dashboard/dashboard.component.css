@@ -1,0 +1,11 @@
+/* menuBarContainer{
+    position: relative;
+} */
+.menuBar{
+    background-color: cadetblue;
+    display: inline-block;
+    width: 25%;
+    max-height: 100%;
+    top: 10px;
+    
+}

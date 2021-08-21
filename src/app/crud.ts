@@ -25,12 +25,12 @@ export class crud{
     }
 
     // delete
-    static  deleteData(database:string,id:string,rev:string,succes:string){
+    static  deleteData(database:string,id:string,rev:string){
         const url=endpoint+database+'/'+id+'?rev='+rev;
 
         axios.delete(url,{headers:{Authorization:basicAuth}}).then(res=>{
             alert("deleted succesfully");
-            window.location.href=succes;
+            window.location.reload();
             
         }).catch(err =>{
             alert("error in deleting");

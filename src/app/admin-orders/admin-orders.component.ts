@@ -1,5 +1,8 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { crud } from '../crud';
+import { orders } from '../orderService';
+
 
 @Component({
   selector: 'app-admin-orders',
@@ -30,15 +33,44 @@ orderList(){
       });
    
     }
+
   
-// deleting data
+  /**
+   *
+   */
+  
+update(id:string){
+alert(id);
+let productDatas=orders.getOrder(id);
+
+
+productDatas.then(res=>{
+  let productObj =res.data;
+  console.log(productObj);
+  alert(productObj.status);
+  productObj.status='DELIVERED';
+  // now update to api
+  const endUrl=id+"/?rev="+productObj._rev;
+  alert(productObj.status);
+
+  orders.updateOrder(endUrl,productObj).then(res=>{
+    window.location.reload();
+    alert("status updated");
+  }).catch(err=>{
+    console.log(err.response.data);
+  });
+})
+
+}
+/**
+ * delete function
+ * @param id id of element
+ * @param rev rev id of element
+ */
 delete(id:string,rev:string){
   // file is crud.ts in app
-  crud.deleteData("giftshop_products",id,rev,'/productcrud');
+  crud.deleteData("giftshop_products",id,rev);
 }
 
-// status update
-delivered(){
 
-}
 }

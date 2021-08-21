@@ -17,14 +17,14 @@ productQuantity:number=0;
 productDescription:string="";
 file:any;
 
- crud=new crud();//interface to use add delete 
+ crud=new crud();
 
   ngOnInit(): void {
   }
   // used to upload a file
   onFileUpload(event:any){
     this.productImage = event.target.files[0].name;
-    // console.log(file.name);
+  
     }
  
     addProduct(){
@@ -42,7 +42,5 @@ file:any;
         description:description
       };
      crud.addData(productObj,"giftshop_products");//adding data
-
-      
     }
 }

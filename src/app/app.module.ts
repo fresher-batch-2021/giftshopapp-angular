@@ -18,7 +18,6 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { UsersComponent } from './users/users.component';
 import { ProductcrudComponent } from './productcrud/productcrud.component';
-import { DatasComponent } from './datas/datas.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
@@ -39,7 +38,6 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
     AdminHeaderComponent,
     UsersComponent,
     ProductcrudComponent,
-    DatasComponent,
     DashboardComponent,
     AddProductComponent,
     AdminOrdersComponent

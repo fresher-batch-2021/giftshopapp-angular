@@ -31,6 +31,6 @@ export class UsersComponent implements OnInit {
   
   delete(id:string,rev:string){
   // deleting users using api
-    crud.deleteData("giftshop_user",id,rev,'/users');
+    crud.deleteData("giftshop_user",id,rev);
   }
 }
