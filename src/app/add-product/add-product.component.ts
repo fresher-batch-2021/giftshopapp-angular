@@ -1,6 +1,7 @@
  import { Component, OnInit } from '@angular/core';
 
 import { crud } from '../crud';
+import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -9,7 +10,7 @@ import { crud } from '../crud';
 
 export class AddProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private validator:ValidationService) { }
 productName:string="";
 productPrice:number=0;
 productImage:any;
@@ -33,14 +34,24 @@ file:any;
       let img=this.productImage;
       let qty=this.productQuantity;
       let description=this.productDescription;
-
-      let productObj={
-        name:name,
-        price:price,
-        imageUrl:img,
-        quantity:qty,
-        description:description
-      };
-     crud.addData(productObj,"giftshop_products");//adding data
+      try{
+        this.validator.isValidString(name,"name can't be empty")
+        this.validator.isValidString(description,"description can't be empty")
+  
+        let productObj={
+          name:name,
+          price:price,
+          imageUrl:img,
+          quantity:qty,
+          description:description
+        };
+       crud.addData(productObj,"giftshop_products");//adding data
+      }
+      catch(err){
+        console.log(err.message)
+        alert(err.message)
+        alert("unable to add products")
+      }
+    
     }
 }

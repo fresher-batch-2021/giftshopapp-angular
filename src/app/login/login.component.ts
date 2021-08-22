@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios'
 import { crud } from '../crud';
+import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   router: any;
 
 
-  constructor(private route: Router) {
+  constructor(private route: Router,private validator:ValidationService) {
   }
 
   setData(key: string, value: any) {
@@ -35,41 +36,48 @@ export class LoginComponent implements OnInit {
     let password = this.loginPassword;
 
 
-    switch (true) {
-      case (email == "" || email == null || email.trim() == ""): { alert("invalid username"); break; }
-      case (password.trim() == ""): { alert("password is invalid"); break; }
+    try{
+      this.validator.isValidEmail(email,"email can't be empty")
+    
+      this.validator.isValidPassword(password,"password can't be empty")
 
-      default: {
-        const loginobj = {
-          "email": email,
-          "password": password
-        };
+      
+      const loginobj = {
+        "email": email,
+        "password": password
+      };
 
-        //sending data to server
-        crud.Login(loginobj).then(res => {
+      //sending data to server
+      crud.Login(loginobj).then(res => {
 
-          let data = res.data.docs[0];
-          this.setData("IsLoggedIn", JSON.stringify(true));
-          alert("login succesful");
+        let data = res.data.docs[0];
+        this.setData("IsLoggedIn", JSON.stringify(true));
+        alert("login succesful");
 
-          if (data.role == "ADMIN") {
-            this.route.navigate(['/dashboard']);
-          }
-          else if (data.role == "USER") {
-            this.route.navigate(['/home']);
-          }
-          else {
-            alert("invalid credentials")
-          }
-        }).catch(err => {
-          console.log(err.response.data);
-          if (err.response.data.errorMessage) {
-            alert(err.response.data.errorMessage);
-          }
-          else {
-            alert("login failed");
-          }
-        });
-      }}}
+        if (data.role == "ADMIN") {
+          this.route.navigate(['/dashboard']);
+        }
+        else if (data.role == "USER") {
+          this.route.navigate(['/home']);
+        }
+        else {
+          alert("invalid credentials")
+        }
+      }).catch(err => {
+        console.log(err.response.data);
+        if (err.response.data.errorMessage) {
+          alert(err.response.data.errorMessage);
+        }
+        else {
+          alert("login failed");
+        }
+      });
+    }
 
-}
+    catch(err){
+      console.log(err.message)
+      alert(err.message)
+      alert("unable to login")
+    }
+    }}
+

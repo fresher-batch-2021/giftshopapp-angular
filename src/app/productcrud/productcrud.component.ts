@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { crud } from '../crud';
 import { products } from '../productService';
+import { ValidationService } from '../validationClass';
 
 @Component({
   selector: 'app-productcrud',
@@ -34,7 +35,8 @@ export class ProductcrudComponent implements OnInit {
 
   productSearch() {
 
-    let search = this.searchBox;
+    
+      let search = this.searchBox;
     products.getAllData().then(res => {
       let datas = res.data.rows;
       let productData = datas.map((obj: any) => obj.doc);
@@ -47,7 +49,7 @@ export class ProductcrudComponent implements OnInit {
         this.productList();
       }
     });
-  }
+}
 
   // deleting data
   delete(id: string, rev: string) {
