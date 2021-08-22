@@ -15,6 +15,7 @@ import { ProductSpecComponent } from './product-spec/product-spec.component';
 import { ProductComponent } from './product/product.component';
 import { ProductcrudComponent } from './productcrud/productcrud.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:'productcrud',component:ProductcrudComponent},
   {path:'add-product',component:AddProductComponent},
   {path:'admin-orders',component:AdminOrdersComponent},
+  {path:'search-bar',component:SearchBarComponent},
   {path:'', component:LoginComponent}
 ];
 

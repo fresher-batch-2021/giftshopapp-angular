@@ -13,6 +13,7 @@ export class AdminOrdersComponent implements OnInit {
 
   constructor() { }
 orders:any;
+searchBox:any
   ngOnInit(): void {
     this.orderList();
   }
@@ -72,5 +73,26 @@ delete(id:string,rev:string){
   crud.deleteData("giftshop_products",id,rev);
 }
 
+OrderSearch(){
+  
+  let search = this.searchBox;
+  crud.getData("giftshop_orders").then((res:any) => {
+    let datas = res.data.rows;
+    let productData = datas.map((obj: any) => obj.doc);
+
+    if (search != null && search != "") {
+      let value = productData.filter((ob: any) => ob.name == search||ob.phonenumber==search||ob.status.toLowerCase()==search.toLowerCase())
+      if(value==""){
+        alert("no such data exist")
+        this.orderList();
+      }
+      else{
+      this.orders = value;
+    }}
+    else {
+      this.orderList();
+    }
+  });
+}
 
 }

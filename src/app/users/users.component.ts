@@ -11,7 +11,7 @@ import { crud } from '../crud';
 export class UsersComponent implements OnInit {
 
   users:any
-  
+  searchBox:any
   constructor() { }
 
   ngOnInit(): void {
@@ -27,6 +27,29 @@ export class UsersComponent implements OnInit {
       console.log("Error"+err.data);
     });
   }
+
+  UserSearch() {
+
+    
+    let search = this.searchBox;
+  crud.getData("giftshop_user").then((res:any) => {
+    let datas = res.data.rows;
+    let productData = datas.map((obj: any) => obj.doc);
+
+    if (search != null && search != "") {
+      let value = productData.filter((ob: any) => ob.name == search||ob.email==search)
+      if(value==""){
+        alert("no such data exist")
+        this.UserList();
+      }
+      else{
+      this.users = value;
+    }}
+    else {
+      this.UserList();
+    }
+  });
+}
 
   
   delete(id:string,rev:string){

@@ -21,6 +21,7 @@ import { ProductcrudComponent } from './productcrud/productcrud.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
     ProductcrudComponent,
     DashboardComponent,
     AddProductComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

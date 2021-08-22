@@ -1,4 +1,11 @@
 <app-admin-header></app-admin-header>
+
+<main>
+    <section class="searchBar">
+        <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" placeholder="search">
+        <button type="button" (click)="OrderSearch()">search</button>
+    </section>
+
 <table>
     <Caption>user credentials</Caption>
     <thead>
@@ -11,10 +18,10 @@
             <td>payment</td>
             <td>ordered date</td>
             <td>delivery date</td>
-            <td>status</td>
-            
+            <td>status</td>      
         </tr>
     </thead>
+
     <tbody *ngFor='let order of orders; let i=index'>
         <tr>
             <td>{{i+1}}</td>
@@ -30,6 +37,5 @@
             <td><button type="button" (click)="update(order._id)">status to deleivered</button></td>
         </tr>
     </tbody>
-
-
 </table>
+</main>
