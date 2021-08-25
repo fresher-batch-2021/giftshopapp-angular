@@ -15,6 +15,7 @@ export class AdminHeaderComponent implements OnInit {
 
   logout(){
     alert("logging out")
+    localStorage.clear()
     this.route.navigate(['/login']);
   }
 
