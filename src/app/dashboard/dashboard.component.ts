@@ -64,7 +64,7 @@ myData:any = [];
     ['Berlin', 3],
     ['Kairo', 1]
   ];*/
-  options = {'title':'How Much Pizza I Ate Last Night',
+  options = {'title':'Total products sold',
                        'width':1000,
                        'height':500};
 
