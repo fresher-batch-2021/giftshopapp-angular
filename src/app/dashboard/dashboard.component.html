@@ -1,9 +1,30 @@
 <app-admin-header></app-admin-header>
 
 <main>
-    <aside class="menuBarContainer">
-        <div class="menuBar">
-            <p>helllo</p>
+    <div class="wrapper">
+        <div class="sidebar">
+            <aside>
+                <ul>
+                    <li>
+                        <details>
+                            <summary><a routerLink='../productcrud'> Products</a></summary>
+                            <a routerLink='../add-product'> add products</a>
+                        </details>
+                    </li>
+                    <li><a routerLink='../admin-orders'> Orders</a></li>
+                    <li><a routerLink='../users'>users</a></li>
+                </ul>             
+            </aside>
         </div>
-    </aside>
+
+        <!-- {{products | json}} -->
+        
+        <div class="page">
+            <google-chart class="chart" [type]="myType" [data]="myData" [options]="options">
+                
+            </google-chart>
+            <google-chart class="chart" [type]="PieChart" [data]="myData" [options]="options"></google-chart>
+        </div>
+        
+    </div>
 </main>

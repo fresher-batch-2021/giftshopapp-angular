@@ -26,6 +26,7 @@ orderList(){
     alert("data got sucessfully");
     let data =res.data.rows;
     let values=data.map((obj:any)=>obj.doc);
+   
     this.orders=values;
     console.log(values); 
     

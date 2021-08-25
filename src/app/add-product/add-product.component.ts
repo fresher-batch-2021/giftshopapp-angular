@@ -1,6 +1,7 @@
  import { Component, OnInit } from '@angular/core';
 
 import { crud } from '../crud';
+import { product_report } from '../productReportService';
 import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-add-product',
@@ -45,7 +46,9 @@ file:any;
           quantity:qty,
           description:description
         };
+        product_report.addNewData(name );
        crud.addData(productObj,"giftshop_products");//adding data
+       
       }
       catch(err){
         console.log(err.message)

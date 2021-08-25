@@ -5,6 +5,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
@@ -31,11 +32,11 @@ const routes: Routes = [
   {path:'cart',component:CartComponent},
   {path:'admin',component:AdminComponent},
   {path:'admin-header',component:AdminHeaderComponent},
-  {path:'dashboard',component:DashboardComponent},
-  {path:'users',component:UsersComponent},
-  {path:'productcrud',component:ProductcrudComponent},
-  {path:'add-product',component:AddProductComponent},
-  {path:'admin-orders',component:AdminOrdersComponent},
+  {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
+  {path:'users',component:UsersComponent,canActivate:[AuthGuard]},
+  {path:'productcrud',component:ProductcrudComponent,canActivate:[AuthGuard]},
+  {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard]},
+  {path:'admin-orders',component:AdminOrdersComponent,canActivate:[AuthGuard]},
   {path:'search-bar',component:SearchBarComponent},
   {path:'', component:LoginComponent}
 ];

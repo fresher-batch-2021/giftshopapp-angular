@@ -10,6 +10,7 @@ import { ValidationService } from '../validationClass';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   router: any;
 
 
@@ -52,15 +53,19 @@ export class LoginComponent implements OnInit {
 
         let data = res.data.docs[0];
         this.setData("IsLoggedIn", JSON.stringify(true));
+        this.setData("userData",JSON.stringify(data))
         alert("login succesful");
 
         if (data.role == "ADMIN") {
           this.route.navigate(['/dashboard']);
         }
         else if (data.role == "USER") {
-          this.route.navigate(['/home']);
+          // alert("hello")
+          // this.route.navigateByUrl('https://giftshop-yeswanth.netlify.app/');
+          document.location.href="https://giftshop-yeswanth.netlify.app/"
         }
         else {
+        
           alert("invalid credentials")
         }
       }).catch(err => {

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../order.service';
+import { ProductService } from '../product.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +10,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+
+  
+  constructor(private productService: ProductService, private orderService:OrderService) { }
 
   ngOnInit(): void {
+
+    this.loadProducts();
+    
+
+    
   }
 
+  products:any;
+
+  orders:any;
+
+  loadProducts(){
+    this.productService.getAllProducts().then((res:any)=>{
+      this.products = res;
+      this.loadOrders();
+    })
+  }
+
+  loadOrders(){
+    this.orderService.getAllOrders().then((res:any)=>{
+      this.orders = [];
+      res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
+      console.log("yesh")
+      console.log(JSON.stringify(this.orders))
+      console.table(this.orders);
+
+      for(let product of this.products){
+      let quantities =  this.orders.filter( (obj:any)=> obj.productName == product.name).map((obj:any)=>obj.quantity);
+      let noOfOrders = _.sum(quantities);
+
+      
+      let data = [ product.name, noOfOrders];
+      
+      this.myData.push(data);
+      }
+    });
+  }
+  
+
+  myType:any = 'BarChart';
+  PieChart:any='PieChart';
+myData:any = [];
+/*
+    ['London', 1],
+    ['New York', 15],
+    ['Paris', 2],
+    ['Berlin', 3],
+    ['Kairo', 1]
+  ];*/
+  options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':1000,
+                       'height':500};
+
+   
+
+  
+  
 }

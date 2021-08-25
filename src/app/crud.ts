@@ -26,8 +26,10 @@ export class crud{
 
     // delete
     static  deleteData(database:string,id:string,rev:string){
-        const url=endpoint+database+'/'+id+'?rev='+rev;
 
+        const url=endpoint+database+'/'+id+'?rev='+rev;
+        console.log(url);
+        alert(url);
         axios.delete(url,{headers:{Authorization:basicAuth}}).then(res=>{
             alert("deleted succesfully");
             window.location.reload();

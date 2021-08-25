@@ -1,11 +1,23 @@
-/* menuBarContainer{
-    position: relative;
-} */
-.menuBar{
-    background-color: cadetblue;
-    display: inline-block;
-    width: 25%;
-    max-height: 100%;
-    top: 10px;
-    
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    bottom: 0px;
+    z-index: -1;    
+}
+.sidebar{
+/* background-color:#fdffb6; */
+background-color: #fcefb4;
+    /* border: 3px solid #ffffff; */
+    width: 20%;
+    height:85vh;
+    position: fixed;
+}
+.page{
+    /* background-color: cadetblue; */
+    width: 80%;
+    height: 100%;
+    z-index: -1;
+    margin-left: 400px;
+    margin-right: 10px;
 }
