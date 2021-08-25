@@ -48,8 +48,9 @@ export class HeaderComponent implements OnInit {
 
   logout() {
 
+    localStorage.removeItem("userData");
     this.setData("IsLoggedIn", false);
-    localStorage.clear();
+    
    
     this.route.navigate(['../login'])
     // window.location.href = "index.html";

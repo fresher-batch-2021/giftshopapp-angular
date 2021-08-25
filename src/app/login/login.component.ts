@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
         let data = res.data.docs[0];
         this.setData("IsLoggedIn", JSON.stringify(true));
         this.setData("userData",JSON.stringify(data))
+        this.setData("role",data.role)
         
 
         if (data.role == "ADMIN") {
