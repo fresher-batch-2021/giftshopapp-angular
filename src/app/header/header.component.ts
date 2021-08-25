@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private route: Router) { }
   // getting data from local storage
   getData(data: any) {
     return localStorage.getItem(data);
@@ -48,10 +49,10 @@ export class HeaderComponent implements OnInit {
   logout() {
 
     this.setData("IsLoggedIn", false);
-
-    localStorage.removeItem("cartElements");
-    localStorage.removeItem("totalAmount");
-    window.location.href = "index.html";
+    localStorage.clear();
+   
+    this.route.navigate(['../login'])
+    // window.location.href = "index.html";
   }
 
 }

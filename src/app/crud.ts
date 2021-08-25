@@ -57,7 +57,7 @@ export class crud{
             {
                 selector: {
                     email: loginObj.email,
-                    password: loginObj.passwords
+                    password: loginObj.password
                 },
                 fields: ["id", "name", "email","role"]
             };

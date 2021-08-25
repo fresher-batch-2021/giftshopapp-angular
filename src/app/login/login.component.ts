@@ -54,9 +54,10 @@ export class LoginComponent implements OnInit {
         let data = res.data.docs[0];
         this.setData("IsLoggedIn", JSON.stringify(true));
         this.setData("userData",JSON.stringify(data))
-        alert("login succesful");
+        
 
         if (data.role == "ADMIN") {
+          alert("welcome admin");
           this.route.navigate(['/dashboard']);
         }
         else if (data.role == "USER") {
