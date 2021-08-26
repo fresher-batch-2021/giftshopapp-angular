@@ -15,6 +15,7 @@
                 <td>price</td>
                 <td>description</td>
                 <td>product id</td>
+                <td>edit</td>
                 <td>Delete</td>
             </tr>
         </thead>
@@ -25,13 +26,15 @@
                     <figure>
                         <img src='{{"assets/Images/"+product.imageUrl}}' alt="">
                     </figure>
-                    <figcaption>hello</figcaption>
+                    <!-- <figcaption>hello</figcaption> -->
                 </td>
                 <td>{{product.name}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.description}}</td>
                 <td>{{product._id}}</td>
-                <td><button (click)="delete(product._id,product._rev)">delete product</button></td>
+                <!-- <td><button (click)="editProduct(product._id)">edit</button></td> -->
+                <td><a [routerLink]="['../edit-products',product._id,product._rev]">edit</a></td>
+                <td><button (click)="deleteProduct(product._id,product._rev)">delete product</button></td>
             </tr>
         </tbody>
         <button routerLink='../add-product'>add product</button>

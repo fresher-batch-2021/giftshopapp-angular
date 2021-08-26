@@ -34,12 +34,13 @@ export class DashboardComponent implements OnInit {
   }
 
   loadOrders(){
+    // loading orders to chart
     this.orderService.getAllOrders().then((res:any)=>{
       this.orders = [];
       res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
-      console.log("yesh")
-      console.log(JSON.stringify(this.orders))
-      console.table(this.orders);
+      // console.log("yesh")
+      // console.log(JSON.stringify(this.orders))
+      // console.table(this.orders);
 
       for(let product of this.products){
       let quantities =  this.orders.filter( (obj:any)=> obj.productName == product.name).map((obj:any)=>obj.quantity);
@@ -56,6 +57,7 @@ export class DashboardComponent implements OnInit {
 
   myType:any = 'BarChart';
   PieChart:any='PieChart';
+  pointSize:any=30;
 myData:any = [];
 /*
     ['London', 1],
@@ -65,8 +67,9 @@ myData:any = [];
     ['Kairo', 1]
   ];*/
   options = {'title':'Total products sold',
-                       'width':1000,
-                       'height':500};
+                       'width':800,
+                       'height':500,
+                      'is3D':true};
 
    
 

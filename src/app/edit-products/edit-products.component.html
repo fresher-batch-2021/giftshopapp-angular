@@ -1,0 +1,52 @@
+<app-admin-header></app-admin-header>
+<main>
+    <section class="editProduct">
+        
+        <section>
+            <div class="regLogo">
+                <img src="assets/Images/gift.png" alt="">
+                <p>Gift corner</p><br>
+            </div>
+        </section>
+
+        <section>
+            <form (ngSubmit)="editProduct()">
+
+                <div class="field">
+                    <input type="text" required autocomplete="off" id="productName" name="productName"
+                        [(ngModel)]="productName">
+                    <label for="productName" title="productName "></label>
+                </div>
+                
+                <div class="field">
+                        <input type="number" required autocomplete="off" id="productPrice" placeholder="Price"
+                            name="productPrice" [(ngModel)]="productPrice">
+                        <label for="productPrice" title="productPrice"></label>
+                </div>
+
+                <div class="field">
+                    <input type="file" (change)="onFileUpload($event)" required autocomplete="off" id="productImage"
+                        name="productImage" [(ngModel)]="productImage">
+                    <label for="productImage" title=""></label>
+                </div>
+
+                <div class="field">
+                    <input type="number" required autocomplete="off" id="productQuantity" name="productQuantity"
+                        [(ngModel)]="productQuantity">
+                    <label for="productQuantity" title="Quantity"></label>
+                </div>
+
+                <div class="field">
+                    <input type="text" required autocomplete="off" id="productDescription" name="productDescription"
+                        [(ngModel)]="productDescription">
+                    <label for="productDescription" title="productDescription"></label>
+                </div>
+
+                <button type="submit">update product</button>
+
+            </form>
+        </section>
+    </section>
+
+
+</main>

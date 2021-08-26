@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
         else if (data.role == "USER") {
           // alert("hello")
           // this.route.navigateByUrl('https://giftshop-yeswanth.netlify.app/');
-          document.location.href="https://giftshop-yeswanth.netlify.app/"
+          document.location.href="https://giftshop-yeswanth.netlify.app/index.html"
         }
         else {
         

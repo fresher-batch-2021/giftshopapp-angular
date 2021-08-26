@@ -41,12 +41,33 @@ export class crud{
         });
     }
 
+    
+
     // getData
     static getData(database:string):any{
 
         const url=endpoint+database+"/_all_docs?include_docs=true";
         return axios.get(url,{headers:{Authorization:basicAuth}});
        
+    }
+
+    // getDataById
+
+    static getDataById(database:string,id:any){
+        const url=endpoint+database+'/'+id;
+        return axios.get(url,{headers:{Authorization:basicAuth}});
+    }
+    // update
+    static updateData(updateObj:any){
+        alert("hi")
+        const database=updateObj.database;
+        const id=updateObj.id;
+        const rev=updateObj.rev;
+        const obj=updateObj.changedValue;
+
+        const url=endpoint+database+"/"+id+'?rev='+rev;
+        // console.log(url)
+        return axios.put(url,obj,{headers:{Authorization:basicAuth}}); 
     }
 
         // login

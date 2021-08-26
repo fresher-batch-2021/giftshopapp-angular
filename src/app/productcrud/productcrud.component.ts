@@ -50,10 +50,14 @@ export class ProductcrudComponent implements OnInit {
 }
 
   // deleting data
-  delete(id: string, rev: string) {
+  deleteProduct(id: string, rev: string) {
     crud.deleteData("giftshop_products", id, rev);
   }
 
+  // editProduct(id:string){
+    
+  //   crud.updateData("giftshop_products",id)
+  // }
 
 }
 

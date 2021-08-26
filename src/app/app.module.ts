@@ -23,6 +23,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { EditProductsComponent } from './edit-products/edit-products.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { GoogleChartsModule } from 'angular-google-charts';
     DashboardComponent,
     AddProductComponent,
     AdminOrdersComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    EditProductsComponent
   ],
   imports: [
     BrowserModule,

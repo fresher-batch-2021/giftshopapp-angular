@@ -46,8 +46,9 @@ file:any;
           quantity:qty,
           description:description
         };
-        product_report.addNewData(name );
+        
        crud.addData(productObj,"giftshop_products");//adding data
+
        
       }
       catch(err){
