@@ -19,7 +19,7 @@
 
         <!-- {{products | json}} -->
         
-        <div class="page">
+        <div class="page" *ngIf="myData.length>0">
             <google-chart class="chart" [type]="myType" [data]="myData" [options]="options"> </google-chart>
             <google-chart class="chart" [type]="PieChart" [data]="myData" [options]="options"></google-chart>
         </div>
