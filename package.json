@@ -20,10 +20,12 @@
     "@angular/router": "~12.2.0",
     "angular-google-charts": "^2.2.2",
     "axios": "^0.21.1",
+    "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "validator": "^13.6.0",
+    "xlsx": "^0.17.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

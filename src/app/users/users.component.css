@@ -1,3 +1,10 @@
+caption{
+    font-size: 30px;
+    font-weight: bolder;
+    color: midnightblue;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
 
 .contentTable{
     border-collapse: collapse;
@@ -34,6 +41,15 @@
 }
 .contentTable tbody tr{
     border-bottom: 1px solid lightgray;
+}
+
+.searchBox{
+    height: 23px;
+    min-width: 400px;
+    margin: 15px 0 0 15px;
+    padding: 3px;
+    font-size: 1.1em;
+    border-radius: 5px;
 }
 
 .deleteBtn{

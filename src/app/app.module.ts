@@ -51,7 +51,7 @@ import { EditProductsComponent } from './edit-products/edit-products.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    GoogleChartsModule.forRoot()
+    GoogleChartsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -53,8 +53,10 @@ export class ProductcrudComponent implements OnInit {
 
   // deleting data
   deleteProduct(id: string, rev: string) {
+    let result=confirm("do you want to delete this product ?");
+    if(result){
     crud.deleteData("giftshop_products", id, rev);
-  }
+  }}
 
   // editProduct(id:string){
     

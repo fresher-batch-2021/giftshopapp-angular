@@ -1,7 +1,9 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { XLSX$Consts } from 'xlsx/types';
 import { crud } from '../crud';
 import { orders } from '../orderService';
+import * as XLSX from 'xlsx';
 
 
 @Component({
@@ -36,10 +38,7 @@ orderList(){
    
     }
 
-  
-  /**
-   *
-   */
+ 
   
 update(id:string){
 alert(id);
@@ -94,6 +93,18 @@ orderSearch(){
       this.orderList();
     }
   });
+}
+
+// download excel file
+exportexcel(){
+  
+let fileName='orderDetails.xlsx';//name of which file is downloaded
+let element=document.getElementById('ordersTable')//to get the table
+const ws:XLSX.WorkSheet=XLSX.utils.table_to_sheet(element);//convert table data into sheet
+
+const wb:XLSX.WorkBook=XLSX.utils.book_new();//creating a new workbook obj
+XLSX.utils.book_append_sheet(wb,ws,'Sheet1');//adding the sheet data into workbook
+XLSX.writeFile(wb,fileName);//downloading the file
 }
 
 }

@@ -1,4 +1,10 @@
-
+caption{
+    font-size: 30px;
+    font-weight: bolder;
+    color: midnightblue;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
 .contentTable{
     border-collapse: collapse;
     
@@ -61,6 +67,30 @@
   .description:hover .toolTipText {
     visibility: visible;
   }
+  /* searchBar */
+  .searchBar{
+      display: flex;
+      justify-content: space-between;
+        
+  }
+  .searchBox{
+      
+      height: 23px;
+      min-width: 400px;
+      margin: 15px 0 0 15px;
+      padding: 3px;
+      font-size: 1.1em;
+      border-radius: 5px;
+  }
+  .addBtn{
+     right: 15px;
+     
+      margin: 15px 15px 0 0;
+      
+    background-color: #57cc99;
+    /* float: right; */
+    /* margin: 5px; */
+}
 button{
     text-align: center;
     text-decoration: none;
@@ -79,20 +109,11 @@ button{
       /* background-color: #2ec4b6; */
       background-color: #35B5CE;
   }
-  .addBtn{
-      background-color: #57cc99;
-  }
+  
 
 img{
     /* border: 1px solid cornflowerblue; */
     padding: 5px;
     height: 80px;
     width: 80px;
-}
-.searchBar button{
-    background-color: gray;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 1px;
 }

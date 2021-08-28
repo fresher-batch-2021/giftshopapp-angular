@@ -3,10 +3,13 @@
 <main>
     <section class="searchBar">
         <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" (keydown.enter)=orderSearch() placeholder="search">
-        
+        <a style="cursor: pointer" (click)="exportexcel()">
+            <span id="orderDownload">download order details</span>
+            <i class="fas fa-file-download fa-lg" style="margin: 15px 25px;"></i>
+          </a>
     </section>
 
-<table class="contentTable">
+<table class="contentTable" id="ordersTable">
     <Caption>Orders</Caption>
     <thead>
         <tr>
