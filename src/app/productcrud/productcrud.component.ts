@@ -32,6 +32,8 @@ export class ProductcrudComponent implements OnInit {
     });
   }
 
+  
+  
   productSearch() {
 
       let search = this.searchBox;

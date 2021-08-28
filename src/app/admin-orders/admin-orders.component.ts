@@ -23,7 +23,7 @@ orderList(){
 
   let data=crud.getData("giftshop_orders");
     data.then((res:any)=>{
-    alert("data got sucessfully");
+    // alert("data got sucessfully");
     let data =res.data.rows;
     let values=data.map((obj:any)=>obj.doc);
    
@@ -74,7 +74,7 @@ delete(id:string,rev:string){
   crud.deleteData("giftshop_products",id,rev);
 }
 
-OrderSearch(){
+orderSearch(){
   
   let search = this.searchBox;
   crud.getData("giftshop_orders").then((res:any) => {

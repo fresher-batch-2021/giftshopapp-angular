@@ -29,7 +29,7 @@ export class crud{
 
         const url=endpoint+database+'/'+id+'?rev='+rev;
         console.log(url);
-        alert(url);
+        
         axios.delete(url,{headers:{Authorization:basicAuth}}).then(res=>{
             alert("deleted succesfully");
             window.location.reload();
@@ -59,7 +59,6 @@ export class crud{
     }
     // update
     static updateData(updateObj:any){
-        alert("hi")
         const database=updateObj.database;
         const id=updateObj.id;
         const rev=updateObj.rev;

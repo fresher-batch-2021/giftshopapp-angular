@@ -50,7 +50,9 @@ export class DashboardComponent implements OnInit {
       let data = [ product.name, noOfOrders];
       
       this.myData.push(data);
+      this.myDatas.push(data)
       }
+      console.table(this.myDatas)
     });
   }
   
@@ -58,6 +60,13 @@ export class DashboardComponent implements OnInit {
   myType:any = 'BarChart';
   PieChart:any='PieChart';
   pointSize:any=30;
+  myDatas:any=[
+    // ['London', 1],
+    // ['New York', 15],
+    // ['Paris', 2],
+    // ['Berlin', 3],
+    // ['Kairo', 1]
+  ];
 myData:any = [];
 /*
     ['London', 1],

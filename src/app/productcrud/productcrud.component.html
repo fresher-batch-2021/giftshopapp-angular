@@ -1,22 +1,22 @@
 <app-admin-header></app-admin-header>
 <main>
     <section class="searchBar">
-        <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" placeholder="search">
-        <button type="button" (click)="productSearch()">search</button>
+        <input type="text" class="searchBox" name="searchBox" id="searchBox" (keydown.enter)='productSearch()' [(ngModel)]="searchBox" placeholder="search">
+        
     </section>
 
-    <table>
+    <table class="contentTable"> 
         <Caption>user credentials</Caption>
         <thead>
             <tr>
-                <td>s.no</td>
-                <td>image_url</td>
-                <td>product name</td>
-                <td>price</td>
-                <td>description</td>
-                <td>product id</td>
-                <td>edit</td>
-                <td>Delete</td>
+                <th class="leftCorner">S.no</th>
+                <th>Image</th>
+                <th>Product-Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Product-Id</th>
+                <th>Edit</th>
+                <th class="rightCorner">Delete</th>
             </tr>
         </thead>
         <tbody *ngFor='let product of products; let i=index'>
@@ -29,14 +29,13 @@
                     <!-- <figcaption>hello</figcaption> -->
                 </td>
                 <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.description}}</td>
+                <td>₹{{product.price}}</td>
+                <td><div class="description"><span class="toolTipText">{{product.description}}</span>{{product.description}}</div></td>
                 <td>{{product._id}}</td>
-                <!-- <td><button (click)="editProduct(product._id)">edit</button></td> -->
-                <td><a [routerLink]="['../edit-products',product._id,product._rev]">edit</a></td>
-                <td><button (click)="deleteProduct(product._id,product._rev)">delete product</button></td>
+                <td><button class="editBtn" [routerLink]="['../edit-products',product._id,product._rev]">Edit</button></td>
+                <td><button class="deleteBtn" (click)="deleteProduct(product._id,product._rev)">Delete</button></td>
             </tr>
         </tbody>
-        <button routerLink='../add-product'>add product</button>
+        <button class="addBtn" routerLink='../add-product'>add product</button>
     </table>
 </main>

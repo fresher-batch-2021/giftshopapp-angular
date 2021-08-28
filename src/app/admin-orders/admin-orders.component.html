@@ -2,23 +2,24 @@
 
 <main>
     <section class="searchBar">
-        <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" placeholder="search">
-        <button type="button" (click)="OrderSearch()">search</button>
+        <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" (keydown.enter)=orderSearch() placeholder="search">
+        
     </section>
 
-<table>
-    <Caption>user credentials</Caption>
+<table class="contentTable">
+    <Caption>Orders</Caption>
     <thead>
         <tr>
-            <td>s.no</td>
-            <td>customer name</td>
-            <td>phone number</td>
-            <td>address</td>
-            <td>total amount</td>
-            <td>payment</td>
-            <td>ordered date</td>
-            <td>delivery date</td>
-            <td>status</td>      
+            <th class="leftCorner">S.no</th>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Total Amount</th>
+            <th>Payment</th>
+            <th>Ordered date</th>
+            <th>Delivery date</th>
+            <th>Status</th> 
+            <th class="rightCorner">Process</th>     
         </tr>
     </thead>
 
@@ -27,14 +28,13 @@
             <td>{{i+1}}</td>
             <td>{{order.name}}</td>
             <td>{{order.phonenumber}}</td>
-            <td>{{order.address}}</td>
+            <td style="max-width: 100px;">{{order.address}}</td>
             <td>{{order.totalAmount}}</td>
             <td>{{order.payment}}</td>
             <td>{{order.orderedDate}}</td>
             <td>{{order.deliveredDate}}</td>
             <td>{{order.status}}</td>
-            
-            <td><button type="button" (click)="update(order._id)">status to deleivered</button></td>
+            <td><button  class="statusBtn" type="button" (click)="update(order._id)">status to delivered</button></td>
         </tr>
     </tbody>
 </table>

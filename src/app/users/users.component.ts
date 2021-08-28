@@ -22,22 +22,23 @@ export class UsersComponent implements OnInit {
   // listing users
     crud.getData("giftshop_user").then((res:any) =>{
       let data=res.data.rows;
-      this.users=data.map((obj:any)=>obj.doc);
+      this.users=data.map((obj:any)=>obj.doc).filter((obj:any)=>obj.role=="USER");
     }).catch((err:any)=>{
       console.log("Error"+err.data);
     });
   }
 
-  UserSearch() {
+  userSearch() {
 
     
     let search = this.searchBox;
   crud.getData("giftshop_user").then((res:any) => {
     let datas = res.data.rows;
-    let productData = datas.map((obj: any) => obj.doc);
+    let userData = datas.map((obj: any) => obj.doc).filter((obj:any)=>obj.role=="USER");
+    
 
     if (search != null && search != "") {
-      let value = productData.filter((ob: any) => ob.name == search||ob.email==search)
+      let value = userData.filter((ob: any) => ob.name == search||ob.email==search)
       if(value==""){
         alert("no such data exist")
         this.UserList();
@@ -54,6 +55,8 @@ export class UsersComponent implements OnInit {
   
   delete(id:string,rev:string){
   // deleting users using api
+  let result=confirm("do you want remove the user ?")
+  if(result){
     crud.deleteData("giftshop_user",id,rev);
-  }
+  }}
 }

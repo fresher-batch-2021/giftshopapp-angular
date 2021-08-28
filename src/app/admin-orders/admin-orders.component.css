@@ -1,10 +1,50 @@
-table,tr,td{
-    border: 2px solid brown;
-    padding: 2px;
-    color: black;
+
+.contentTable{
+    border-collapse: collapse;
     
+    border-radius: 15px 15px 0 0;
+    margin: 25px auto;
+    font-size: 09.em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
-img{
-    height: 80px;
-    width: 80px;
+.leftCorner{
+    background-color: #009879;
+    border-radius: 15px 0px 0 0;
 }
+.rightCorner{
+    background-color: #009879;
+    border-radius: 0 15px 0 0;
+}
+
+.contentTable thead th{
+    
+    /* background-color: #009879; */
+    background-color: #18B9B9;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.contentTable th,
+.contentTable td{
+    
+    padding: 12px 15px;
+    text-align: center;
+}
+.contentTable tbody tr{
+    border-bottom: 1px solid lightgray;
+}
+
+.statusBtn{
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: #008CBA;
+    color: white;
+    font-size: 0.9em;
+    padding: 5px 7px;
+    margin: 2px 1px;   
+  }
