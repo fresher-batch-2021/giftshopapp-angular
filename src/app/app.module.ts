@@ -10,7 +10,7 @@ import { OrderNowComponent } from './order-now/order-now.component';
 import { ProductComponent } from './product/product.component';
 import { ProductSpecComponent } from './product-spec/product-spec.component';
 import { CartComponent } from './cart/cart.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+
 
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
@@ -37,7 +37,6 @@ import { FooterComponent } from './footer/footer.component';
     ProductComponent,
     ProductSpecComponent,
     CartComponent,
-    AboutUsComponent,
     HomeComponent,
     AdminComponent,
     AdminHeaderComponent,
