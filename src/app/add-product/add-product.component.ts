@@ -30,11 +30,22 @@ file:any;
     }
  
     addProduct(){
+
       let name=this.productName;
-      let price=this.productPrice;
-      let img=this.productImage;
-      let qty=this.productQuantity;
-      let description=this.productDescription;
+      let price=this.productPrice!=null?this.productPrice:0;
+      let image=this.productImage;
+      let quantity=this.productQuantity!=null?this.productQuantity:0;
+      let description=this.productDescription!=null?this.productDescription:'no description given';
+     if(name==''){
+       alert('name cannot be empty')
+       return;
+     }
+     
+     else if(image==undefined){
+       alert('image cant be empty')
+       return;
+     }
+
       try{
         this.validator.isValidString(name,"name can't be empty")
         this.validator.isValidString(description,"description can't be empty")
@@ -42,8 +53,8 @@ file:any;
         let productObj={
           name:name,
           price:price,
-          imageUrl:img,
-          quantity:qty,
+          imageUrl:image,
+          quantity:quantity,
           description:description
         };
         

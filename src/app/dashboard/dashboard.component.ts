@@ -36,12 +36,12 @@ export class DashboardComponent implements OnInit {
   loadOrders(){
     // loading orders to chart
     this.orderService.getAllOrders().then((res:any)=>{
-      // console.table(res)
+      
+      // let data=res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED');
+      console.table(res)
       this.orders = [];
       res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
-      // console.log("yesh")
-      // console.log(JSON.stringify(this.orders))
-      // console.table(this.orders);
+    
 
       for(let product of this.products){
       let quantities =  this.orders.filter( (obj:any)=> obj.productName == product.name).map((obj:any)=>obj.quantity);
@@ -53,7 +53,7 @@ export class DashboardComponent implements OnInit {
       this.myData.push(data);
       this.myDatas.push(data)
       }
-      console.table(this.myDatas)
+      // console.table(this.myDatas)
     });
   }
   
@@ -77,11 +77,15 @@ myData:any = [];
     ['Kairo', 1]
   ];*/
   options = {'title':'Total products sold',
-                       'width':800,
-                       'height':500,
+                       'width':500,
+                       'height':250,
                       'is3D':true};
 
    
+  rowChartOptions = {'title':'No of products',
+  'width':500,
+  'height':250,
+};
 
   
   

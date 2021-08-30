@@ -1,8 +1,6 @@
-
-
 <main>
-     <div class="wrapper">
-    <!--    <div class="sidebar">
+    <div class="wrapper">
+        <!--    <div class="sidebar">
             <aside>
                 <ul>
                     <li>
@@ -18,10 +16,14 @@
         </div> -->
 
         <!-- {{products | json}} -->
-        
+
         <div class="page" *ngIf="myData.length>0">
-            <google-chart class="chart" [type]="myType" [data]="myData" [options]="options"> </google-chart>
-            <google-chart class="chart" [type]="PieChart" [data]="myDatas" [options]="options"></google-chart>
+            <div>
+                <google-chart class="chart" [type]="myType" [data]="myData" [options]="rowChartOptions"></google-chart>
+            </div>
+            <div>
+                <google-chart class="chart" [type]="PieChart" [data]="myDatas" [options]="options"></google-chart>
+            </div>
         </div>
     </div>
 </main>

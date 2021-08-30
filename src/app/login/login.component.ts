@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
 
         let data = res.data.docs[0];
         this.setData("IsLoggedIn", JSON.stringify(true));
+        this.setData("LOGGED_IN_USER",JSON.stringify(data))
         this.setData("userData",JSON.stringify(data))
         this.setData("role",data.role)
         
@@ -62,9 +63,10 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['/dashboard']);
         }
         else if (data.role == "USER") {
+          alert("users cant login on admin portal")
           // alert("hello")
           // this.route.navigateByUrl('https://giftshop-yeswanth.netlify.app/');
-          document.location.href="https://giftshop-yeswanth.netlify.app/index.html"
+          // document.location.href="https://giftshop-yeswanth.netlify.app/index.html"
         }
         else {
         
