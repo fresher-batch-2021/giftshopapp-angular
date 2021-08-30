@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { crud } from '../crud';
 import { ProductService } from '../product.service';
+import { RestService } from '../rest.service';
 
 import { ValidationService } from '../validationClass';
 
@@ -12,7 +13,7 @@ import { ValidationService } from '../validationClass';
 })
 export class ProductcrudComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,private restService:RestService) { }
 
   products: any;
   searchBox: string = "";
@@ -24,12 +25,17 @@ export class ProductcrudComponent implements OnInit {
   }
 
   productList() {
-    this.productService.getAllProducts().then((res:any) => {
 
-      this.products = res;
-    }).catch((err:any)=>{
-      console.log(err.response.data)
+    this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
+      // console.log('yesh',res)
+      let data=res.rows.map((obj:any)=>obj.doc)
+      console.table(data)
+      this.products = data;
+    },(err:any)=>{
+        console.log(err);
     });
+
+    
   }
 
   
@@ -37,9 +43,11 @@ export class ProductcrudComponent implements OnInit {
   productSearch() {
 
       let search = this.searchBox;
-    this.productService.getAllProducts().then((res:any) => {
+
+      this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
       
-      let productData = res;
+        let productData=res.rows.map((obj:any)=>obj.doc)
+        console.table(productData)
 
       if (search != null && search != "") {
         let value = productData.filter((obj: any) => obj.name == search)
@@ -53,9 +61,20 @@ export class ProductcrudComponent implements OnInit {
 
   // deleting data
   deleteProduct(id: string, rev: string) {
+    console.log('id',id,'rev',rev)
     let result=confirm("do you want to delete this product ?");
     if(result){
-    crud.deleteData("giftshop_products", id, rev);
+      const deleteObj={
+        database:'giftshop_products',
+        id:id,
+        rev:rev
+      }
+this.restService.deleteData(deleteObj).subscribe((res:any)=>{
+  this.productList();
+  // alert('deleted sucessfully')
+})
+
+    // crud.deleteData("giftshop_products", id, rev);
   }}
 
   // editProduct(id:string){
