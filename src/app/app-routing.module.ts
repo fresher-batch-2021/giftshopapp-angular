@@ -8,24 +8,13 @@ import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProductsComponent } from './edit-products/edit-products.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { OrderNowComponent } from './order-now/order-now.component';
-import { ProductSpecComponent } from './product-spec/product-spec.component';
-import { ProductComponent } from './product/product.component';
 import { ProductcrudComponent } from './productcrud/productcrud.component';
-import { RegisterComponent } from './register/register.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   
-  {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'orderNow',component:OrderNowComponent},
-  {path:'product',component:ProductComponent},
-  {path:'productSpec:/Id',component:ProductSpecComponent},
 
   {path:'admin-header',component:AdminHeaderComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
@@ -33,7 +22,6 @@ const routes: Routes = [
   {path:'productcrud',component:ProductcrudComponent,canActivate:[AuthGuard]},
   {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard]},
   {path:'admin-orders',component:AdminOrdersComponent,canActivate:[AuthGuard]},
-  {path:'search-bar',component:SearchBarComponent},
   {path:'footer',component:FooterComponent},
   {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard]},
   {path:'', component:LoginComponent}
