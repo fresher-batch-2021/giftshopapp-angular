@@ -41,12 +41,14 @@ export class DashboardComponent implements OnInit {
 
   loadOrders(){
     // loading orders to chart
-    this.orderService.getAllOrders().then((res:any)=>{
-      
-      // let data=res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED');
-      console.table(res)
+    this.restService.getAllData('giftshop_orders').subscribe((res:any)=>{
+     console.log('yesh')
+      // console.table(res.rows)
+      let data=res.rows.map((obj:any)=>obj.doc);
+      console.table(data)
+      console.table(data.products)
       this.orders = [];
-      res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
+      data.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
     
 
       for(let product of this.products){
