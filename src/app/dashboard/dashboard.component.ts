@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../order.service';
 import { ProductService } from '../product.service';
 import * as _ from 'lodash';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
 
   
-  constructor(private productService: ProductService, private orderService:OrderService) { }
+  constructor(private productService: ProductService, private orderService:OrderService,private restService:RestService) { }
 
   ngOnInit(): void {
 
@@ -27,10 +28,15 @@ export class DashboardComponent implements OnInit {
   orders:any;
 
   loadProducts(){
-    this.productService.getAllProducts().then((res:any)=>{
-      this.products = res;
+
+    this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
+
+      let data=res.rows.map((obj:any)=>obj.doc)
+      console.table(data)
+      this.products=data;
       this.loadOrders();
-    })
+    });
+
   }
 
   loadOrders(){
