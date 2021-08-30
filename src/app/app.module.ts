@@ -14,7 +14,6 @@ import { CartComponent } from './cart/cart.component';
 
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
-import { AdminComponent } from './admin/admin.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { UsersComponent } from './users/users.component';
 import { ProductcrudComponent } from './productcrud/productcrud.component';
@@ -38,7 +37,6 @@ import { FooterComponent } from './footer/footer.component';
     ProductSpecComponent,
     CartComponent,
     HomeComponent,
-    AdminComponent,
     AdminHeaderComponent,
     UsersComponent,
     ProductcrudComponent,
