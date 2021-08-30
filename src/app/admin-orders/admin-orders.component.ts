@@ -22,8 +22,8 @@ searchBox:any
 orderList(){
   let data=this.restService.getAllData("giftshop_orders");
   data.subscribe((res:any)=>{
-    let data =res.rows;
-    let values=data.map((obj:any)=>obj.doc);
+    let orderData =res.rows;
+    let values=orderData.map((obj:any)=>obj.doc);
     this.orders=values;
     console.log(values); 
     },(err:any)=>{
@@ -37,7 +37,6 @@ orderList(){
 update(id:string){
 
   let productDatas=this.restService.getDataById('giftshop_orders',id)
-// let productDatas=orders.getOrder(id);
 
 
 productDatas.subscribe((res:any)=>{
@@ -53,7 +52,7 @@ productDatas.subscribe((res:any)=>{
     rev:productObj._rev,
     changedValue:productObj
   };
-  this.restService.updateData(changedObj).subscribe((res:any)=>{
+  this.restService.updateData(changedObj).subscribe((response:any)=>{
     alert("status updated by http")
     window.location.reload();
   },err=>{
@@ -80,7 +79,7 @@ delete(id:string,rev:string){
   this.restService.deleteData(deleteObj).subscribe((res:any)=>{
 
   },err=>{
-    console.log(err)
+    console.log(err);
   });
 }
 
