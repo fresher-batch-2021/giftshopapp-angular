@@ -91,8 +91,10 @@ delete(id:string,rev:string){
 orderSearch(){
   
   let search = this.searchBox;
-  crud.getData("giftshop_orders").then((res:any) => {
-    let datas = res.data.rows;
+
+  this.restService.getAllData('giftshop_orders').subscribe((res:any)=>{
+    let datas = res.rows;
+    console.log(datas)
     let productData = datas.map((obj: any) => obj.doc);
 
     if (search != null && search != "") {
