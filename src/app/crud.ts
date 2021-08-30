@@ -14,6 +14,8 @@ export class crud{
 
       const url=endpoint+urlEnd;
       console.log(url);
+
+      
         axios.post(url,obj,{headers:{Authorization:basicAuth}}).then(res =>{
             alert("data added succesfully");
             return res.data;

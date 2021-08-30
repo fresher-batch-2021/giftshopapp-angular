@@ -25,6 +25,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { EditProductsComponent } from './edit-products/edit-products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddProductComponent,
     AdminOrdersComponent,
     SearchBarComponent,
-    EditProductsComponent
+    EditProductsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

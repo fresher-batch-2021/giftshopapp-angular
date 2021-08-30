@@ -9,6 +9,7 @@ import { AuthGuard } from './auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProductsComponent } from './edit-products/edit-products.component';
+import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard]},
   {path:'admin-orders',component:AdminOrdersComponent,canActivate:[AuthGuard]},
   {path:'search-bar',component:SearchBarComponent},
+  {path:'footer',component:FooterComponent},
   {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard]},
   {path:'', component:LoginComponent}
 ];

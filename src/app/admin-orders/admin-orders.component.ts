@@ -4,6 +4,7 @@ import { XLSX$Consts } from 'xlsx/types';
 import { crud } from '../crud';
 import { orders } from '../orderService';
 import * as XLSX from 'xlsx';
+import { RestService } from '../rest.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import * as XLSX from 'xlsx';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private restService:RestService) { }
 orders:any;
 searchBox:any
   ngOnInit(): void {
@@ -22,18 +23,15 @@ searchBox:any
 
     
 orderList(){
-
-  let data=crud.getData("giftshop_orders");
-    data.then((res:any)=>{
-    // alert("data got sucessfully");
-    let data =res.data.rows;
+  let data=this.restService.getData("giftshop_orders");
+  data.subscribe((res:any)=>{
+    let data =res.rows;
     let values=data.map((obj:any)=>obj.doc);
-   
     this.orders=values;
     console.log(values); 
-    }).catch((err:any)=>{
-    alert("eror in getting data");
-      });
+    },(err:any)=>{
+      alert("eror in getting data");
+    });
    
     }
 

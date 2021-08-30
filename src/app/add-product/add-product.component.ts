@@ -2,6 +2,7 @@
 
 import { crud } from '../crud';
 import { product_report } from '../productReportService';
+import { RestService } from '../rest.service';
 import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-add-product',
@@ -11,7 +12,7 @@ import { ValidationService } from '../validationClass';
 
 export class AddProductComponent implements OnInit {
 
-  constructor(private validator:ValidationService) { }
+  constructor(private validator:ValidationService, private restService: RestService) { }
 productName:string="";
 productPrice:number=0;
 productImage:any;
@@ -58,7 +59,12 @@ file:any;
           description:description
         };
         
-       crud.addData(productObj,"giftshop_products");//adding data
+       this.restService.addData(productObj,"giftshop_products").subscribe( (res:any)=>{
+         alert("Successfully added");
+       },err=>{
+        console.log("Error");
+        alert("Failed to add");
+       });
 
        
       }
