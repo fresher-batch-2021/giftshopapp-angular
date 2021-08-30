@@ -5,11 +5,9 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 import { AuthGuard } from './auth.guard';
-import { CartComponent } from './cart/cart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditProductsComponent } from './edit-products/edit-products.component';
 import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OrderNowComponent } from './order-now/order-now.component';
@@ -24,12 +22,11 @@ const routes: Routes = [
   
   {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent},
-  {path:'header',component:HeaderComponent},
   {path:'register',component:RegisterComponent},
   {path:'orderNow',component:OrderNowComponent},
   {path:'product',component:ProductComponent},
   {path:'productSpec:/Id',component:ProductSpecComponent},
-  {path:'cart',component:CartComponent},
+
   {path:'admin-header',component:AdminHeaderComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
   {path:'users',component:UsersComponent,canActivate:[AuthGuard]},

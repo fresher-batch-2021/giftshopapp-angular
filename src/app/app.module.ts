@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { OrderNowComponent } from './order-now/order-now.component';
 import { ProductComponent } from './product/product.component';
 import { ProductSpecComponent } from './product-spec/product-spec.component';
-import { CartComponent } from './cart/cart.component';
 
 
 import { HomeComponent } from './home/home.component';
@@ -29,13 +27,11 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     LoginComponent,
     RegisterComponent,
     OrderNowComponent,
     ProductComponent,
     ProductSpecComponent,
-    CartComponent,
     HomeComponent,
     AdminHeaderComponent,
     UsersComponent,
