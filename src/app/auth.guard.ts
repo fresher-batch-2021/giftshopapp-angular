@@ -10,8 +10,9 @@ export class AuthGuard implements CanActivate {
   constructor(private route: Router){}
 
   getData(key: string) {
-    let x = localStorage.getItem(key);
-    return x;
+    let value = localStorage.getItem(key);
+    value=value!=null?JSON.parse(value):console.log(key,'localstorage is empty');
+    return value;
   }
 
   canActivate(
