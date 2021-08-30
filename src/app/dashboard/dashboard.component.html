@@ -1,25 +1,11 @@
 <main>
     <div class="wrapper">
-        <!--    <div class="sidebar">
-            <aside>
-                <ul>
-                    <li>
-                        <details>
-                            <summary><a routerLink='../productcrud'> Products</a></summary>
-                            <a routerLink='../add-product'> add products</a>
-                        </details>
-                    </li>
-                    <li><a routerLink='../admin-orders'> Orders</a></li>
-                    <li><a routerLink='../users'>users</a></li>
-                </ul>             
-            </aside>
-        </div> -->
-
+        
         <!-- {{products | json}} -->
 
-        <div class="page" *ngIf="myData.length>0">
+        <div class="page" *ngIf="barData.length>0">
             <div>
-                <google-chart class="chart" [type]="myType" [data]="myData" [options]="rowChartOptions"></google-chart>
+                <google-chart class="chart" [type]="myType" [data]="barData" [options]="rowChartOptions"></google-chart>
             </div>
             <div>
                 <google-chart class="chart" [type]="PieChart" [data]="myDatas" [options]="options"></google-chart>

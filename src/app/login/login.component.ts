@@ -1,7 +1,6 @@
-import { JsonPipe } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import axios from 'axios'
 import { crud } from '../crud';
 import { ValidationService } from '../validationClass';
 @Component({
@@ -21,8 +20,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem(key, value);
   }
   getData(key: string) {
-    let x = localStorage.getItem(key);
-    return x;
+    let value = localStorage.getItem(key);
+    value=value!=null?JSON.parse(value):console.log(key,'localstorage is empty');
+    return value;
   }
   //for navigation
   ngOnInit(): void {
@@ -64,10 +64,8 @@ export class LoginComponent implements OnInit {
         }
         else if (data.role == "USER") {
           alert("users cant login on admin portal")
-          // alert("hello")
           // this.route.navigateByUrl('https://giftshop-yeswanth.netlify.app/');
-          // document.location.href="https://giftshop-yeswanth.netlify.app/index.html"
-        }
+         }
         else {
         
           alert("invalid credentials")

@@ -24,17 +24,12 @@ export class AuthGuard implements CanActivate {
       let role=localStorage.getItem("role")
       if(loginStatus=='true'&&role=="ADMIN"){
     return true;}
-    // else if(loginStatus==null||loginStatus==undefined||loginStatus==""){
-    //   alert("you are not authorized")
-    //   this.route.navigate(['/login']);
-    //   return false;
-    // }
+    
     else{
       alert("you are not authorized")
       this.route.navigate(['/login']);
       return false;
     }
-    // return  true;
-  }
+      }
   
 }

@@ -56,12 +56,12 @@ export class DashboardComponent implements OnInit {
       let noOfOrders = _.sum(quantities);
 
       
-      let data = [ product.name, noOfOrders];
+      let chartData = [ product.name, noOfOrders];
       
-      this.myData.push(data);
-      this.myDatas.push(data)
+      this.barData.push(chartData);
+      this.myDatas.push(chartData)
       }
-      // console.table(this.myDatas)
+  
     });
   }
   
@@ -76,7 +76,7 @@ export class DashboardComponent implements OnInit {
     // ['Berlin', 3],
     // ['Kairo', 1]
   ];
-myData:any = [];
+barData:any = [];
 /*
     ['London', 1],
     ['New York', 15],
