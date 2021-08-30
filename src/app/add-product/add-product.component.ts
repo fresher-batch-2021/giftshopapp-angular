@@ -1,7 +1,7 @@
  import { Component, OnInit } from '@angular/core';
 
 import { crud } from '../crud';
-import { product_report } from '../productReportService';
+
 import { RestService } from '../rest.service';
 import { ValidationService } from '../validationClass';
 @Component({

@@ -1,11 +1,7 @@
-import { stringify } from '@angular/compiler/src/util';
+
 import { Component, OnInit } from '@angular/core';
-import { XLSX$Consts } from 'xlsx/types';
-import { crud } from '../crud';
-import { orders } from '../orderService';
 import * as XLSX from 'xlsx';
 import { RestService } from '../rest.service';
-import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
