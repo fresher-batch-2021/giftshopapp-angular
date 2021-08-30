@@ -5,6 +5,7 @@ import { crud } from '../crud';
 import { orders } from '../orderService';
 import * as XLSX from 'xlsx';
 import { RestService } from '../rest.service';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -23,7 +24,7 @@ searchBox:any
 
     
 orderList(){
-  let data=this.restService.getData("giftshop_orders");
+  let data=this.restService.getAllData("giftshop_orders");
   data.subscribe((res:any)=>{
     let data =res.rows;
     let values=data.map((obj:any)=>obj.doc);
@@ -39,38 +40,52 @@ orderList(){
   
 update(id:string){
 
-let productDatas=orders.getOrder(id);
+  let productDatas=this.restService.getDataById('giftshop_orders',id)
+// let productDatas=orders.getOrder(id);
 
 
-productDatas.then(res=>{
-  let productObj =res.data;
+productDatas.subscribe((res:any)=>{
+  let productObj =res;
   console.log(productObj);
   productObj.status='DELIVERED';
+
   // now update to api
-  const endUrl=id+"/?rev="+productObj._rev;
-  const updateObj={
+  
+  const changedObj={
     database:"giftshop_orders",
     id:id,
     rev:productObj._rev,
     changedValue:productObj
-  }
-  crud.updateData(updateObj).then(res=>{
-    alert("status updated")
-    window.location.reload()
-  }).catch(err=>{
-      console.log(err.response.data);
+  };
+  this.restService.updateData(changedObj).subscribe((res:any)=>{
+    alert("status updated by http")
+    window.location.reload();
+  },err=>{
+    console.log(err)
   });
 });
 
 }
+
 /**
  * delete function
  * @param id id of element
  * @param rev rev id of element
  */
+
 delete(id:string,rev:string){
   // file is crud.ts in app
-  crud.deleteData("giftshop_products",id,rev);
+  const deleteObj={
+    database:'giftshop_products',
+    id:id,
+    rev:rev
+  };
+
+  this.restService.deleteData(deleteObj).subscribe((res:any)=>{
+
+  },err=>{
+    console.log(err)
+  });
 }
 
 orderSearch(){

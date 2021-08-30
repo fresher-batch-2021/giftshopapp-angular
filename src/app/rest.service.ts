@@ -26,10 +26,32 @@ export class RestService {
   }
 
   // getData
-  getData(database:string):any{
+  getAllData(database:string):any{
 
     const url=this.endpoint+database+"/_all_docs?include_docs=true";
     return this.http.get(url,{headers:{Authorization:this.basicAuth}});
-   
+}
+// get data by id
+  getDataById(database:string,id:string){
+
+    const url=this.endpoint+database+'/'+id;
+    return this.http.get(url,{headers:{Authorization:this.basicAuth}});
+}
+// update data
+updateData(updateObj:any){
+  const database=updateObj.database;
+  const id=updateObj.id;
+  const rev=updateObj.rev;
+  const changedObj=updateObj.changedValue;
+  const url=this.endpoint+database+'/'+id+'/?rev='+rev;
+  return this.http.put(url,changedObj,{headers:{Authorization:this.basicAuth}});
+}
+// delete data
+deleteData(deleteObj:any){
+  const database=deleteObj.database;
+  const id=deleteObj.id;
+  const rev=deleteObj.rev;
+  const url=this.endpoint+database+'/'+id+'/rev?='+rev;
+  return this.http.delete(url,{headers:{Authorization:this.basicAuth}});
 }
 }
