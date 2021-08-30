@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { crud } from '../crud';
+import { RestService } from '../rest.service';
 import { ValidationService } from '../validationClass';
 
 
@@ -14,7 +15,7 @@ export class EditProductsComponent implements OnInit {
 
 
   public id: string = "";
-  constructor(private validator: ValidationService, private route: ActivatedRoute,private router:Router) {
+  constructor(private validator: ValidationService, private route: ActivatedRoute,private router:Router,private restService:RestService) {
 
 
   }
@@ -43,15 +44,17 @@ export class EditProductsComponent implements OnInit {
     // alert(id)
     // console.log(id)
 
-    crud.getDataById("giftshop_products", id).then((res: any) => {
-      let data = res.data;
-      console.table(data);
+    this.restService.getDataById("giftshop_products", id).subscribe((res:any)=>{
+      console.table(res);
+      
+      let data=res;
       this.productName = data.name;
       this.productPrice = data.price;
       this.productImage = data.imageUrl;
       this.productQuantity = data.quantity;
       this.productDescription = data.description;
     });
+
   }
 
   editProduct() {
@@ -66,14 +69,19 @@ export class EditProductsComponent implements OnInit {
       description: this.productDescription
     };
     let updateData={
+      database:"giftshop_products",
       id:id,
       rev:rev,
-      database:"giftshop_products",
+      
       changedValue:changeObj
     };
-    crud.updateData(updateData).then((res=>{
+
+    this.restService.updateData(updateData).subscribe((res:any)=>{
+    
       this.router.navigate(['../productcrud']);
-    }))
+    })
+
+    
   }
 
 

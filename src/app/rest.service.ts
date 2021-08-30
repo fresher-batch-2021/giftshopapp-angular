@@ -32,7 +32,7 @@ export class RestService {
     return this.http.get(url,{headers:{Authorization:this.basicAuth}});
 }
 // get data by id
-  getDataById(database:string,id:string){
+  getDataById(database:string,id:any){
 
     const url=this.endpoint+database+'/'+id;
     return this.http.get(url,{headers:{Authorization:this.basicAuth}});
