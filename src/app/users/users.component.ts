@@ -12,7 +12,6 @@ export class UsersComponent implements OnInit {
 
   users:any
   searchBox:any
-  constructor() { }
 
   ngOnInit(): void {
     this.UserList();

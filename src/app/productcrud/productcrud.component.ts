@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { crud } from '../crud';
 import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
 
-import { ValidationService } from '../validationClass';
 
 @Component({
   selector: 'app-productcrud',
@@ -71,16 +69,10 @@ export class ProductcrudComponent implements OnInit {
       }
 this.restService.deleteData(deleteObj).subscribe((res:any)=>{
   this.productList();
-  // alert('deleted sucessfully')
 })
 
-    // crud.deleteData("giftshop_products", id, rev);
   }}
 
-  // editProduct(id:string){
-    
-  //   crud.updateData("giftshop_products",id)
-  // }
 
 }
 
