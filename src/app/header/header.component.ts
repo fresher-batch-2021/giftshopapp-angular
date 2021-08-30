@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     let login: any = this.getData('IsLoggedIn');
     let content = "";
 
-    if (login == null || login == undefined) { login == false; }
+    if (login == null || login == undefined) { login = false; }
 
     if (!login) {
       content = `

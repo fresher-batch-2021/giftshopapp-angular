@@ -31,7 +31,6 @@ orderList(){
    
     this.orders=values;
     console.log(values); 
-    
     }).catch((err:any)=>{
     alert("eror in getting data");
       });
@@ -41,26 +40,29 @@ orderList(){
  
   
 update(id:string){
-alert(id);
+
 let productDatas=orders.getOrder(id);
 
 
 productDatas.then(res=>{
   let productObj =res.data;
   console.log(productObj);
-  alert(productObj.status);
   productObj.status='DELIVERED';
   // now update to api
   const endUrl=id+"/?rev="+productObj._rev;
-  alert(productObj.status);
-
-  orders.updateOrder(endUrl,productObj).then(res=>{
-    window.location.reload();
-    alert("status updated");
+  const updateObj={
+    database:"giftshop_orders",
+    id:id,
+    rev:productObj._rev,
+    changedValue:productObj
+  }
+  crud.updateData(updateObj).then(res=>{
+    alert("status updated")
+    window.location.reload()
   }).catch(err=>{
-    console.log(err.response.data);
+      console.log(err.response.data);
   });
-})
+});
 
 }
 /**

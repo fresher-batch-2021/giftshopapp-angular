@@ -12,6 +12,7 @@ export class AdminHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  isVisible:boolean=false;
 
   logout(){
     alert("logging out")

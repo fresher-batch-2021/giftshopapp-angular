@@ -1,4 +1,4 @@
-<app-admin-header></app-admin-header>
+
 <main>
     <section class="searchBar">
         <input type="text" class="searchBox" name="searchBox" id="searchBox" (keydown.enter)='productSearch()' [(ngModel)]="searchBox" placeholder="search">
@@ -10,14 +10,14 @@
         <Caption>Product-Details</Caption>
         <thead>
             <tr>
-                <th class="leftCorner">S.no</th>
-                <th>Image</th>
-                <th>Product-Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Product-Id</th>
-                <th>Edit</th>
-                <th class="rightCorner">Delete</th>
+                <th id="productSno" class="leftCorner">S.no</th>
+                <th id="productImage">Image</th>
+                <th id="productName">Product-Name</th>
+                <th id="productPrice">Price</th>
+                <th id="productDescription">Description</th>
+                <th id="productId">Product-Id</th>
+                <th id="productEdit">Edit</th>
+                <th id="productDelete" class="rightCorner">Delete</th>
             </tr>
         </thead>
         <tbody *ngFor='let product of products; let i=index'>
@@ -31,7 +31,7 @@
                 </td>
                 <td>{{product.name}}</td>
                 <td>₹{{product.price}}</td>
-                <td><div class="description"><span class="toolTipText">{{product.description}}</span>{{product.description}}</div></td>
+                <td><div class="description"><span class="toolTipText">{{product.description}}</span><span style="text-decoration: underline; color: midnightblue;">{{product.description}}</span></div></td>
                 <td>{{product._id}}</td>
                 <td><button class="editBtn" [routerLink]="['../edit-products',product._id,product._rev]">Edit</button></td>
                 <td><button class="deleteBtn" (click)="deleteProduct(product._id,product._rev)">Delete</button></td>

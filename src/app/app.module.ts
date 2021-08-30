@@ -24,6 +24,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { EditProductsComponent } from './edit-products/edit-products.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { EditProductsComponent } from './edit-products/edit-products.component';
     AppRoutingModule,
     FormsModule,
     GoogleChartsModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

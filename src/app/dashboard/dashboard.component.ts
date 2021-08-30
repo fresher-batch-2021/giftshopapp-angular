@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   loadOrders(){
     // loading orders to chart
     this.orderService.getAllOrders().then((res:any)=>{
+      // console.table(res)
       this.orders = [];
       res.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
       // console.log("yesh")

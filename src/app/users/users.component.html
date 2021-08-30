@@ -1,4 +1,4 @@
-<app-admin-header></app-admin-header>
+
 
 <main>
     <section class="searchBar">
@@ -12,11 +12,11 @@
             <Caption>User-credentials</Caption>
             <thead>
                 <tr>
-                    <th class="leftCorner">s.no</th>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>User-id</th>
-                    <th class="rightCorner">Delete</th>
+                    <th id="userCount" class="leftCorner">s.no</th>
+                    <th id="userName">Name</th>
+                    <th id="userMail">E-mail</th>
+                    <th id="userId">User-id</th>
+                    <th id="userDelete" class="rightCorner">Delete</th>
                 </tr>
             </thead>
             <tbody *ngFor='let user of users; let i=index' >
