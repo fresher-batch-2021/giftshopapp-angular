@@ -2,7 +2,7 @@
 
 <main>
     <section class="searchBar">
-        <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" (keydown.enter)=orderSearch() placeholder="search">
+        <input type="text" class="searchBox" name="searchBox" (keydown.enter)='orderSearch()' [(ngModel)]="searchBox" placeholder="search">
         <a style="cursor: pointer" (click)="exportexcel()">
             <span id="orderDownload">download order details</span>
             <i class="fas fa-file-download fa-lg" style="margin: 15px 25px;"></i>
@@ -26,7 +26,7 @@
         </tr>
     </thead>
 
-    <tbody *ngFor='let order of orders; let i=index'>
+    <tbody *ngFor='let order of (orders |search:searchBox); let i=index'>
         <tr>
             <td>{{i+1}}</td>
             <td>{{order.name}}</td>
@@ -34,8 +34,8 @@
             <td style="max-width: 100px;">{{order.address}}</td>
             <td>{{order.totalAmount}}</td>
             <td>{{order.payment}}</td>
-            <td>{{order.orderedDate}}</td>
-            <td>{{order.deliveredDate}}</td>
+            <td >{{order.orderedDate  |date:"dd-MM-yyyy"}}</td>
+            <td>{{order.deliveredDate |date:"dd-MM-yyyy"}}</td>
             <td>{{order.status}}</td>
             <td><button  class="statusBtn" type="button" (click)="update(order._id)">status to delivered</button></td>
         </tr>

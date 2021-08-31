@@ -27,8 +27,9 @@ export class ProductcrudComponent implements OnInit {
     this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
       // console.log('yesh',res)
       let data=res.rows.map((obj:any)=>obj.doc)
-      console.table(data)
+      
       this.products = data;
+      console.table(this.products)
     },(err:any)=>{
         console.log(err);
     });
@@ -40,7 +41,7 @@ export class ProductcrudComponent implements OnInit {
   
   productSearch() {
 
-      let search = this.searchBox;
+      let search :any= this.searchBox;
 
       this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
       
@@ -48,7 +49,8 @@ export class ProductcrudComponent implements OnInit {
         console.table(productData)
 
       if (search != null && search != "") {
-        let value = productData.filter((obj: any) => obj.name == search)
+        let value = productData.filter((obj: any) => obj.name.toLowerCase()==search.toLowerCase());
+        
         this.products = value;
       }
       else {

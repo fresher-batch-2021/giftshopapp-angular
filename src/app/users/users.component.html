@@ -19,7 +19,7 @@
                     <th id="userDelete" class="rightCorner">Delete</th>
                 </tr>
             </thead>
-            <tbody *ngFor='let user of users; let i=index' >
+            <tbody *ngFor='let user of (users | search:searchBox); let i=index' >
                 
                 <tr>
                     <td>{{i+1}}</td>

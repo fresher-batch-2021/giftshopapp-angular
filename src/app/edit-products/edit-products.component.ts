@@ -71,7 +71,6 @@ export class EditProductsComponent implements OnInit {
       database:"giftshop_products",
       id:id,
       rev:rev,
-      
       changedValue:changeObj
     };
 

@@ -10,7 +10,7 @@ export class SearchPipe implements PipeTransform {
     if(!searchBy) return arrayData;
     console.log('pipe',searchBy);
     console.table(arrayData); 
-    if()
+    // if()
     return arrayData.filter((obj:any)=>obj.name.toLowerCase().indexOf(searchBy.toLowerCase())!=-1);
   }
 

@@ -1,9 +1,10 @@
 
 <main>
     <section class="searchBar">
-        <input type="text" class="searchBox" name="searchBox" id="searchBox" (keydown.enter)='productSearch()' [(ngModel)]="searchBox" placeholder="search">
+        <input type="text" class="searchBox" name="searchBox" id="searchBox" [(ngModel)]="searchBox" placeholder="search">
         <button class="addBtn" routerLink='../add-product'>add product</button>
     </section>
+    <!-- (keydown.enter)='productSearch()'  -->
     
 
     <table class="contentTable"> 
@@ -14,13 +15,14 @@
                 <th id="productImage">Image</th>
                 <th id="productName">Product-Name</th>
                 <th id="productPrice">Price</th>
+                <th id="productQuantity">Quantity</th>
                 <th id="productDescription">Description</th>
                 <th id="productId">Product-Id</th>
                 <th id="productEdit">Edit</th>
                 <th id="productDelete" class="rightCorner">Delete</th>
             </tr>
         </thead>
-        <tbody *ngFor='let product of products; let i=index'>
+        <tbody *ngFor='let product of (products | search:searchBox); let i=index'>
             <tr>
                 <td>{{i+1}}</td>
                 <td>
@@ -30,6 +32,7 @@
                 </td>
                 <td>{{product.name}}</td>
                 <td>₹{{product.price}}</td>
+                <td>{{product.quantity}}</td>
                 <td><div class="description"><span class="toolTipText">{{product.description}}</span><span style="text-decoration: underline; color: midnightblue;">{{product.description}}</span></div></td>
                 <td>{{product._id}}</td>
                 <td><button class="editBtn" [routerLink]="['../edit-products',product._id,product._rev]">Edit</button></td>
