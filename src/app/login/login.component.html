@@ -8,20 +8,20 @@
             <p>Gift Corner</p><br>
         </div>
 
-        <form (ngSubmit)="login()">
+        <form [formGroup]="myLoginForm" (submit)="login()">
             <div class="field">
                 <input type="email" required autocomplete="off" name="loginEmail" id="loginEmail"
-                    [(ngModel)]="loginEmail" placeholder="E-mail">
+                    formControlName="email" placeholder="E-mail">
                 <label for="loginEmail" title="E-mail"></label>
             </div>
 
             <div class="field">
                 <input type="password" required autocomplete="off" name="loginPassword" id="loginPassword"
-                    [(ngModel)]="loginPassword">
+                    formControlName="password" >
                 <label for="loginPassword" title="password"></label>
             </div>
 
-            <button type="submit">login</button>
+            <button type="submit" [disabled]=!myLoginForm.valid>login</button>
         </form>
     </section>
 </main>

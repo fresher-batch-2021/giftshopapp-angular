@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { crud } from '../crud';
 import { ValidationService } from '../validationClass';
@@ -11,9 +12,10 @@ import { ValidationService } from '../validationClass';
 export class LoginComponent implements OnInit {
 
   router: any;
+  myLoginForm!: FormGroup;
 
 
-  constructor(private route: Router,private validator:ValidationService) {
+  constructor(private fb:FormBuilder, private route: Router,private validator:ValidationService) {
   }
 
   setData(key: string, value: any) {
@@ -26,15 +28,17 @@ export class LoginComponent implements OnInit {
   }
   //for navigation
   ngOnInit(): void {
+
+    this.myLoginForm=this.fb.group({
+      email: new FormControl('',Validators.required),
+      password: new FormControl('')
+    })
+
   }
-  loginEmail: string = "";
-  loginPassword: string = "";
-
-
   login() {
 
-    let email = this.loginEmail;
-    let password = this.loginPassword;
+    let email = this.myLoginForm.value.email;
+    let password = this.myLoginForm.value.password;
 
 
     try{

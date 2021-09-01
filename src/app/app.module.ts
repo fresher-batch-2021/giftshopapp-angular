@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { UsersComponent } from './users/users.component';
 import { ProductcrudComponent } from './productcrud/productcrud.component';
@@ -38,6 +38,7 @@ import { SearchPipe } from './search.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     GoogleChartsModule.forRoot(),
     HttpClientModule
   ],
