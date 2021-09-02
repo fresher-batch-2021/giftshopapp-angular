@@ -1,4 +1,5 @@
  import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { crud } from '../crud';
 
@@ -12,31 +13,45 @@ import { ValidationService } from '../validationClass';
 
 export class AddProductComponent implements OnInit {
 
-  constructor(private validator:ValidationService, private restService: RestService) { }
-productName:string="";
-productPrice:number=0;
-productImage:any;
-productQuantity:number=0;
-productDescription:string="";
-file:any;
+  constructor(private fb:FormBuilder, private validator:ValidationService, private restService: RestService) { }
+// productName:string="";
+// productPrice:number=0;
+// productImage:any;
+// productQuantity:number=0;
+// productDescription:string="";
+// file:any;
 
  crud=new crud();
+  addProductsForm!:FormGroup
+  imagePath:string='';
 
   ngOnInit(): void {
+    this.addProductsForm=this.fb.group({
+      productName : new FormControl('',Validators.required),
+      productPrice : new FormControl('',Validators.required),
+      productImage : new FormControl('',Validators.required),
+      productQuantity : new FormControl('',Validators.required),
+      productDescription : new FormControl('',Validators.required)
+    })
   }
   // used to upload a file
   onFileUpload(event:any){
-    this.productImage = event.target.files[0].name;
-  
+    this.imagePath=event.target.files[0].name;
     }
  
     addProduct(){
 
-      let name=this.productName;
-      let price=this.productPrice!=null?this.productPrice:0;
-      let image=this.productImage;
-      let quantity=this.productQuantity!=null?this.productQuantity:0;
-      let description=this.productDescription!=null?this.productDescription:'no description given';
+      
+      this.addProductsForm.value.productImage=this.imagePath;
+
+      let formObj=this.addProductsForm.value;
+      console.table(formObj)
+      let name =formObj.productName;
+      let price = formObj.productPrice;
+      let image = formObj.productImage;
+      let quantity = formObj.productQuantity;
+      let description = formObj.productDescription;
+
      if(name==''){
        alert('name cannot be empty')
        return;

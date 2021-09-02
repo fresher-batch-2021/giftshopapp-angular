@@ -10,39 +10,39 @@
         </section>
 
         <section>
-            <form (ngSubmit)="addProduct()">
+            <form [formGroup]="addProductsForm" (submit)="addProduct()">
 
                 <div class="field">
                     <input type="text" required autocomplete="off" id="productName" name="productName"
-                        [(ngModel)]="productName">
+                        formControlName="productName">
                     <label for="productName" title="productName "></label>
                 </div>
                 
                 <div class="field">
                         <input type="number" required autocomplete="off" id="productPrice" placeholder="Price"
-                            name="productPrice" [(ngModel)]="productPrice">
+                            name="productPrice" formControlName="productPrice">
                         <label for="productPrice" title="productPrice"></label>
                 </div>
 
                 <div class="field">
                     <input type="file" (change)="onFileUpload($event)" required autocomplete="off" id="productImage"
-                        name="productImage" [(ngModel)]="productImage">
+                        name="productImage" formControlName="productImage">
                     <label for="productImage" title=""></label>
                 </div>
 
                 <div class="field">
                     <input type="number" required autocomplete="off" id="productQuantity" name="productQuantity"
-                        [(ngModel)]="productQuantity">
+                        formControlName="productQuantity">
                     <label for="productQuantity" title="Quantity"></label>
                 </div>
 
                 <div class="field">
                     <input type="text" required autocomplete="off" id="productDescription" name="productDescription"
-                        [(ngModel)]="productDescription">
+                        formControlName="productDescription">
                     <label for="productDescription" title="productDescription"></label>
                 </div>
 
-                <button type="submit">Add product</button>
+                <button type="submit" [disabled]="!addProductsForm.valid">Add product</button>
 
             </form>
         </section>
