@@ -19,7 +19,8 @@ import { EditProductsComponent } from './edit-products/edit-products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { SearchPipe } from './search.pipe';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,10 +38,13 @@ import { SearchPipe } from './search.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     GoogleChartsModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

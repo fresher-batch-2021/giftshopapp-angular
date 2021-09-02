@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AuthGuard implements CanActivate {
-  constructor(private route: Router){}
+  constructor(private route: Router,private toastr:ToastrService){}
 
   getData(key: string) {
     let value = localStorage.getItem(key);
@@ -26,7 +27,8 @@ export class AuthGuard implements CanActivate {
     return true;}
     
     else{
-      alert("you are not authorized")
+
+      this.toastr.warning("You are not authorized")
       this.route.navigate(['/login']);
       return false;
     }

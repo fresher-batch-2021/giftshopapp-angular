@@ -1,5 +1,8 @@
 
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import * as XLSX from 'xlsx';
 import { RestService } from '../rest.service';
 
@@ -11,7 +14,7 @@ import { RestService } from '../rest.service';
 })
 export class AdminOrdersComponent implements OnInit {
 
-  constructor(private restService:RestService) { }
+  constructor(private restService:RestService,private toastr:ToastrService,private route :Router) { }
 orders:any;
 searchBox:any
   ngOnInit(): void {
@@ -27,7 +30,7 @@ orderList(){
     this.orders=values;
     console.log(values); 
     },(err:any)=>{
-      alert("eror in getting data");
+      this.toastr.error("Error in getting data")
     });
    
     }
@@ -53,8 +56,11 @@ productDatas.subscribe((res:any)=>{
     changedValue:productObj
   };
   this.restService.updateData(changedObj).subscribe((response:any)=>{
-    alert("status updated by http")
-    window.location.reload();
+
+    this.toastr.success("status has been updated")
+   
+    this.orderList();
+    
   },err=>{
     console.log(err)
   });
@@ -95,7 +101,7 @@ orderSearch(){
     if (search != null && search != "") {
       let value = productData.filter((ob: any) => ob.name == search||ob.phonenumber==search||ob.status.toLowerCase()==search.toLowerCase())
       if(value==""){
-        alert("no such data exist")
+        this.toastr.warning("No such data exist")
         this.orderList();
       }
       else{

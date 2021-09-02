@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Toast, ToastrService } from 'ngx-toastr';
 import { crud } from '../crud';
 import { ValidationService } from '../validationClass';
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   myLoginForm!: FormGroup;
 
 
-  constructor(private fb:FormBuilder, private route: Router,private validator:ValidationService) {
+  constructor(private fb:FormBuilder,private toastr:ToastrService, private route: Router,private validator:ValidationService) {
   }
 
   setData(key: string, value: any) {
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
   //for navigation
   ngOnInit(): void {
-
+    
     this.myLoginForm=this.fb.group({
       email: new FormControl('',Validators.required),
       password: new FormControl('')
@@ -63,32 +64,30 @@ export class LoginComponent implements OnInit {
         
 
         if (data.role == "ADMIN") {
-          alert("welcome admin");
+          this.toastr.success("welcome admin");
+          setTimeout(() => {
           this.route.navigate(['/dashboard']);
+          }, 1000);
         }
         else if (data.role == "USER") {
-          alert("users cant login on admin portal")
+          this.toastr.error("users can't login on admin portal");
           // this.route.navigateByUrl('https://giftshop-yeswanth.netlify.app/');
          }
         else {
-        
-          alert("invalid credentials")
+          this.toastr.error("Invalid Credentials")
         }
       }).catch(err => {
-        console.log(err.response.data);
-        if (err.response.data.errorMessage) {
-          alert(err.response.data.errorMessage);
-        }
-        else {
-          alert("login failed");
-        }
+       
+          this.toastr.error("Login Failed")
+          
+        
       });
     }
 
     catch(err){
       console.log(err.message)
-      alert(err.message)
-      alert("unable to login")
+      
+      this.toastr.error("unable to login")
     }
     }}
 

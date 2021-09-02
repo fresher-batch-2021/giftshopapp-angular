@@ -1,5 +1,6 @@
  import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 import { crud } from '../crud';
 
@@ -13,13 +14,8 @@ import { ValidationService } from '../validationClass';
 
 export class AddProductComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private validator:ValidationService, private restService: RestService) { }
-// productName:string="";
-// productPrice:number=0;
-// productImage:any;
-// productQuantity:number=0;
-// productDescription:string="";
-// file:any;
+  constructor(private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private restService: RestService) { }
+
 
  crud=new crud();
   addProductsForm!:FormGroup
@@ -53,12 +49,12 @@ export class AddProductComponent implements OnInit {
       let description = formObj.productDescription;
 
      if(name==''){
-       alert('name cannot be empty')
+       this.toastr.warning('name cannot be empty')
        return;
      }
      
      else if(image==undefined){
-       alert('image cant be empty')
+       this.toastr.warning('image cant be empty')
        return;
      }
 
@@ -75,18 +71,17 @@ export class AddProductComponent implements OnInit {
         };
         
        this.restService.addData(productObj,"giftshop_products").subscribe( (res:any)=>{
-         alert("Successfully added");
+         this.toastr.success("Successfully added");
        },err=>{
         console.log("Error");
-        alert("Failed to add");
+        this.toastr.success("Failed to add");
        });
 
        
       }
       catch(err){
         console.log(err.message)
-        alert(err.message)
-        alert("unable to add products")
+        this.toastr.error("unable to add products")
       }
     
     }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { crud } from '../crud';
+import { RestService } from '../rest.service';
 
 
 
@@ -10,6 +12,7 @@ import { crud } from '../crud';
 })
 export class UsersComponent implements OnInit {
 
+  constructor(private toastr:ToastrService,private restService:RestService){}
   users:any
   searchBox:any
 
@@ -39,7 +42,8 @@ export class UsersComponent implements OnInit {
     if (search != null && search != "") {
       let value = userData.filter((ob: any) => ob.name == search||ob.email==search)
       if(value==""){
-        alert("no such data exist")
+
+        this.toastr.warning("No such data exists")
         this.UserList();
       }
       else{
@@ -53,9 +57,11 @@ export class UsersComponent implements OnInit {
 
   
   delete(id:string,rev:string){
+    
   // deleting users using api
   let result=confirm("do you want remove the user ?")
   if(result){
+    // this.restService.deleteData(deleteObj);
     crud.deleteData("giftshop_user",id,rev);
   }}
 }

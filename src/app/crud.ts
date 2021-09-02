@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ToastrService } from "ngx-toastr";
 
 
 const dbUserName='apikey-v2-2djdlrrbf736ap4aa6rlre2x1j1wf65v1ti1e8x2bihn';
@@ -8,13 +9,16 @@ const basicAuth='Basic '+btoa(dbUserName+':'+dbPassword);
     
 
 export class crud{
-
+    constructor(){
+        
+    }
     // add
     static addData(obj:any,urlEnd:string) {
 
       const url=endpoint+urlEnd;
       console.log(url);
         axios.post(url,obj,{headers:{Authorization:basicAuth}}).then(res =>{
+            
             alert("data added succesfully");
             return res.data;
         }).catch(err =>{
