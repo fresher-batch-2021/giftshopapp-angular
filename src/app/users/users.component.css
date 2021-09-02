@@ -5,8 +5,12 @@ caption{
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
+.UserContainer{
+    padding-bottom: 125px;
+}
 
 .contentTable{
+    
     border-collapse: collapse;
     
     border-radius: 15px 15px 0 0;
