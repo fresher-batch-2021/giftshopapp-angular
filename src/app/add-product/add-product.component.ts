@@ -67,10 +67,11 @@ export class AddProductComponent implements OnInit {
           price:price,
           imageUrl:image,
           quantity:quantity,
-          description:description
+          description:description,
+          type:"products"
         };
         
-       this.restService.addData(productObj,"giftshop_products").subscribe( (res:any)=>{
+       this.restService.addData(productObj,"giftshop").subscribe( (res:any)=>{
          this.toastr.success("Successfully added");
        },err=>{
         console.log("Error");

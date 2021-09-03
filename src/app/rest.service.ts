@@ -28,6 +28,8 @@ export class RestService {
     return this.http.post(url,obj);
   }
 
+  
+
   // getData
   getAllData(database:string):any{
 
