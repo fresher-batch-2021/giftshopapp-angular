@@ -42,9 +42,9 @@ export class EditProductsComponent implements OnInit {
   getDetails() {
     let id = this.route.snapshot.paramMap.get('id');
  
-
-    this.restService.getDataById("giftshop_products", id).subscribe((res:any)=>{
-      console.table(res);
+alert(id)
+    this.restService.getDataById('giftshop', id).subscribe((res:any)=>{
+      console.table("yesh",res);
       
       let data=res;
       this.productName = data.name;
@@ -65,10 +65,11 @@ export class EditProductsComponent implements OnInit {
       price: this.productPrice,
       imageUrl:this.productImage,
       quantity: this.productQuantity,
-      description: this.productDescription
+      description: this.productDescription,
+      type:"products"
     };
     let updateData={
-      database:"giftshop_products",
+      database:"giftshop",
       id:id,
       rev:rev,
       changedValue:changeObj
