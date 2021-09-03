@@ -36,7 +36,7 @@ export class RestService {
     const url=this.endpoint+database+"/_all_docs?include_docs=true";
     return this.http.get(url);
 }
- // getData
+ // getData----------------------------------------------------------------yes
  getAllDataByType(type:string):any{
 
   const url=this.endpoint+"giftshop/_find";
@@ -48,13 +48,13 @@ export class RestService {
   return this.http.post(url,requestObj);
 }
 
-// get data by id
+// get data by id--------------------------------------------------------yes
   getDataById(database:string,id:any){
 
     const url=this.endpoint+database+'/'+id;
     return this.http.get(url);
 }
-// update data
+// update data-----------------------------------------------------------yes
 updateData(updateObj:any){
   const database=updateObj.database;
   const id=updateObj.id;

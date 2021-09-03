@@ -37,7 +37,7 @@ orderList(){
   
 update(id:string){
 
-  let productDatas=this.restService.getDataById('giftshop_orders',id)
+  let productDatas=this.restService.getDataById('giftshop',id)
 
 
 productDatas.subscribe((res:any)=>{
@@ -48,7 +48,7 @@ productDatas.subscribe((res:any)=>{
   // now update to api
   
   const changedObj={
-    database:"giftshop_orders",
+    database:"giftshop",
     id:id,
     rev:productObj._rev,
     changedValue:productObj
@@ -75,7 +75,7 @@ productDatas.subscribe((res:any)=>{
 delete(id:string,rev:string){
   // file is crud.ts in app
   const deleteObj={
-    database:'giftshop_products',
+    database:'giftshop',
     id:id,
     rev:rev
   };
@@ -91,11 +91,12 @@ orderSearch(){
   
   let search = this.searchBox;
 
-  this.restService.getAllData('giftshop_orders').subscribe((res:any)=>{
-    let datas = res.rows;
+  this.restService.getAllDataByType('orders').subscribe((res:any)=>{
+    console.log(res)
+    let datas = res;
     console.log(datas)
-    let productData = datas.map((obj: any) => obj.doc);
-
+    // let productData = datas.map((obj: any) => obj.doc);
+    let productData=res.docs;
     if (search != null && search != "") {
       let value = productData.filter((ob: any) => ob.name == search||ob.phonenumber==search||ob.status.toLowerCase()==search.toLowerCase())
       if(value==""){
