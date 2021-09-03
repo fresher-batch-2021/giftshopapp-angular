@@ -16,7 +16,6 @@ export class ProductcrudComponent implements OnInit {
   products: any;
   searchBox: string = "";
 
-  // listItems:string[]=[];
 
   ngOnInit(): void {
     this.productList();
@@ -62,7 +61,7 @@ export class ProductcrudComponent implements OnInit {
   // deleting data
   deleteProduct(id: string, rev: string) {
     console.log('id',id,'rev',rev)
-    let result=confirm("do you want to delete this product ?");
+    let result=confirm("Do you want to delete this product ?");
     if(result){
       const deleteObj={
         database:'giftshop_products',

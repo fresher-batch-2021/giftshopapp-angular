@@ -16,11 +16,12 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 import { GoogleChartsModule } from 'angular-google-charts';
 import { EditProductsComponent } from './edit-products/edit-products.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { SearchPipe } from './search.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InterceptorService } from './interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
