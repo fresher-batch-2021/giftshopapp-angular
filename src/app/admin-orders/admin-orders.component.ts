@@ -23,12 +23,10 @@ searchBox:any
 
     
 orderList(){
-  let data=this.restService.getAllData("giftshop_orders");
+  let data=this.restService.getAllDataByType('orders');
   data.subscribe((res:any)=>{
-    let orderData =res.rows;
-    let values=orderData.map((obj:any)=>obj.doc);
+    let values =res.docs;
     this.orders=values;
-    console.log(values); 
     },(err:any)=>{
       this.toastr.error("Error in getting data")
     });

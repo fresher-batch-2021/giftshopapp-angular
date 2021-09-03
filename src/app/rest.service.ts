@@ -21,7 +21,7 @@ export class RestService {
     this.basicAuth='Basic '+btoa(dbUserName+':'+dbPassword);
    }
 
-  // add
+  // add---------------------------------------------------------------------yes
   addData(obj:any,urlEnd:string) {
     const url=this.endpoint+urlEnd;
     console.log(url);    
@@ -36,6 +36,18 @@ export class RestService {
     const url=this.endpoint+database+"/_all_docs?include_docs=true";
     return this.http.get(url);
 }
+ // getData
+ getAllDataByType(type:string):any{
+
+  const url=this.endpoint+"giftshop/_find";
+  let requestObj={
+    selector:{
+      type:type
+    }
+  }
+  return this.http.post(url,requestObj);
+}
+
 // get data by id
   getDataById(database:string,id:any){
 
