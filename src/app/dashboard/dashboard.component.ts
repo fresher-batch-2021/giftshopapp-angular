@@ -29,9 +29,10 @@ export class DashboardComponent implements OnInit {
 
   loadProducts(){
 
-    this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
-
-      let data=res.rows.map((obj:any)=>obj.doc)
+    this.restService.getAllDataByType('products').subscribe((res:any)=>{
+      console.log(res.docs)
+      // let data=res.rows.map((obj:any)=>obj.doc)
+      let data =res.docs;
       console.table(data)
       this.products=data;
       this.loadOrders();
@@ -41,12 +42,14 @@ export class DashboardComponent implements OnInit {
 
   loadOrders(){
     // loading orders to chart
-    this.restService.getAllData('giftshop_orders').subscribe((res:any)=>{
+    this.restService.getAllDataByType('orders').subscribe((res:any)=>{
      console.log('yesh')
       // console.table(res.rows)
-      let data=res.rows.map((obj:any)=>obj.doc);
+      // let data=res.rows.map((obj:any)=>obj.doc);
+      let data = res.docs;
       console.table(data)
-      console.table(data.products)
+
+      console.table(data.flatMap((obj:any)=>obj.products))
       this.orders = [];
       data.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
     
