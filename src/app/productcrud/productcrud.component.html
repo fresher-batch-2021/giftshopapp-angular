@@ -22,7 +22,7 @@
                 <th id="productDelete" class="rightCorner">Delete</th>
             </tr>
         </thead>
-        <tbody *ngFor='let product of (products | search:searchBox); let i=index'>
+        <tbody *ngFor='let product of (products |search:searchBox); let i=index'>
             <tr>
                 <td>{{i+1}}</td>
                 <td>

@@ -23,12 +23,11 @@ export class ProductcrudComponent implements OnInit {
 
   productList() {
 
-    this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
-      // console.log('yesh',res)
-      let data=res.rows.map((obj:any)=>obj.doc)
-      
+    this.restService.getAllDataByType('products').subscribe((res:any)=>{
+      console.log('yesh',res)
+      let data=res.docs;
       this.products = data;
-      console.table(this.products)
+      // console.table(this.products)
     },(err:any)=>{
         console.log(err);
     });
@@ -42,10 +41,10 @@ export class ProductcrudComponent implements OnInit {
 
       let search :any= this.searchBox;
 
-      this.restService.getAllData('giftshop_products').subscribe((res:any)=>{
+      this.restService.getAllDataByType('products').subscribe((res:any)=>{
       
-        let productData=res.rows.map((obj:any)=>obj.doc)
-        console.table(productData)
+        let productData=res.docs;
+        console.table("yesh",productData)
 
       if (search != null && search != "") {
         let value = productData.filter((obj: any) => obj.name.toLowerCase()==search.toLowerCase());
@@ -64,7 +63,7 @@ export class ProductcrudComponent implements OnInit {
     let result=confirm("Do you want to delete this product ?");
     if(result){
       const deleteObj={
-        database:'giftshop_products',
+        database:'giftshop',
         id:id,
         rev:rev
       }
