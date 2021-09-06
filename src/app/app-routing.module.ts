@@ -19,12 +19,16 @@ const routes: Routes = [
   {path:'admin-header',component:AdminHeaderComponent},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthGuard]},
   {path:'users',component:UsersComponent,canActivate:[AuthGuard]},
-  {path:'productcrud',component:ProductcrudComponent,canActivate:[AuthGuard]},
-  {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard]},
+  // {path:'productcrud',component:ProductcrudComponent,canActivate:[AuthGuard]},
+  // {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard]},
   {path:'admin-orders',component:AdminOrdersComponent,canActivate:[AuthGuard]},
   {path:'footer',component:FooterComponent},
-  {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard]},
-  {path:'', component:LoginComponent}
+  // {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard]},
+  {path:'', component:LoginComponent},
+  {
+    path : 'products',
+    loadChildren:()=> import('./products/products.module').then(m=>m.ProductsModule)
+  }
 ];
 
 @NgModule({ 

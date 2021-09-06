@@ -2,7 +2,7 @@
 <main>
     <section class="searchBar">
         <input type="text" class="searchBox" name="searchBox" id="searchBox" [(ngModel)]="searchBox" placeholder="search">
-        <button class="addBtn" routerLink='../add-product'>add product</button>
+        <button class="addBtn" routerLink='add-product'>add product</button>
     </section>
     <!-- (keydown.enter)='productSearch()'  -->
     
@@ -35,7 +35,7 @@
                 <td>{{product.quantity}}</td>
                 <td><div class="description"><span class="toolTipText">{{product.description}}</span><span style="text-decoration: underline; color: midnightblue;">{{product.description}}</span></div></td>
                 <td>{{product._id}}</td>
-                <td><button class="editBtn" [routerLink]="['../edit-products',product._id,product._rev]">Edit</button></td>
+                <td><button class="editBtn" [routerLink]="['edit-products',product._id,product._rev]">Edit</button></td>
                 <td><button class="deleteBtn" (click)="deleteProduct(product._id,product._rev)">Delete</button></td>
             </tr>
         </tbody>

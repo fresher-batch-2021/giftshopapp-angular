@@ -22,29 +22,36 @@ import { SearchPipe } from './search.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './interceptor.service';
+import { ProductsModule } from './products/products.module';
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AdminHeaderComponent,
     UsersComponent,
-    ProductcrudComponent,
+    // ProductcrudComponent,
     DashboardComponent,
-    AddProductComponent,
+    // AddProductComponent,
     AdminOrdersComponent,
-    EditProductsComponent,
+    // EditProductsComponent,
     FooterComponent,
-    SearchPipe
+    // SearchPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+
+    
+    
     BrowserAnimationsModule,
+  //  ProductsModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     GoogleChartsModule.forRoot(),
     HttpClientModule,
     ToastrModule.forRoot(),
+    AppRoutingModule,
 
   ],
   providers: [
