@@ -42,7 +42,6 @@ export class EditProductsComponent implements OnInit {
   getDetails() {
     let id = this.route.snapshot.paramMap.get('id');
  
-alert(id)
     this.restService.getDataById('giftshop', id).subscribe((res:any)=>{
       console.table("yesh",res);
       

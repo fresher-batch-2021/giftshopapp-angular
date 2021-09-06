@@ -70,7 +70,6 @@ export class UsersComponent implements OnInit {
   // deleting users using api
   let result=confirm("do you want remove the user ?")
   if(result){
-    alert(rev)
     let deleteObj={
       database:'giftshop',
       id:id,

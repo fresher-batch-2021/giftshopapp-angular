@@ -27,7 +27,7 @@ export class OrderService {
 
  updateOrder(endString:string,updateObj:any){
     const url=startUrl+endString;
-    alert(url);
+    
     return axios.put(url,updateObj,{headers:{Authorization:basicAuth}});
 }
 }
