@@ -81,8 +81,8 @@ export class AddProductComponent implements OnInit {
        
       }
       catch(err){
-        console.log(err.message)
-        this.toastr.error("unable to add products")
+        console.log(err)
+        this.toastr.error("Unable to add products")
       }
     
     }

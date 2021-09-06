@@ -2,8 +2,8 @@
 
 <main>
     <section class="searchBar">
-        <input type="text" class="searchBox" name="searchBox" [(ngModel)]="searchBox" (keydown.enter)='userSearch()' placeholder="search">
-        
+        <input type="text" class="searchBox" name="searchBox"  [(ngModel)]="searchBox" (keydown.enter)='userSearch()' placeholder="search">
+        <!-- (keydown.enter)="userSearch()" -->
     </section>
 
     <section class="UserContainer">
@@ -16,7 +16,8 @@
                     <th id="userName">Name</th>
                     <th id="userMail">E-mail</th>
                     <th id="userId">User-id</th>
-                    <th id="userDelete" class="rightCorner">Delete</th>
+                    <th id="userStatus">Status</th>
+                    <th id="userToggle" class="rightCorner">Delete</th>
                 </tr>
             </thead>
             <tbody *ngFor='let user of (users | search:searchBox); let i=index' >
@@ -26,7 +27,9 @@
                     <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user._id}}</td>
-                    <td><button class="deleteBtn" (click)="delete(user._id,user._rev)">delete user</button></td>
+                    <td >{{user.userStatus?'Active':'Inactive'}}</td>
+                    <!-- <td><button class="deleteBtn" (click)="delete(user._id,user._rev)">delete user</button></td> -->
+                    <td><button class="statusBtn" (click)="userStatusToggle(user._id)">update</button></td>
                 </tr>
                 
 

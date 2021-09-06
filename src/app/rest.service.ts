@@ -68,7 +68,7 @@ deleteData(deleteObj:any){
   const database=deleteObj.database;
   const id=deleteObj.id;
   const rev=deleteObj.rev;
-  const url=this.endpoint+database+'/'+id+'/?rev='+rev;
+  const url=this.endpoint+database+'/'+id+'?rev='+rev;
   return this.http.delete(url);
 }
 }

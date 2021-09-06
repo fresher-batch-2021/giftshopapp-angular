@@ -22,21 +22,28 @@ export class UsersComponent implements OnInit {
 
   UserList(){
   // listing users
-    crud.getData("giftshop_user").then((res:any) =>{
-      let data=res.data.rows;
-      this.users=data.map((obj:any)=>obj.doc).filter((obj:any)=>obj.role=="USER");
-    }).catch((err:any)=>{
-      console.log("Error"+err.data);
-    });
+  this.restService.getAllDataByType('user').subscribe((res:any)=>{
+    
+    let data=res.docs;
+    console.log(data)
+    // this.users=data.map((obj:any)=>obj.doc).filter((obj:any)=>obj.role=="USER");
+    this.users=data.filter((obj:any)=>obj.role=="USER")
+  },(err:any)=>{
+
+    console.log("Error"+err.data);
+  });
   }
 
   userSearch() {
 
     
     let search = this.searchBox;
-  crud.getData("giftshop_user").then((res:any) => {
-    let datas = res.data.rows;
-    let userData = datas.map((obj: any) => obj.doc).filter((obj:any)=>obj.role=="USER");
+
+    this.restService.getAllDataByType('user').subscribe((res:any)=>{
+      // let datas = res.data.rows;
+      let datas=res.docs;
+      console.log(datas)
+    let userData = datas.filter((obj:any)=>obj.role=="USER");
     
 
     if (search != null && search != "") {
@@ -52,7 +59,9 @@ export class UsersComponent implements OnInit {
     else {
       this.UserList();
     }
-  });
+      // ===
+    });
+
 }
 
   
@@ -61,7 +70,48 @@ export class UsersComponent implements OnInit {
   // deleting users using api
   let result=confirm("do you want remove the user ?")
   if(result){
+    alert(rev)
+    let deleteObj={
+      database:'giftshop',
+      id:id,
+      rev:rev
+    }
     // this.restService.deleteData(deleteObj);
-    crud.deleteData("giftshop_user",id,rev);
+    this.restService.deleteData(deleteObj).subscribe(res=>{
+     this.UserList();
+    },(err:any)=>{
+      console.log(err)
+    })
   }}
-}
+
+  userStatusToggle(id:string){
+    let result = confirm("do you want to change status");
+    if(result){
+      this.restService.getDataById('giftshop',id).subscribe((res:any)=>{
+
+        let dbObj=res;
+        dbObj.userStatus=false;
+        let changedObj={
+          database:'giftshop',
+          id:dbObj._id,
+          rev:dbObj._rev,
+          changedValue:dbObj
+        }
+        this.restService.updateData(changedObj).subscribe(res=>{
+          this.toastr.success("status updated");
+          
+        this.UserList()
+        });
+        
+      });
+      // let changedObj={
+      //   database:'giftshop',
+      //   id:id,
+      //   rev:rev,
+
+      }
+      // this.restService.updateData()
+    }
+
+  }
+
