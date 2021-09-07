@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { OrderService } from '../order.service';
+import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
 
   
-  constructor(private restService:RestService) { }
+  constructor(private restService:RestService,private productService:ProductService,private orderService:OrderService) { }
 
   ngOnInit(): void {
 
@@ -27,7 +29,7 @@ export class DashboardComponent implements OnInit {
 
   loadProducts(){
 
-    this.restService.getAllDataByType('products').subscribe((res:any)=>{
+    this.productService.getAllData().subscribe((res:any)=>{
       console.log(res.docs)
       // let data=res.rows.map((obj:any)=>obj.doc)
       let data =res.docs;
@@ -40,7 +42,8 @@ export class DashboardComponent implements OnInit {
 
   loadOrders(){
     // loading orders to chart
-    this.restService.getAllDataByType('orders').subscribe((res:any)=>{
+
+    this.orderService.getAllOrders().subscribe((res:any)=>{
      console.log('yesh')
       // console.table(res.rows)
       // let data=res.rows.map((obj:any)=>obj.doc);

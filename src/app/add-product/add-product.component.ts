@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 
 import { crud } from '../crud';
+import { ProductService } from '../product.service';
 
 import { RestService } from '../rest.service';
 import { ValidationService } from '../validationClass';
@@ -14,7 +15,7 @@ import { ValidationService } from '../validationClass';
 
 export class AddProductComponent implements OnInit {
 
-  constructor(private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private restService: RestService) { }
+  constructor(private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private restService: RestService,private productService:ProductService) { }
 
 
  crud=new crud();
@@ -71,7 +72,8 @@ export class AddProductComponent implements OnInit {
           type:"products"
         };
         
-       this.restService.addData(productObj,"giftshop").subscribe( (res:any)=>{
+
+        this.productService.addData(productObj).subscribe( (res:any)=>{
          this.toastr.success("Successfully added");
        },err=>{
         console.log("Error");
