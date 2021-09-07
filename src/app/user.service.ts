@@ -13,7 +13,6 @@ export class UserService {
   }
   
   getDataById(id:string){
-
     return this.restService.getDataById('giftshop',id)
   }
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { crud } from '../crud';
-import { RestService } from '../rest.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -13,7 +11,6 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
     private toastr: ToastrService,
-    private restService: RestService
   ) {}
   users: any;
   searchBox: string = '';
@@ -63,6 +60,7 @@ export class UsersComponent implements OnInit {
   userStatusToggle(id: string) {
     let result = confirm('do you want to change status');
     if (result) {
+
       this.userService.getDataById(id).subscribe((res: any) => {
         let dbObj = res;
         dbObj.userStatus = false;
