@@ -58,7 +58,7 @@ export class crud{
 
     // getDataById
 
-    static getDataById(database:string,id:any){
+    static getDataById(database:string,id:string){
         const url=endpoint+database+'/'+id;
         return axios.get(url,{headers:{Authorization:basicAuth}});
     }

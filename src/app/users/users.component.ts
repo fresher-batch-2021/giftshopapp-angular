@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
 
   constructor(private toastr:ToastrService,private restService:RestService){}
   users:any
-  searchBox:any
+  searchBox:string=""
 
   ngOnInit(): void {
     this.UserList();

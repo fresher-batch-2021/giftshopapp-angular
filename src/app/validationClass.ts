@@ -6,13 +6,13 @@ import { Injectable } from "@angular/core";
 
 export class ValidationService{
 
-isValidString(value:any,errMessage:any){
+isValidString(value:string,errMessage:string){
 if(value==null||value==undefined){
     throw new Error(errMessage)
 }
 }
 
-isValidEmail(value:any,errMessage:any){
+isValidEmail(value:string,errMessage:string){
     this.isValidString(value,"email can't be empty")
     // email validati0on are here
     if(value.trim() == ""){
@@ -20,7 +20,7 @@ isValidEmail(value:any,errMessage:any){
     }
 }
 
-isValidPassword(value:any,errMessage:any){
+isValidPassword(value:string,errMessage:string){
     this.isValidString(value,"password can't be empty")
     // password validation are here
     if(value.trim() == ""){

@@ -16,7 +16,7 @@ export class AdminOrdersComponent implements OnInit {
 
   constructor(private restService:RestService,private toastr:ToastrService,private route :Router) { }
 orders:any;
-searchBox:any
+searchBox:string="";
   ngOnInit(): void {
     this.orderList();
   }

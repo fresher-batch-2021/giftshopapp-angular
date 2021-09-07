@@ -41,6 +41,7 @@ export class EditProductsComponent implements OnInit {
   //  ===========
   getDetails() {
     let id = this.route.snapshot.paramMap.get('id');
+    
  
     this.restService.getDataById('giftshop', id).subscribe((res:any)=>{
       console.table("yesh",res);
@@ -75,8 +76,8 @@ export class EditProductsComponent implements OnInit {
     };
 
     this.restService.updateData(updateData).subscribe((res:any)=>{
-    
-      this.router.navigate(['../productcrud']);
+      
+      this.router.navigate(['products']);
     })
 
     
