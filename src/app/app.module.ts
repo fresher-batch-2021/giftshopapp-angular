@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InterceptorService } from './interceptor.service';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { SharedModule } from './shared/shared.module';
     
     BrowserAnimationsModule,
   //  ProductsModule,
+  DataTablesModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,

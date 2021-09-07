@@ -14,6 +14,7 @@ import { SearchPipe } from '../search.pipe';
 import { EditProductsComponent } from '../edit-products/edit-products.component';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { SharedModule } from '../shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     ProductsRoutingModule,
     SharedModule,
+    DataTablesModule,
     
     FormsModule,
     ReactiveFormsModule,

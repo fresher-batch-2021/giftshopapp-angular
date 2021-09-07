@@ -6,9 +6,9 @@
     </section>
     <!-- (keydown.enter)='productSearch()'  -->
     
-
-    <table class="contentTable"> 
-        <Caption>Product-Details</Caption>
+<div style="margin: 20px;">
+    <table datatable  [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" class="contentTable"> 
+        <!-- <Caption>Product-Details</Caption> -->
         <thead>
             <tr>
                 <th id="productSno" class="leftCorner">S.no</th>
@@ -22,8 +22,8 @@
                 <th id="productDelete" class="rightCorner">Delete</th>
             </tr>
         </thead>
-        <tbody *ngFor='let product of (products |search:searchBox); let i=index'>
-            <tr>
+        <tbody >
+            <tr *ngFor='let product of products; let i=index'>
                 <td>{{i+1}}</td>
                 <td>
                     <figure>
@@ -41,4 +41,5 @@
         </tbody>
         
     </table>
+</div>
 </main>

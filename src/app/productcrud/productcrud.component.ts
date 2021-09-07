@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
@@ -11,13 +12,26 @@ import { RestService } from '../rest.service';
 })
 export class ProductcrudComponent implements OnInit {
 
-  constructor(private productService: ProductService,private restService:RestService) { }
+  // title = 'datatable';
+  dtOptions: DataTables.Settings = {};//dataTable
+  dtTrigger: Subject<any> = new Subject();//dataTable
 
+  
   products: any;
   searchBox: string = "";
 
+  constructor(private productService: ProductService,private restService:RestService) { }
+
+
 
   ngOnInit(): void {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };//for dataTable
+
     this.productList();
   }
 
@@ -27,6 +41,10 @@ export class ProductcrudComponent implements OnInit {
       console.log('yesh',res)
       let data=res.docs;
       this.products = data;
+
+      
+      this.dtTrigger.next();//for dataTable
+
       // console.table(this.products)
     },(err:any)=>{
         console.log(err);
@@ -37,25 +55,6 @@ export class ProductcrudComponent implements OnInit {
 
   
   
-  productSearch() {
-
-      let search :any= this.searchBox;
-
-      this.restService.getAllDataByType('products').subscribe((res:any)=>{
-      
-        let productData=res.docs;
-        console.table("yesh",productData)
-
-      if (search != null && search != "") {
-        let value = productData.filter((obj: any) => obj.name.toLowerCase()==search.toLowerCase());
-        
-        this.products = value;
-      }
-      else {
-        this.productList();
-      }
-    });
-}
 
   // deleting data
   deleteProduct(id: string, rev: string) {
