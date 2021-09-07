@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../order.service';
-import { ProductService } from '../product.service';
 import * as _ from 'lodash';
 import { RestService } from '../rest.service';
 
@@ -13,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
 
   
-  constructor(private productService: ProductService, private orderService:OrderService,private restService:RestService) { }
+  constructor(private restService:RestService) { }
 
   ngOnInit(): void {
 

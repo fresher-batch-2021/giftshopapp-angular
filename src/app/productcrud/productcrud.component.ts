@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
 
 
@@ -20,7 +19,7 @@ export class ProductcrudComponent implements OnInit {
   products: any;
   searchBox: string = "";
 
-  constructor(private productService: ProductService,private restService:RestService) { }
+  constructor(private restService:RestService) { }
 
 
 
