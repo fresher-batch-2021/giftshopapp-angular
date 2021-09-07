@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { crud } from '../crud';
+import { LoginService } from '../login.service';
 import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   myLoginForm!: FormGroup;
 
 
-  constructor(private fb:FormBuilder,private toastr:ToastrService, private route: Router,private validator:ValidationService) {
+  constructor(private fb:FormBuilder,private toastr:ToastrService, private route: Router,private validator:ValidationService,private loginService:LoginService) {
   }
 
   setData(key: string, value: any) {
@@ -54,9 +55,12 @@ export class LoginComponent implements OnInit {
       };
 
       //sending data to server
-      crud.Login(loginobj).then(res => {
 
-        let data = res.data.docs[0];
+      this.loginService.login(email,password).subscribe((res:any)=>{
+        console.log("kskdksmdks",res.docs[0])
+
+
+        let data = res.docs[0];
         this.setData("IsLoggedIn", JSON.stringify(true));
         this.setData("LOGGED_IN_USER",JSON.stringify(data))
         this.setData("userData",JSON.stringify(data))
@@ -76,16 +80,14 @@ export class LoginComponent implements OnInit {
         else {
           this.toastr.error("Invalid Credentials")
         }
-      }).catch(err => {
-       
-          this.toastr.error("Login Failed")
+      },err=>{
           
-        
+        this.toastr.error("Login Failed")
       });
     }
 
     catch(err){
-      console.log(err.message)
+      console.log(err)
       
       this.toastr.error("unable to login")
     }

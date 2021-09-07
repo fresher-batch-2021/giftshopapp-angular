@@ -71,4 +71,18 @@ deleteData(deleteObj:any){
   const url=this.endpoint+database+'/'+id+'?rev='+rev;
   return this.http.delete(url);
 }
+// login
+login(email:string,password:string){
+  const url=endpoint+'giftshop/_find'
+  let loginData={
+    selector:{
+      email:email,
+      password:password
+    },
+    fields:["id", "name", "email","role"]
+  };
+
+  return this.http.post(url,loginData)
+}
+
 }

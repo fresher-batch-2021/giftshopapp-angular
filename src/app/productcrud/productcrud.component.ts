@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Product } from '../product';
 import { ProductService } from '../product.service';
 
 import { RestService } from '../rest.service';
+import { NgxSpinnerService } from "ngx-spinner";//spinner
 
 
 @Component({
@@ -20,12 +22,20 @@ export class ProductcrudComponent implements OnInit {
   products: any;
   searchBox: string = "";
 
-  constructor(private productService: ProductService, private restService: RestService) { }
+  constructor(private productService: ProductService, private restService: RestService,private spinner: NgxSpinnerService) { }
 
 
 
   ngOnInit(): void {
 
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 1000);
+    
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -39,7 +49,9 @@ export class ProductcrudComponent implements OnInit {
 
     this.productService.getAllData().subscribe((res: any) => {
       console.log('yesh', res)
-      let data = res.docs;
+      
+      let data :Product[]= res.docs;
+      
       this.products = data;
 
 

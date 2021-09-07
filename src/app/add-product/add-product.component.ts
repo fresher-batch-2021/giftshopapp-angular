@@ -3,9 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 
 import { crud } from '../crud';
+import { Product } from '../product';
 import { ProductService } from '../product.service';
-
-import { RestService } from '../rest.service';
 import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-add-product',
@@ -15,20 +14,21 @@ import { ValidationService } from '../validationClass';
 
 export class AddProductComponent implements OnInit {
 
-  constructor(private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private restService: RestService,private productService:ProductService) { }
+  constructor(private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private productService:ProductService) { }
 
 
  crud=new crud();
-  addProductsForm!:FormGroup
+  addProductsForm!:FormGroup;
   imagePath:string='';
+  ProductTypeObj!:Product;
 
   ngOnInit(): void {
     this.addProductsForm=this.fb.group({
-      productName : new FormControl('',Validators.required),
-      productPrice : new FormControl('',Validators.required),
-      productImage : new FormControl('',Validators.required),
-      productQuantity : new FormControl('',Validators.required),
-      productDescription : new FormControl('',Validators.required)
+      name : new FormControl('',Validators.required),
+      price : new FormControl('',Validators.required),
+      imageUrl : new FormControl('',Validators.required),
+      quantity : new FormControl('',Validators.required),
+      description : new FormControl('',Validators.required)
     })
   }
   // used to upload a file
@@ -39,15 +39,16 @@ export class AddProductComponent implements OnInit {
     addProduct(){
 
       
-      this.addProductsForm.value.productImage=this.imagePath;
+      this.addProductsForm.value.imageUrl=this.imagePath;
 
-      let formObj=this.addProductsForm.value;
+      let formObj:Product =this.addProductsForm.value;
+
       console.table(formObj)
-      let name =formObj.productName;
-      let price = formObj.productPrice;
-      let image = formObj.productImage;
-      let quantity = formObj.productQuantity;
-      let description = formObj.productDescription;
+      let name =formObj.name;
+      let price = formObj.price;
+      let image = formObj.imageUrl;
+      let quantity = formObj.quantity;
+      let description = formObj.description;
 
      if(name==''){
        this.toastr.warning('name cannot be empty')
@@ -63,17 +64,19 @@ export class AddProductComponent implements OnInit {
         this.validator.isValidString(name,"name can't be empty")
         this.validator.isValidString(description,"description can't be empty")
   
-        let productObj={
+         let productObj={
           name:name,
           price:price,
           imageUrl:image,
           quantity:quantity,
           description:description,
-          type:"products"
+          // type:"products"
         };
         
+        const product = new Product();
+        product.setData(productObj);
 
-        this.productService.addData(productObj).subscribe( (res:any)=>{
+        this.productService.addData(product).subscribe( (res:any)=>{
          this.toastr.success("Successfully added");
        },err=>{
         console.log("Error");

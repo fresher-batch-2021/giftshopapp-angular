@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Orders } from './orders';
 import { RestService } from './rest.service';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class OrderService {
   getAllOrders(){
    return this.restService.getAllDataByType('orders')
   }
-  getOrderById(id:string){
+  getOrderById(id:string):any{
     return this.restService.getDataById('giftshop', id);
   }
   updateOrder(updateObj:any,id:string){

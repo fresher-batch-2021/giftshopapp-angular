@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { OrderService } from '../order.service';
+import { Orders } from '../orders';
+import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
 
@@ -13,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
 
   
-  constructor(private restService:RestService,private productService:ProductService,private orderService:OrderService) { }
+  constructor(private productService:ProductService,private orderService:OrderService) { }
 
   ngOnInit(): void {
 
@@ -32,7 +34,7 @@ export class DashboardComponent implements OnInit {
     this.productService.getAllData().subscribe((res:any)=>{
       console.log(res.docs)
       // let data=res.rows.map((obj:any)=>obj.doc)
-      let data =res.docs;
+      let data:Product[] =res.docs;
       console.table(data)
       this.products=data;
       this.loadOrders();
@@ -44,18 +46,17 @@ export class DashboardComponent implements OnInit {
     // loading orders to chart
 
     this.orderService.getAllOrders().subscribe((res:any)=>{
-     console.log('yesh')
-      // console.table(res.rows)
-      // let data=res.rows.map((obj:any)=>obj.doc);
-      let data = res.docs;
-      console.table(data)
-
-      console.table(data.flatMap((obj:any)=>obj.products))
-      this.orders = [];
-      data.filter((obj:any)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:any)=>this.orders.push(...obj.products));
     
+      let data:Orders[] = res.docs;
+      // console.table(data)
 
+      // console.table(data.flatMap((obj:Orders)=>obj.products))
+      this.orders = [];
+      data.filter((obj:Orders)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:Orders)=>this.orders.push(...obj.products));
+    
+      console.table(this.orders)
       for(let product of this.products){
+        
       let quantities =  this.orders.filter( (obj:any)=> obj.productName == product.name).map((obj:any)=>obj.quantity);
       let noOfOrders = _.sum(quantities);
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,8 @@ import { InterceptorService } from './interceptor.service';
 import { ProductsModule } from './products/products.module';
 import { SharedModule } from './shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
+// spinner
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,10 +54,13 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     GoogleChartsModule.forRoot(),
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot( ),
+    
     AppRoutingModule,
 
   ],
+  
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   

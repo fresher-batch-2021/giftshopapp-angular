@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../user.service';
+import { Users } from '../users';
 
 @Component({
   selector: 'app-users',
@@ -23,7 +24,7 @@ export class UsersComponent implements OnInit {
     // listing users
     this.userService.getAllData().subscribe(
       (res: any) => {
-        let data = res.docs;
+        let data:Users[] = res.docs;
         console.log(data);
         this.users = data.filter((obj: any) => obj.role == 'USER');
       },
@@ -37,15 +38,15 @@ export class UsersComponent implements OnInit {
     let search = this.searchBox;
 
     this.userService.getAllData().subscribe((res: any) => {
-      let datas = res.docs;
+      let datas:Users[] = res.docs;
       console.log(datas);
       let userData = datas.filter((obj: any) => obj.role == 'USER');
 
       if (search != null && search != '') {
         let value = userData.filter(
-          (ob: any) => ob.name == search || ob.email == search
+          (ob: Users) => ob.name == search || ob.email == search
         );
-        if (value == '') {
+        if (value[0] ==null) {
           this.toastr.warning('No such data exists');
           this.UserList();
         } else {
@@ -62,10 +63,16 @@ export class UsersComponent implements OnInit {
     if (result) {
 
       this.userService.getDataById(id).subscribe((res: any) => {
-        let dbObj = res;
-        dbObj.userStatus = false;
+        let userObj :Users= res;
+        if(userObj.userStatus==false){
+          userObj.userStatus = true;
+        }
+        else{
+          userObj.userStatus = false;
+        }
+        
 
-        this.userService.updateData(dbObj).subscribe((res) => {
+        this.userService.updateData(userObj).subscribe((res) => {
           this.toastr.success('status updated');
 
           this.UserList();

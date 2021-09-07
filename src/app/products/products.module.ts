@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
@@ -15,6 +15,7 @@ import { EditProductsComponent } from '../edit-products/edit-products.component'
 import { AddProductComponent } from '../add-product/add-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { DataTablesModule } from 'angular-datatables';
     
     ProductcrudComponent,
     EditProductsComponent,
-    AddProductComponent,
+    AddProductComponent
     // SearchPipe
     
   ],
@@ -37,8 +38,10 @@ import { DataTablesModule } from 'angular-datatables';
     // GoogleChartsModule.forRoot(),
     HttpClientModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule,
 
   ]
+  
   
 })
 export class ProductsModule { }

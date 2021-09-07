@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import * as XLSX from 'xlsx';
 import { OrderService } from '../order.service';
+import { Orders } from '../orders';
 import { RestService } from '../rest.service';
 
 
@@ -27,8 +28,9 @@ export class AdminOrdersComponent implements OnInit {
 
     let data = this.orderService.getAllOrders();
     data.subscribe((res: any) => {
-      let values = res.docs;
+      let values:Orders[] = res.docs;
       this.orders = values;
+
     }, (err: any) => {
       this.toastr.error("Error in getting data")
     });
@@ -41,8 +43,9 @@ export class AdminOrdersComponent implements OnInit {
 
     let productDatas = this.orderService.getOrderById(id)
 
-    productDatas.subscribe((res: any) => {
-      let productObj = res;
+    productDatas.subscribe((res: Orders) => {
+
+      let productObj:Orders = res;
       console.log(productObj);
       productObj.status = 'DELIVERED';
 
@@ -89,15 +92,21 @@ export class AdminOrdersComponent implements OnInit {
     let search = this.searchBox;
 
     this.orderService.getAllOrders().subscribe((res: any) => {
-      console.log(res)
+      
       let datas = res;
-      console.log(datas)
+      console.log("result from db",datas)
       // let productData = datas.map((obj: any) => obj.doc);
-      let productData = res.docs;
+
+      let productData:Orders[] = res.docs;
+
       if (search != null && search != "") {
-        let value = productData.filter((ob: any) => ob.name == search || ob.phonenumber == search || ob.status.toLowerCase() == search.toLowerCase())
-        if (value == "") {
-          this.toastr.warning("No such data exist")
+        let value:Orders[] = productData.filter((ob: Orders) => ob.status.toLowerCase().indexOf(search.toLowerCase()) !=-1 ||ob.name.toLowerCase().indexOf(search.toLowerCase()) != -1  )
+        if (value[0] ==null ) {
+          this.toastr.warning("","No such data exist",{
+          
+          
+          })
+          
           this.orderList();
         }
         else {

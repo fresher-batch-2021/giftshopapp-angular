@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { crud } from '../crud';
+import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
 import { UserService } from '../user.service';
@@ -17,7 +18,7 @@ export class EditProductsComponent implements OnInit {
 
 
   public id: string = "";
-  constructor(private validator: ValidationService, private route: ActivatedRoute,private router:Router,private restService:RestService,private productService:ProductService) {
+  constructor( private route: ActivatedRoute,private router:Router,private restService:RestService,private productService:ProductService) {
 
 
   }
@@ -46,9 +47,11 @@ export class EditProductsComponent implements OnInit {
     
  
     this.productService.getDataById(id).subscribe((res:any)=>{
+      console.error("hi")
       console.table("yesh",res);
       
-      let data=res;
+      let data:Product=res;
+
       this.productName = data.name;
       this.productPrice = data.price;
       this.productImage = data.imageUrl;
@@ -62,22 +65,27 @@ export class EditProductsComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     let rev =this.route.snapshot.paramMap.get('rev')
     
+    
+    
+    
     let changeObj = {
       name:this.productName,
       price: this.productPrice,
       imageUrl:this.productImage,
       quantity: this.productQuantity,
       description: this.productDescription,
-      type:"products"
+      
     };
-
-
+    let editedProduct:Product=new Product();
+    editedProduct.setData(changeObj)
+    
     let updateData={
       id:id,
       rev:rev,
-      changedValue:changeObj
+      changedValue:editedProduct
     };
 
+    
     this.productService.updateData(updateData).subscribe((res:any)=>{
       
       this.router.navigate(['products']);
