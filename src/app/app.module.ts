@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { UsersComponent } from './users/users.component';
-import { ProductcrudComponent } from './productcrud/productcrud.component';
+import { productListComponent } from './productList/productList.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
@@ -33,7 +33,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     LoginComponent,
     AdminHeaderComponent,
     UsersComponent,
-    // ProductcrudComponent,
+    // productListComponent,
     DashboardComponent,
     // AddProductComponent,
     AdminOrdersComponent,

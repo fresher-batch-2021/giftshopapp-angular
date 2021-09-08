@@ -8,11 +8,11 @@ import { NgxSpinnerService } from "ngx-spinner";//spinner
 
 
 @Component({
-  selector: 'app-productcrud',
-  templateUrl: './productcrud.component.html',
-  styleUrls: ['./productcrud.component.css']
+  selector: 'app-productList',
+  templateUrl: './productList.component.html',
+  styleUrls: ['./productList.component.css']
 })
-export class ProductcrudComponent implements OnInit {
+export class productListComponent implements OnInit {
 
   // title = 'datatable';
   dtOptions: DataTables.Settings = {};//dataTable
