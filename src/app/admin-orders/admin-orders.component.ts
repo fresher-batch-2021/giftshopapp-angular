@@ -46,7 +46,7 @@ export class AdminOrdersComponent implements OnInit {
     productDatas.subscribe((res: Orders) => {
 
       let productObj:Orders = res;
-      console.log(productObj);
+      
       productObj.status = 'DELIVERED';
 
       // now update to api
@@ -58,8 +58,6 @@ export class AdminOrdersComponent implements OnInit {
 
         this.orderList();
 
-      }, err => {
-        console.log(err)
       });
     });
 
@@ -76,8 +74,6 @@ export class AdminOrdersComponent implements OnInit {
    
     this.orderService.deleteOrder(id,rev).subscribe((res: any) => {
 
-    }, err => {
-      console.log(err);
     });
   }
 
@@ -89,7 +85,6 @@ export class AdminOrdersComponent implements OnInit {
       
       let datas = res;
       console.log("result from db",datas)
-      // let productData = datas.map((obj: any) => obj.doc);
 
       let productData:Orders[] = res.docs;
 

@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   loadProducts(){
 
     this.productService.getAllData().subscribe((res:any)=>{
-      console.log(res.docs)
+      
       // let data=res.rows.map((obj:any)=>obj.doc)
       let data:Product[] =res.docs;
       console.table(data)
@@ -48,13 +48,11 @@ export class DashboardComponent implements OnInit {
     this.orderService.getAllOrders().subscribe((res:any)=>{
     
       let data:Orders[] = res.docs;
-      // console.table(data)
-
+ 
       // console.table(data.flatMap((obj:Orders)=>obj.products))
       this.orders = [];
       data.filter((obj:Orders)=>obj.status=='DELIVERED' || obj.status =='ORDERED').map( (obj:Orders)=>this.orders.push(...obj.products));
     
-      console.table(this.orders)
       for(let product of this.products){
         
       let quantities =  this.orders.filter( (obj:any)=> obj.productName == product.name).map((obj:any)=>obj.quantity);

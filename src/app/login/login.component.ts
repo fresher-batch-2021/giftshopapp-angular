@@ -87,9 +87,8 @@ export class LoginComponent implements OnInit {
     }
 
     catch(err){
-      console.log(err)
       
-      this.toastr.error("unable to login")
+      this.toastr.error("unable to login please try again later")
     }
     }}
 

@@ -48,7 +48,7 @@ export class productListComponent implements OnInit {
   productList() {
 
     this.productService.getAllData().subscribe((res: any) => {
-      console.log('yesh', res)
+      
       
       let data :Product[]= res.docs;
       

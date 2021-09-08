@@ -76,15 +76,11 @@ export class AddProductComponent implements OnInit {
 
         this.productService.addData(product).subscribe( (res:any)=>{
          this.toastr.success("Successfully added");
-       },err=>{
-        console.log("Error");
-        this.toastr.success("Failed to add");
        });
 
        
       }
       catch(err){
-        console.log(err)
         this.toastr.error("Unable to add products")
       }
     

@@ -27,9 +27,6 @@ export class UsersComponent implements OnInit {
         let data:Users[] = res.docs;
         console.log(data);
         this.users = data.filter((obj: Users) => obj.role == 'USER');
-      },
-      (err: any) => {
-        console.log('Error' + err.data);
       }
     );
   }
