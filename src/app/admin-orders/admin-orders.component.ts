@@ -17,7 +17,7 @@ import { RestService } from '../rest.service';
 export class AdminOrdersComponent implements OnInit {
 
   constructor(private restService: RestService, private toastr: ToastrService, private route: Router,private orderService:OrderService) { }
-  orders: any;
+  orders!: Orders[];
   searchBox: string = "";
   ngOnInit(): void {
     this.orderList();

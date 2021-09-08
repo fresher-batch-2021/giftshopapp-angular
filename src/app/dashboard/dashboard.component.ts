@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  products:any;
+  products!:Product[];
 
   orders:any;
 
