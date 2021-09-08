@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Product } from './product';
 import { RestService } from './rest.service';
 
 @Injectable({
@@ -8,15 +9,16 @@ export class ProductService {
 
   constructor(private restService:RestService) { }
 
-  addData(product:any){
+  addData(product:Product){
     return this.restService.addData(product,'giftshop')
   }
   getAllData(){
 
     return this.restService.getAllDataByType('products');
   }
-  getDataById(id :any){
-    return this.restService.getDataById('giftshop', id);
+  getDataById(id :string){
+
+    return this.restService.getDataById('giftshop', JSON.parse(id));
     
   }
   deleteData(id:string,rev:string){
@@ -27,13 +29,13 @@ export class ProductService {
     }
     return this.restService.deleteData(deleteObj);
   }
-  updateData(updateObj:any){
+  updateData(updateObj:Product){
     
     let updateData={
       database:"giftshop",
-      id:updateObj.id,
-      rev:updateObj.rev,
-      changedValue:updateObj.changedValue
+      id:updateObj._id,
+      rev:updateObj._rev,
+      changedValue:updateObj
     };
     return this.restService.updateData(updateData)
   }

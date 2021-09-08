@@ -13,6 +13,8 @@ export class Product {
     }
 
     setData(productObj: any) {
+        this._id = productObj._id;
+        this._rev= productObj._rev;
         this.name = productObj.name;
         this.price = productObj.price;
         this.imageUrl = productObj.imageUrl;

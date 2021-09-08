@@ -43,12 +43,12 @@ export class EditProductsComponent implements OnInit {
 
   //  ===========
   getDetails() {
-    let id = this.route.snapshot.paramMap.get('id');
+    let id = JSON.stringify(this.route.snapshot.paramMap.get('id'));
     
  
     this.productService.getDataById(id).subscribe((res:any)=>{
-      console.error("hi")
-      console.table("yesh",res);
+      
+      console.table("productDetails",res);
       
       let data:Product=res;
 
@@ -69,6 +69,8 @@ export class EditProductsComponent implements OnInit {
     
     
     let changeObj = {
+      _id:id,
+      _rev:rev,
       name:this.productName,
       price: this.productPrice,
       imageUrl:this.productImage,
@@ -86,7 +88,7 @@ export class EditProductsComponent implements OnInit {
     };
 
     
-    this.productService.updateData(updateData).subscribe((res:any)=>{
+    this.productService.updateData(editedProduct).subscribe((res:any)=>{
       
       this.router.navigate(['products']);
     })
