@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RestService } from './rest.service';
+import { Users } from './users';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UserService {
     return this.restService.getDataById('giftshop',id)
   }
 
-  updateData(updateObj:any){
+  updateData(updateObj:Users){
 
     let changedObj={
       database:'giftshop',

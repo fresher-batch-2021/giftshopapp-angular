@@ -51,14 +51,8 @@ export class AdminOrdersComponent implements OnInit {
 
       // now update to api
 
-      const changedObj = {
-        database: "giftshop",
-        id: id,
-        rev: productObj._rev,
-        changedValue: productObj
-      };
 
-      this.orderService.updateOrder(productObj,id).subscribe((response: any) => {
+      this.orderService.updateOrder(productObj).subscribe((response: any) => {
 
         this.toastr.success("status has been updated")
 

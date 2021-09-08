@@ -15,12 +15,12 @@ export class OrderService {
   getOrderById(id:string):any{
     return this.restService.getDataById('giftshop', id);
   }
-  updateOrder(updateObj:any,id:string){
+  updateOrder(updateObj:Orders){
 
 
     const changedObj = {
       database: "giftshop",
-      id:id,
+      id:updateObj._id,
       rev:updateObj._rev,
       changedValue: updateObj
     };
