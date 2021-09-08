@@ -27,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 // spinner
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ErrorInterceptor } from './error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,12 +59,13 @@ import { NgxSpinnerModule } from "ngx-spinner";
     
     AppRoutingModule,
 
+
   ],
   
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-  
+    {provide: HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })

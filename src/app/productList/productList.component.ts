@@ -58,8 +58,6 @@ export class productListComponent implements OnInit {
       this.dtTrigger.next();//for dataTable
 
       // console.table(this.products)
-    }, (err: any) => {
-      console.log(err);
     });
 
 
