@@ -72,7 +72,7 @@ export class AdminOrdersComponent implements OnInit {
    */
 
   delete(id: string, rev: string) {
-    // file is crud.ts in app
+  
    
     this.orderService.deleteOrder(id,rev).subscribe((res: any) => {
 

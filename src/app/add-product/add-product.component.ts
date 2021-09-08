@@ -2,7 +2,6 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
-import { crud } from '../crud';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { ValidationService } from '../validationClass';
@@ -17,7 +16,6 @@ export class AddProductComponent implements OnInit {
   constructor(private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private productService:ProductService) { }
 
 
- crud=new crud();
   addProductsForm!:FormGroup;
   imagePath:string='';
   ProductTypeObj!:Product;

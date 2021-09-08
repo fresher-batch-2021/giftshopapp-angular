@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
-import { crud } from '../crud';
+
 import { LoginService } from '../login.service';
 import { ValidationService } from '../validationClass';
 @Component({

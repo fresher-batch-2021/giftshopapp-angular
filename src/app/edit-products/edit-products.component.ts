@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { crud } from '../crud';
+
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { RestService } from '../rest.service';
@@ -30,7 +30,6 @@ export class EditProductsComponent implements OnInit {
   productDescription: string = "";
   file: any;
 
-  crud = new crud();
 
 
   ngOnInit(): void {
