@@ -16,6 +16,7 @@ import { AddProductComponent } from '../add-product/add-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PageComponent } from '../page/page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     
     productListComponent,
     EditProductsComponent,
-    AddProductComponent
+    AddProductComponent,
+    PageComponent
     // SearchPipe
     
   ],

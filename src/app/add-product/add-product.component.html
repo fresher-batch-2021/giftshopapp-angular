@@ -1,15 +1,4 @@
-
-<main>
-    <section class="addProduct">
-        
-        <section>
-            <div class="regLogo">
-                <img src="assets/Images/gift.png" alt="">
-                <p>Gift corner</p><br>
-            </div>
-        </section>
-
-        <section>
+<app-page>
             <form [formGroup]="addProductsForm" (submit)="addProduct()">
 
                 <div class="field">
@@ -42,11 +31,7 @@
                     <label for="description" title="description"></label>
                 </div>
 
-                <button type="submit" [disabled]="!addProductsForm.valid">Add product</button>
+                <button class="btnProduct" type="submit" [disabled]="!addProductsForm.valid">Add product</button>
 
             </form>
-        </section>
-    </section>
-
-
-</main>
+        </app-page>
