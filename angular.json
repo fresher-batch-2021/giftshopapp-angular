@@ -37,7 +37,6 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
               "src/styles.less",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             

@@ -12,9 +12,11 @@
                 <a routerLink='/dashboard'><img class="navbarimg" src="assets/Images/gift.png" alt=""></a>
                 <p class="logoText">Gift Corner</p>
             </div>
+            <ng-container *ngIf="(user | async) ">
             <div class="navlinks" id="navlinks">
-                <a (click)="logout()">Logout</a>
+                <a  (click)="logout()">Logout</a>
             </div>
+        </ng-container>
         </div>
         <nav>
             <div class="navcontent">

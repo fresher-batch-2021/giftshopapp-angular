@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Toast, ToastrService } from 'ngx-toastr';
 
 import { LoginService } from '../login.service';
+import { UserService } from '../user.service';
 import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-login',
@@ -15,9 +16,10 @@ export class LoginComponent implements OnInit {
 
   router: any;
   myLoginForm!: FormGroup;
+  
 
 
-  constructor(private fb:FormBuilder,private toastr:ToastrService, private route: Router,private validator:ValidationService,private loginService:LoginService) {
+  constructor(private fb:FormBuilder,private toastr:ToastrService, private route: Router,private validator:ValidationService,private loginService:LoginService,private userService:UserService) {
   }
 
   setData(key: string, value: any) {
@@ -57,7 +59,7 @@ export class LoginComponent implements OnInit {
       //sending data to server
 
       this.loginService.login(email,password).subscribe((res:any)=>{
-        console.log("kskdksmdks",res.docs[0])
+        console.log(res.docs[0])
 
 
         let data = res.docs[0];
@@ -68,6 +70,7 @@ export class LoginComponent implements OnInit {
         
 
         if (data.role == "ADMIN") {
+          this.userService.loginSubject.next(true);
           this.toastr.success("welcome admin");
           setTimeout(() => {
           this.route.navigate(['/dashboard']);
