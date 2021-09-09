@@ -70,7 +70,9 @@ export class LoginComponent implements OnInit {
         
 
         if (data.role == "ADMIN") {
+          
           this.userService.loginSubject.next(true);
+
           this.toastr.success("welcome admin");
           setTimeout(() => {
           this.route.navigate(['/dashboard']);

@@ -2,6 +2,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { without } from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import * as XLSX from 'xlsx';
 import { OrderService } from '../order.service';
@@ -118,6 +119,22 @@ export class AdminOrdersComponent implements OnInit {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();//creating a new workbook obj
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');//adding the sheet data into workbook
     XLSX.writeFile(wb, fileName);//downloading the file
+  }
+
+  getBgColor(deliveryStatus:string){
+      if(deliveryStatus=='DELIVERED'){
+        return '#84dd63';
+      }
+      else if(deliveryStatus=='ORDERED'){
+        return '#0077b6';
+        
+      }
+      else if(deliveryStatus=='CANCELED'){
+        return'#e5383b';
+      }
+      else{
+        return 'black';
+      }
   }
 
 }

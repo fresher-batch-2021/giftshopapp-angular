@@ -27,17 +27,17 @@
     </thead>
 
     <tbody *ngFor='let order of orders; let i=index'>
-        <tr>
+        <tr >
             <td>{{i+1}}</td>
             <td>{{order.name}}</td>
             <td>{{order.phonenumber}}</td>
             <td style="max-width: 100px;">{{order.address}}</td>
-            <td>{{order.totalAmount}}</td>
+            <td>₹{{order.totalAmount}}</td>
             <td>{{order.payment}}</td>
             <td >{{order.orderedDate  |date:"dd-MM-yyyy"}}</td>
             <td>{{order.deliveredDate |date:"dd-MM-yyyy"}}</td>
-            <td>{{order.status}}</td>
-            <td><button  class="statusBtn" type="button" (click)="update(order._id)">status to delivered</button></td>
+            <td [ngStyle]="{'color':getBgColor(order.status),'font-size': '20px'}">{{order.status}}</td>
+            <td ><button  class="statusBtn" type="button" (click)="update(order._id)">status to delivered</button></td>
         </tr>
     </tbody>
 </table>

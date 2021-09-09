@@ -19,7 +19,7 @@ export class AdminHeaderComponent implements OnInit {
   constructor(private route:Router,private toastr:ToastrService,private userService:UserService) {
    
     this.user = userService.loginSubject;
-    alert(this.user)
+    
    }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class AdminHeaderComponent implements OnInit {
 
   
   logout(){
-    this.userService.loginSubject.next(null);
+    this.userService.loginSubject.next(false);
 
     this.toastr.warning("Logging out");
     setTimeout(() => {
