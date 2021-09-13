@@ -29,6 +29,15 @@ import { DataTablesModule } from 'angular-datatables';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ErrorInterceptor } from './error.interceptor';
 import { CaptionDirective } from './caption.directive';
+// modal
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
+import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
+import { EditProductModalComponent } from './edit-product-modal/edit-product-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,32 +51,35 @@ import { CaptionDirective } from './caption.directive';
     // EditProductsComponent,
     FooterComponent,
     CaptionDirective,
+    ModalComponent,
+    
     // SearchPipe
   ],
   imports: [
     BrowserModule,
 
-    
-    
+
+
     BrowserAnimationsModule,
-  //  ProductsModule,
-  DataTablesModule,
+    //  ProductsModule,
+    DataTablesModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
     GoogleChartsModule.forRoot(),
     HttpClientModule,
-    ToastrModule.forRoot( ),
-    
-    AppRoutingModule,
+    ToastrModule.forRoot(),
 
+    AppRoutingModule,
+    //modal
+    MatDialogModule,MatInputModule, MatButtonModule, MatCardModule, MatFormFieldModule
 
   ],
-  
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
-    {provide: HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

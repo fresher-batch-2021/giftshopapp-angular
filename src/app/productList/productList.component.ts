@@ -5,6 +5,8 @@ import { ProductService } from '../product.service';
 
 import { RestService } from '../rest.service';
 import { NgxSpinnerService } from "ngx-spinner";//spinner
+import { MatDialog } from '@angular/material/dialog';
+import { AddProductModalComponent } from '../add-product-modal/add-product-modal.component';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class productListComponent implements OnInit {
   products: any;
   searchBox: string = "";
 
-  constructor(private productService: ProductService, private restService: RestService,private spinner: NgxSpinnerService) { }
+  constructor(private dialog:MatDialog, private productService: ProductService, private restService: RestService,private spinner: NgxSpinnerService) { }
 
 
 
@@ -80,6 +82,11 @@ export class productListComponent implements OnInit {
     }
   }
 
+  addProduct(){
+    this.dialog.open(AddProductModalComponent),{
+      panelClass:'modalClass'
+    }
+  }
 
 }
 

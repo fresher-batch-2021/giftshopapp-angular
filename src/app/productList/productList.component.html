@@ -2,7 +2,8 @@
 <main>
     <section class="searchBar">
         <input type="text" class="searchBox" name="searchBox" id="searchBox" [(ngModel)]="searchBox" placeholder="search">
-        <button class="addBtn" routerLink='add-product'>add product</button>
+        <!-- <button class="addBtn" routerLink='add-product'>add product</button> -->
+        <button mat-raised-button (click)="addProduct()" class="addBtn">addProduct</button>
     </section>
     <!-- (keydown.enter)='productSearch()'  -->
     

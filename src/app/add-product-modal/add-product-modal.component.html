@@ -1,0 +1,60 @@
+<!-- <h1  mat-dialog-title>Message</h1> -->
+
+<mat-dialog-content  >  
+    <section class="modalProduct">
+  
+      <section>
+        <div class="regLogo">
+          <img src="assets/Images/gift.png" alt="">
+          <p>Gift corner</p><br>
+        </div>
+      </section>
+      <section>
+  
+        <form [formGroup]="addProductsForm" (submit)="addProduct()">
+
+            <div class="field">
+                <input type="text" required autocomplete="off" autofocus='on' id="name" name="name"
+                    formControlName="name" >
+                <label for="name" title="Name "></label>
+            </div>
+            
+            <div class="field">
+                    <input type="number" required autocomplete="off" id="price"
+                        name="price" formControlName="price">
+                    <label for="price" title="Price"></label>
+            </div>
+
+            <div class="field">
+                <input type="file" (change)="onFileUpload($event)" required autocomplete="off" id="imageUrl"
+                    name="imageUrl" formControlName="imageUrl">
+                <label for="imageUrl" title=""></label>
+            </div>
+
+            <div class="field">
+                <input type="number" required autocomplete="off" id="quantity" name="quantity"
+                    formControlName="quantity">
+                <label for="quantity" title="Quantity"></label>
+            </div>
+
+            <div class="field">
+                <input type="text" required autocomplete="off" id="description" name="description"
+                    formControlName="description">
+                <label for="description" title="Description"></label>
+            </div>
+
+            <button class="modalBtn" type="submit" [disabled]="!addProductsForm.valid">Add product</button>
+
+        </form>
+  
+      </section>
+  
+  
+    </section>
+  
+</mat-dialog-content>
+
+
+<!-- <mat-dialog-actions>
+<button  mat-raised-button (click)="closeMe()">Close</button>
+</mat-dialog-actions> -->
