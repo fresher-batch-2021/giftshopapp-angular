@@ -1,4 +1,7 @@
 @import '~ngx-toastr/toastr';
+// color
+@errorColor:'red';
+
 
 *{
     margin: 0%;
@@ -10,8 +13,6 @@ a{
     font-size: 20px;
    
 }
-
-
 /* to remove button slider in number input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -22,9 +23,7 @@ input::-webkit-inner-spin-button {
 /*------------- Register, login page and orderPage-----------  */
 
 /* common codes */
-
 .regLogo img{
-   
     height: 45px;
     width: 45px;
     margin-left: 20px;
@@ -37,6 +36,7 @@ input::-webkit-inner-spin-button {
     letter-spacing: 2px;
     font-size: 25px;
 }
+
 .field input:valid + label::before,.field input:focus +label::before{
     line-height: 20px;
     font-size: 12px;
@@ -54,11 +54,10 @@ input::-webkit-inner-spin-button {
     background: #fff;
     padding: 0 6px;
     left: 9px;
-    color: red;
+    color: @errorColor;
 }
 .field{
     position: relative;
-    
     margin: 15px 20px 10px 20px ;
 }
 .field label::before{
@@ -71,6 +70,7 @@ input::-webkit-inner-spin-button {
     color: #777;
     transition: 300ms all;
 }
+
 .field input{
     width: 100%;
     line-height: 40px;
@@ -89,7 +89,9 @@ input::-webkit-inner-spin-button {
     border-color: blue;
 }
 .field input:focus + label::before{
+   
     color: blue;
+    
 }
 
 .RegisterContainer button,.loginContainer button,.orderPageContainer button{
@@ -107,7 +109,6 @@ input::-webkit-inner-spin-button {
 /* addProduct */
 /* Registration page container */
 .addProduct{
-    z-index: -1;
     position: relative;
     border: 2px solid #2a9d8f;
     border-radius: 12px;

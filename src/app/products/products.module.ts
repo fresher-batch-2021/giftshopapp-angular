@@ -31,7 +31,6 @@ import { PageComponent } from '../page/page.component';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
     SharedModule,
     DataTablesModule,
     
@@ -41,6 +40,7 @@ import { PageComponent } from '../page/page.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
+    ProductsRoutingModule,
 
   ]
   
