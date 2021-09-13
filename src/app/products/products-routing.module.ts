@@ -12,8 +12,14 @@ const routes: Routes = [
   
   {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard,RoleGuard]},
   
-  {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard,RoleGuard]},
-  
+  // {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard,RoleGuard]},
+  {
+    path:':id/:rev',children: [
+       {
+         path:'edit-products',component:EditProductsComponent,canActivate:[AuthGuard,RoleGuard]
+       }
+    ]
+  }
 ];
 
 @NgModule({

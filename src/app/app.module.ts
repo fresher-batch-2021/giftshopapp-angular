@@ -28,6 +28,7 @@ import { DataTablesModule } from 'angular-datatables';
 // spinner
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ErrorInterceptor } from './error.interceptor';
+import { CaptionDirective } from './caption.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { ErrorInterceptor } from './error.interceptor';
     AdminOrdersComponent,
     // EditProductsComponent,
     FooterComponent,
+    CaptionDirective,
     // SearchPipe
   ],
   imports: [
