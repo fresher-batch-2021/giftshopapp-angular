@@ -13,7 +13,7 @@ import { RestService } from '../rest.service';
 @Component({
   selector: 'app-admin-orders',
   templateUrl: './admin-orders.component.html',
-  styleUrls: ['./admin-orders.component.css']
+  styleUrls: ['./admin-orders.component.less']
 })
 export class AdminOrdersComponent implements OnInit {
 

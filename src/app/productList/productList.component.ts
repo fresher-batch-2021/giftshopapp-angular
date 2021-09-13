@@ -10,7 +10,7 @@ import { NgxSpinnerService } from "ngx-spinner";//spinner
 @Component({
   selector: 'app-productList',
   templateUrl: './productList.component.html',
-  styleUrls: ['./productList.component.css']
+  styleUrls: ['./productList.component.less']
 })
 export class productListComponent implements OnInit {
 
@@ -39,7 +39,8 @@ export class productListComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      processing: true
+      processing: true,
+      
     };//for dataTable
 
     this.productList();

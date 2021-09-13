@@ -9,7 +9,7 @@ import { Users } from '../users';
 @Component({
   selector: 'app-admin-header',
   templateUrl: './admin-header.component.html',
-  styleUrls: ['./admin-header.component.css']
+  styleUrls: ['./admin-header.component.less']
 })
 
 export class AdminHeaderComponent implements OnInit {

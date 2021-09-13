@@ -11,7 +11,7 @@ import { ValidationService } from '../validationClass';
 @Component({
   selector: 'app-edit-products',
   templateUrl: './edit-products.component.html',
-  styleUrls: ['./edit-products.component.css']
+  styleUrls: ['./edit-products.component.less']
 })
 
 export class EditProductsComponent implements OnInit {
