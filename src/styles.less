@@ -1,18 +1,17 @@
-@import '~ngx-toastr/toastr';
+@import "~ngx-toastr/toastr";
 // color
-@errorColor:'red';
+@errorColor: "red";
 
+* {
+  margin: 0%;
+  padding: 0%;
+}
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #2c80ff;
+}
 
-*{
-    margin: 0%;
-    padding: 0%; 
-}
-a{
-    text-decoration: none;
-    color: #2C80FF;
-    font-size: 20px;
-   
-}
 /* to remove button slider in number input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -23,44 +22,43 @@ input::-webkit-inner-spin-button {
 /*------------- Register, login page and orderPage-----------  */
 
 /* common codes */
-.regLogo img{
-    height: 45px;
-    width: 45px;
-    margin-left: 20px;
-    margin-top: 10px;
+.regLogo img {
+  height: 45px;
+  width: 45px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
-.regLogo p{
-    position: absolute;
-    top: 30px;
-    left: 70px;
-    letter-spacing: 2px;
-    font-size: 25px;
+.regLogo p {
+  position: absolute;
+  top: 30px;
+  left: 70px;
+  letter-spacing: 2px;
+  font-size: 25px;
 }
 
-.field input:valid + label::before,.field input:focus +label::before{
-    line-height: 20px;
-    font-size: 12px;
-    top: -10px; 
-    background-color: #fff;
-    padding: 0 6px;
-    left: 9px;
-    
+.formDecor {
+  line-height: 20px;
+  font-size: 12px;
+  top: -10px;
+  left: 9px;
+  padding: 0 6px;
+  background-color: #fff;
+}
+
+.field input:valid + label::before,
+.field input:focus + label::before {
+  .formDecor; //class has common property
 }
 /* for invalid input */
-.field .email input:not(:placeholder-shown):invalid +label::before{
-    line-height: 20px;
-    font-size: 12px;
-    top: -10px;
-    background: #fff;
-    padding: 0 6px;
-    left: 9px;
-    color: @errorColor;
+.field .email input:not(:placeholder-shown):invalid + label::before {
+  .formDecor; //class has common property
+  color: @errorColor;
 }
-.field{
-    position: relative;
-    margin: 15px 20px 10px 20px ;
-}
-.field label::before{
+
+.field {
+  position: relative;
+  margin: 15px 20px 10px 20px;
+  label::before {
     content: attr(title);
     position: absolute;
     top: 0;
@@ -69,60 +67,93 @@ input::-webkit-inner-spin-button {
     font-size: 14px;
     color: #777;
     transition: 300ms all;
-}
-
-.field input{
-    width: 100%;
-    line-height: 40px;
-    padding: 0 15px;
+  }
+  input {
     box-sizing: border-box;
+    line-height: 40px;
+    width: 100%;
+    padding: 0 15px;
     font-size: 14px;
-    color: #222;
     border: 1px solid #ccc;
     border-radius: 3px;
-}
-.field input::placeholder{
+    color: #222;
+  }
+  input::placeholder {
     color: white;
-}
-.field input:focus{
+  }
+  input:focus {
     outline: 0;
     border-color: blue;
-}
-.field input:focus + label::before{
-   
+  }
+  input:focus + label::before {
     color: blue;
-    
-}
-
-.RegisterContainer button,.loginContainer button,.orderPageContainer button{
-    display: block;
-    position: absolute;
-    background-color: red;
-    color: white;
-    margin-left: 20px;
-    width: 90%;
-    height: 30px;
-    border-radius: 12px;
-    padding-right: 2px;
+  }
 }
 
 /* addProduct */
 /* Registration page container */
-.addProduct{
-    position: relative;
-    border: 2px solid #2a9d8f;
-    border-radius: 12px;
-    margin: 10% 35% 0% 35%;
-    padding-bottom: 3%;
-    
+.addProduct {
+  position: relative;
+  margin: 10% 35% 0% 35%;
+  padding-bottom: 3%;
+  border: 2px solid #2a9d8f;
+  border-radius: 12px;
 }
-.btnProduct{
-    position: absolute;
-    color: white;
-    background-color: #2a9d8f;
-    width: 90%;
-    height: 30px;
-    border-radius: 12px;
-    left: 5%;
-    right: 5%;
+.btnProduct {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 30px;
+  border-radius: 12px;
+  color: white;
+  background-color: #2a9d8f;
 }
+
+// list table
+caption {
+  font-size: 30px;
+  font-weight: bolder;
+  color: midnightblue;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+} //same
+
+.contentTable {
+  border-collapse: collapse;
+  border-radius: 15px 15px 0 0;
+  margin: 25px auto;
+  font-size: 0.9em;
+  min-width: 400px;
+  max-width: 95%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  thead th {
+    background-color: #18b9b9;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+  }
+  .leftCorner {
+    border-radius: 15px 0px 0 0;
+  }
+  .rightCorner {
+    border-radius: 0 15px 0 0;
+  }
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: center;
+  }
+  tbody tr {
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+.searchBox {
+  height: 23px;
+  min-width: 400px;
+  margin: 15px 0 0 15px;
+  padding: 3px;
+  font-size: 1.1em;
+  border-radius: 5px;
+} 

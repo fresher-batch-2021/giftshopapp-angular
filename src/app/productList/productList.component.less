@@ -1,114 +1,55 @@
-caption{
-    font-size: 30px;
-    font-weight: bolder;
-    color: midnightblue;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-.contentTable{
-    border-collapse: collapse;
-    
-    border-radius: 15px 15px 0 0;
-    margin: 25px auto;
-    font-size: 0.9em;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
-}
-.leftCorner{
-    /* background-color: #009879; */
-    border-radius: 15px 0px 0 0;
-}
-.rightCorner{
-    border-radius: 0 15px 0 0;
-}
-
-.contentTable thead th{
-    background-color: #18B9B9;
-    /* background-color: #2a9d8f; */
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
-}
-
-.contentTable th,
-.contentTable td{
-    
-    padding: 12px 15px;
-    text-align: center;
-}
-.contentTable tbody tr{
-    border-bottom: 1px solid lightgray;
-}
-
-
-.description{
-    max-width: 80px;
-    white-space : nowrap;
-    overflow : hidden;            
-}
-.description .toolTipText {
+.description {
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  .toolTipText {
     visibility: hidden;
     width: 400px;
-    background-color:ghostwhite;
-    color: #2C80FF;
+    background-color: ghostwhite;
+    color: #2c80ff;
     border: 1px solid black;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
     white-space: normal;
-    position: absolute; 
+    position: absolute;
     z-index: 1;
   }
-  
-  .description:hover .toolTipText {
-    visibility: visible;
-  }
-  /* searchBar */
-  .searchBar{
-      display: flex;
-      justify-content: space-between;
-        
-  }
-  .searchBox{
-      
-      height: 23px;
-      min-width: 400px;
-      margin: 15px 0 0 15px;
-      padding: 3px;
-      font-size: 1.1em;
-      border-radius: 5px;
-  }
-  .addBtn{
-     right: 15px;
-     
-      margin: 15px 15px 0 0;
-      
-    background-color: #57cc99;
-  
 }
-button{
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    font-size: 0.9em;
-    padding: 5px 7px;
-    margin: 2px 1px;   
-  }
-  .deleteBtn{
-    background-color: #f07167;
-  }
-  .editBtn{
-      /* background-color: #2ec4b6; */
-      background-color: #35B5CE;
-  }
-  
+.description:hover .toolTipText {
+  visibility: visible;
+}
+/* searchBar */
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+  .addBtn {
+    right: 15px;
 
-img{
-    /* border: 1px solid cornflowerblue; */
-    padding: 5px;
-    height: 80px;
-    width: 80px;
+    margin: 15px 15px 0 0;
+
+    background-color: #57cc99;
+  }
+}
+button {
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-size: 0.9em;
+  padding: 5px 7px;
+  margin: 2px 1px;
+}
+.deleteBtn {
+  background-color: #f07167;
+}
+.editBtn {
+  background-color: #35b5ce;
+}
+img {
+  padding: 5px;
+  height: 80px;
+  width: 80px;
 }

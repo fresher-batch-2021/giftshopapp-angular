@@ -1,79 +1,70 @@
 /* navbar */
 
-.navbar{
-    background-color: #bde0fe;
-    height: 50px;
-    /* //below t2o code to move the navbaar */
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-
-}
-.navbar img{
+.navbar {
+  background-color: #bde0fe;
+  height: 50px;
+  /* //below t2o code to move the navbaar */
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  img {
     width: 40px;
     height: 40px;
     margin-top: 8px;
     margin-left: 12px;
-}
-.logoText{
+  }
+  .logoText {
     font-size: 30px;
     position: absolute;
     top: 17px;
     left: 58px;
-    letter-spacing:4px;
-}
-.navlinks{
+    letter-spacing: 4px;
+  }
+  .navlinks {
     position: absolute;
     right: 10px;
     top: 20px;
+    a {
+      cursor: pointer;
+    }
+  }
 }
-.navlinks a{
-    cursor: pointer;
-}
-.navlink {
-    display: inline-block;
-    padding: 2px 2px;
-    margin-top: 20px;
-    font-size: 20px;
-    /* color: blue; */
-    color: #BDC0FE;
-}
-.navcontent{
-    clear: both;
-    position: fixed;
-    top: 50px;
-    /* border: 2px solid #bde0fe; */
-    background-color: ghostwhite;
-    width: 100%;
-}
-.navcontent ul{
+
+.navcontent {
+  clear: both;
+  position: fixed;
+  top: 50px;
+  background-color: ghostwhite;
+  width: 100%;
+  ul {
     float: right;
     list-style: none;
     margin-top: 10px;
     margin-right: 20px;
+    li {
+      font-size: 20px;
+      float: left;
+      margin-left: 20px;
+      padding-left: 7px;
+      a {
+        color: #2c80ff;
+      }
+      a:hover {
+        /* color: #014f86; */
+        color: #2c80ff;
+        font-size: 23px;
+        border: 1px solid black;
+        border-radius: 5px;
+        letter-spacing: 4px;
+        box-shadow: 12px 10px 12px 1px rgba(49, 56, 59, 0.2);
+        transform: translateY(-2px);
+      }
+    }
+  }
 }
-.navcontent li {
-        font-size: 20px;
-    float: left;
-    margin-left: 20px;
-    padding-left: 7px;
-}
-li a{
-    color: #2C80FF;
 
-}
-.navcontent li a:hover{
-    /* color: #014f86; */
-    color: #2C80FF;
-    font-size: 23px;    
-    border: 1px solid black;
-    border-radius: 5px;
-    letter-spacing: 4px;
-    box-shadow: 12px 10px 12px 1px rgba(49, 56, 59, 0.2);
-    transform: translateY(-2px);
-}
-.spacing{
-    margin-top: 90px;
+.spacing {
+  margin-top: 90px;
 }
