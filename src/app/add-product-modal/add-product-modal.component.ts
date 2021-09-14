@@ -72,15 +72,13 @@ export class AddProductModalComponent implements OnInit {
           description:description,
           // type:"products"
         };
-        
         const product = new Product();
         product.setData(productObj);
 
         this.productService.addData(product).subscribe( (res:any)=>{
          this.toastr.success("Successfully added");
+         this.dialogRef.close();
        });
-
-       
       }
       catch(err){
         this.toastr.error("Unable to add products")

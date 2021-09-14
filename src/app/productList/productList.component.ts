@@ -7,6 +7,8 @@ import { RestService } from '../rest.service';
 import { NgxSpinnerService } from "ngx-spinner";//spinner
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductModalComponent } from '../add-product-modal/add-product-modal.component';
+import { EditProductModalComponent } from '../edit-product-modal/edit-product-modal.component';
+import { EditProductsComponent } from '../edit-products/edit-products.component';
 
 
 @Component({
@@ -88,5 +90,17 @@ export class productListComponent implements OnInit {
     }
   }
 
+  editProduct(id:string,rev:string){
+  //  alert(id)
+    this.dialog.open(EditProductModalComponent,{
+    
+      panelClass:'modalClass',
+      
+      data:{
+        id:id,
+        rev:rev
+      }
+    });
+  }
 }
 

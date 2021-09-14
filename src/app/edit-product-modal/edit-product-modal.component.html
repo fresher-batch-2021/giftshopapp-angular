@@ -1,1 +1,54 @@
-<p>edit-product-modal works!</p>
+<mat-dialog-content  >  
+    <main>
+        <section class="modalProduct">
+      
+          <section>
+            <div class="regLogo">
+              <img src="assets/Images/gift.png" alt="">
+              <p>Gift corner</p><br>
+            </div>
+          </section>
+          <section>
+            <form (ngSubmit)="editProduct()">
+
+                <div class="field">
+                  <input type="text" required autocomplete="off" id="productName" name="productName" [(ngModel)]="productName">
+                  <label for="productName" title="Name "></label>
+                </div>
+            
+                <div class="field">
+                  <input type="number" required autocomplete="off" id="productPrice"  name="productPrice"
+                    [(ngModel)]="productPrice">
+                  <label for="productPrice" title="Price"></label>
+                </div>
+            
+                <div class="field">
+                  <input type="file" (change)="onFileUpload($event)" required autocomplete="off" id="productImage"
+                    name="productImage" [(ngModel)]="productImage">
+                  <label for="productImage" title=""></label>
+                </div>
+            
+                <div class="field">
+                  <input type="number" required autocomplete="off" id="productQuantity" name="productQuantity"
+                    [(ngModel)]="productQuantity">
+                  <label for="productQuantity" title="Quantity"></label>
+                </div>
+            
+                <div class="field">
+                  <input type="text" required autocomplete="off" id="productDescription" name="productDescription"
+                    [(ngModel)]="productDescription">
+                  <label for="productDescription" title="Description"></label>
+                </div>
+            
+                <button class="modalBtn" type="submit">update product</button>
+            
+              </form>
+      
+          </section>
+      
+      
+        </section>
+      </main>
+      
+  
+</mat-dialog-content>
