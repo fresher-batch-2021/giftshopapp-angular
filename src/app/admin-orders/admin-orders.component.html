@@ -37,7 +37,8 @@
             <td >{{order.orderedDate  |date:"dd-MM-yyyy"}}</td>
             <td>{{order.deliveredDate |date:"dd-MM-yyyy"}}</td>
             <td [ngStyle]="{'color':getBgColor(order.status),'font-size': '20px'}">{{order.status}}</td>
-            <td ><button  class="statusBtn" type="button" (click)="update(order._id)">status to delivered</button></td>
+
+            <td *ngIf="(order.status=='ORDERED')" ><button  class="statusBtn" type="button" (click)="update(order._id)">status to delivered</button></td>
         </tr>
     </tbody>
 </table>
