@@ -13,6 +13,8 @@ import { ValidationService } from '../validationClass';
 })
 
 export class AddProductModalComponent implements OnInit {
+
+
   ngOnInit(): void {
     this.addProductsForm=this.fb.group({
       name : new FormControl('',Validators.required),
@@ -22,7 +24,9 @@ export class AddProductModalComponent implements OnInit {
       description : new FormControl('',Validators.required)
     })
   }
-  constructor(private  dialogRef:  MatDialogRef<AddProductModalComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private productService:ProductService) {}
+  constructor(private  dialogRef:  MatDialogRef<AddProductModalComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,private toastr:ToastrService, private fb:FormBuilder, private validator:ValidationService, private productService:ProductService) {
+    
+  }
   
   addProductsForm!:FormGroup;
   imagePath:string='';

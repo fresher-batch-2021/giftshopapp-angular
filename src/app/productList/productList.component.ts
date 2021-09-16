@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -10,6 +10,7 @@ import { AddProductModalComponent } from '../add-product-modal/add-product-modal
 import { EditProductModalComponent } from '../edit-product-modal/edit-product-modal.component';
 import { EditProductsComponent } from '../edit-products/edit-products.component';
 
+// @input
 
 @Component({
   selector: 'app-productList',
@@ -17,6 +18,11 @@ import { EditProductsComponent } from '../edit-products/edit-products.component'
   styleUrls: ['./productList.component.less']
 })
 export class productListComponent implements OnInit {
+
+// @input
+@Input ()
+noOfProduct:number=0;
+
 
   // title = 'datatable';
   dtOptions: DataTables.Settings = {};//dataTable
@@ -51,7 +57,6 @@ export class productListComponent implements OnInit {
   }
 
   productList() {
-
     this.productService.getAllData().subscribe((res: any) => {
       
       
@@ -98,7 +103,8 @@ export class productListComponent implements OnInit {
       
       data:{
         id:id,
-        rev:rev
+        rev:rev,
+        no:this.noOfProduct
       }
     });
   }

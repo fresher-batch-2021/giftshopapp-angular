@@ -16,6 +16,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 import { GoogleChartsModule } from 'angular-google-charts';
 import { EditProductsComponent } from './edit-products/edit-products.component';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { SearchPipe } from './search.pipe';

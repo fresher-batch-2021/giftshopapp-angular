@@ -14,7 +14,7 @@ export class EditProductModalComponent implements OnInit {
 
   
   constructor( private  dialogRef:  MatDialogRef<EditProductModalComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any,private route: ActivatedRoute,private router:Router,private restService:RestService,private productService:ProductService) { 
-    console.log(data)
+    
     
     
   }
