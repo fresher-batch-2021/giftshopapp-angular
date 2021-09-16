@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { ModalComponent } from './modal/modal.component';
 import { RoleGuard } from './role.guard';
+import { UserLocationComponent } from './user-location/user-location.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -25,9 +26,10 @@ const routes: Routes = [
   {path:'modal',component:ModalComponent},
   // {path:'productList',component:productListComponent,canActivate:[AuthGuard]},
   // {path:'add-product',component:AddProductComponent,canActivate:[AuthGuard]},
-  {path:'admin-orders',component:AdminOrdersComponent,canActivate:[AuthGuard,RoleGuard]},
-  {path:'footer',component:FooterComponent},
   // {path:'edit-products/:id/:rev',component:EditProductsComponent,canActivate:[AuthGuard]},
+  {path:'admin-orders',component:AdminOrdersComponent,canActivate:[AuthGuard,RoleGuard]},
+  {path:'user-location/:id',component:UserLocationComponent,canActivate:[AuthGuard,RoleGuard]},
+  {path:'footer',component:FooterComponent},
   {path:'', component:LoginComponent},
   {
     path : 'products',

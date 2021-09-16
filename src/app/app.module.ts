@@ -39,6 +39,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './modal/modal.component';
 import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
 import { EditProductModalComponent } from './edit-product-modal/edit-product-modal.component';
+import { UserLocationComponent } from './user-location/user-location.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,7 @@ import { EditProductModalComponent } from './edit-product-modal/edit-product-mod
     FooterComponent,
     CaptionDirective,
     ModalComponent,
+    UserLocationComponent,
     
     // SearchPipe
   ],
@@ -73,7 +76,9 @@ import { EditProductModalComponent } from './edit-product-modal/edit-product-mod
 
     AppRoutingModule,
     //modal
-    MatDialogModule,MatInputModule, MatButtonModule, MatCardModule, MatFormFieldModule
+    MatDialogModule,MatInputModule, MatButtonModule, MatCardModule, MatFormFieldModule,
+    //leaflet
+    LeafletModule
 
   ],
 

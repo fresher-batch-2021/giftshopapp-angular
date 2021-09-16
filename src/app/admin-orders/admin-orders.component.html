@@ -29,7 +29,7 @@
     <tbody *ngFor='let order of orders; let i=index'>
         <tr >
             <td>{{i+1}}</td>
-            <td>{{order.name}}</td>
+            <td><a [routerLink]="['/user-location',order._id]">{{order.name}}</a></td>
             <td>{{order.phonenumber}}</td>
             <td style="max-width: 100px;">{{order.address}}</td>
             <td>₹{{order.totalAmount}}</td>
